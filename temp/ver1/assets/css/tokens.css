@@ -1,0 +1,52 @@
+/* Design tokens — colors, type, spacing. Change values here to restyle the whole site. */
+:root {
+  /* Colors (기존 conas.kr 팔레트) */
+  --color-bg: #f5f6fa;
+  --color-surface: #ffffff;
+  --color-ink: #14162b;
+  --color-soft: #4b5070;
+  --color-dim: #8b90ad;
+  --color-line: rgba(40, 50, 120, 0.12);
+  --color-blue: #2f72ff;
+  --color-violet: #7a4dff;
+  --color-pink: #e0559a;
+  --gradient-brand: linear-gradient(100deg, var(--color-blue), var(--color-violet) 55%, var(--color-pink));
+
+  /* Type */
+  --font-kr: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-mono: "Martian Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+  --text-hero: clamp(2.25rem, 1.6rem + 3.6vw, 4.5rem);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --section-y: clamp(4rem, 3rem + 5vw, 7.5rem);
+  --gutter: 16px;
+
+  /* Shape & motion */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(20, 22, 43, 0.04), 0 8px 24px rgba(40, 50, 120, 0.08);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --header-h: 60px;
+
+  color-scheme: light;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+    --header-h: 72px;
+  }
+}

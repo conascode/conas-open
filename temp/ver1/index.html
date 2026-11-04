@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f6fa">
+  <title>CONAS · 코나스 회사 소개</title>
+  <meta name="description" content="CONAS(코나스)는 함께 배우고 도전하며 웹·프로덕트를 만드는 팀입니다.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CONAS">
+  <meta property="og:title" content="CONAS · 코나스 회사 소개">
+  <meta property="og:description" content="Small frustrations. Complete solutions.">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="brand" href="#top" aria-label="CONAS 홈">
+        <img src="assets/img/logo.svg" alt="" width="28" height="28">
+        <span>CONAS</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="menu-toggle__bar"></span>
+        <span class="visually-hidden">메뉴 열기</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴" data-nav>
+        <ul class="site-nav__list">
+          <li><a href="#about">소개</a></li>
+          <li><a href="#services">하는 일</a></li>
+          <li><a href="#projects">프로젝트</a></li>
+          <li><a href="#values">일하는 방식</a></li>
+          <li><a class="btn btn--small" href="#contact">문의하기</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="top">
+      <div class="container">
+        <p class="eyebrow">About CONAS · 코나스</p>
+        <h1 class="hero__title">
+          Small frustrations.<br>
+          <span class="gradient-text">Complete solutions.</span>
+        </h1>
+        <p class="hero__lead">
+          일상의 작은 불편에서 출발해, 끝까지 고민하고 완성하는 웹·프로덕트를 만듭니다.
+        </p>
+        <div class="hero__actions">
+          <a class="btn" href="#projects">프로젝트 보기</a>
+          <a class="btn btn--ghost" href="#contact">함께하기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Stats ===== -->
+    <section class="stats" aria-label="회사 개요">
+      <div class="container">
+        <dl class="stats__grid">
+          <div class="stat reveal">
+            <dt>Since</dt>
+            <dd>2020</dd>
+          </div>
+          <div class="stat reveal">
+            <dt>Team</dt>
+            <dd>8 members</dd>
+          </div>
+          <div class="stat reveal">
+            <dt>Focus</dt>
+            <dd>Web · Product</dd>
+          </div>
+          <div class="stat reveal">
+            <dt>Base</dt>
+            <dd>Geumho</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <p class="eyebrow">01 · About</p>
+        <h2 class="section__title" id="about-title">함께 배우고, 도전하고, 만들어 가는 팀</h2>
+        <p class="section__body reveal">
+          CONAS(코나스)는 아이디어를 실행에 옮기고, 프로젝트를 통해 경험을 쌓으며,
+          각자의 가능성을 현실로 만들어 갑니다. 작은 시작에서 출발하더라도
+          끝까지 고민하고 완성하는 과정을 중요하게 생각합니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Services ===== -->
+    <section class="section section--tint" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <p class="eyebrow">02 · What we do</p>
+        <h2 class="section__title" id="services-title">우리가 하는 일</h2>
+
+        <ul class="card-grid">
+          <li class="card reveal">
+            <span class="card__icon" aria-hidden="true">◐</span>
+            <h3 class="card__title">웹 개발</h3>
+            <p class="card__text">모바일부터 데스크톱까지, 어떤 화면에서도 편하게 쓰이는 웹사이트를 만듭니다.</p>
+          </li>
+          <li class="card reveal">
+            <span class="card__icon" aria-hidden="true">◇</span>
+            <h3 class="card__title">프로덕트 기획</h3>
+            <p class="card__text">불편함을 발견하고, 해결 방법을 작게 시작해 빠르게 검증합니다.</p>
+          </li>
+          <li class="card reveal">
+            <span class="card__icon" aria-hidden="true">△</span>
+            <h3 class="card__title">스터디 &amp; 성장</h3>
+            <p class="card__text">함께 배우고 기록하며, 프로젝트 경험을 팀의 역량으로 쌓아 갑니다.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <p class="eyebrow">03 · Projects</p>
+        <h2 class="section__title" id="projects-title">진행 중인 프로젝트</h2>
+
+        <div class="project-list" data-projects>
+          <!-- assets/js/data/projects.js 의 목록으로 채워집니다 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Values ===== -->
+    <section class="section section--tint" id="values" aria-labelledby="values-title">
+      <div class="container">
+        <p class="eyebrow">04 · How we work</p>
+        <h2 class="section__title" id="values-title">일하는 방식</h2>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <h3>발견</h3>
+            <p>일상 속 작은 불편함을 놓치지 않고 기록합니다.</p>
+          </li>
+          <li class="step reveal">
+            <h3>실행</h3>
+            <p>완벽한 계획보다 빠른 시작을 택하고, 직접 만들어 봅니다.</p>
+          </li>
+          <li class="step reveal">
+            <h3>완성</h3>
+            <p>작게 시작해도 끝까지 다듬어, 실제로 쓰이는 결과물을 만듭니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container contact__inner">
+        <p class="eyebrow">05 · Contact</p>
+        <h2 class="section__title" id="contact-title">함께 만들어 볼까요?</h2>
+        <p class="section__body">새로운 아이디어, 협업 제안, 팀 합류 문의 모두 환영합니다.</p>
+        <!-- TODO: 실제 연락처로 바꾸기 -->
+        <a class="btn btn--large" href="mailto:hello@conas.kr">hello@conas.kr</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© <span data-year>2026</span> CONAS. All rights reserved.</p>
+      <a href="#top" class="to-top">맨 위로 ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
