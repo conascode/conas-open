@@ -418,8 +418,9 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
   background:linear-gradient(90deg,#ff5f6d,#ffb86b,#ffe66b,#6be38a,#5ec8ff,#8c6bff,#ff6bc4,#ff5f6d);
   background-size:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 2s linear infinite}
 @keyframes tick{to{transform:translateX(-50%)}}
-.bb-grid{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:14px}
-.bb-grid img{display:block;width:100%;aspect-ratio:640/166;border-radius:10px;background:#1d1b24;cursor:pointer;
+.bb-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.bb-grid img{width:calc((100% - 28px) / 3);flex:none}
+.bb-grid img{display:block;aspect-ratio:640/166;border-radius:10px;background:#1d1b24;cursor:pointer;
   box-shadow:0 0 0 2px #1d1b24, 0 10px 24px rgba(122,77,255,.28);
   animation:bob 2.4s ease-in-out infinite;transition:transform .25s cubic-bezier(.2,1.6,.4,1), box-shadow .25s}
 .bb-grid img:nth-child(2){animation-delay:-.4s}
@@ -427,6 +428,7 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
 .bb-grid img:nth-child(4){animation-delay:-1.2s}
 .bb-grid img:nth-child(5){animation-delay:-1.6s}
 .bb-grid img:nth-child(6){animation-delay:-2s}
+.bb-grid img:nth-child(7){animation-delay:-.2s}
 .bb-grid img:nth-child(odd){rotate:-1deg}
 .bb-grid img:nth-child(even){rotate:1deg}
 @keyframes bob{50%{translate:0 -5px}}
@@ -489,7 +491,7 @@ body.intro .pepero-rain{opacity:0}
 
   <!-- 11.11 PC 전광판: 모든 광고를 한 번에 (promo 스크립트가 날짜 확인 후 보여줌) -->
   <section class="billboard reveal" id="billboard" hidden aria-label="빼빼로데이 이벤트 광고 모음">
-    <div class="ticker" aria-hidden="true"><div class="ticker-in"><span>★ 11.11 빼빼로데이 특별 이벤트 ★ 오늘 하루만! ★ 빼빼로 획득 2배 ★ 신지다이빙 풍덩! ★ 신지드젤라똥 1+1 ★ 냥코대전쟁 11+1 ★ 쇼미더지드 골드 2배 ★ 금호시티 첫 충전 70% </span><span>★ 11.11 빼빼로데이 특별 이벤트 ★ 오늘 하루만! ★ 빼빼로 획득 2배 ★ 신지다이빙 풍덩! ★ 신지드젤라똥 1+1 ★ 냥코대전쟁 11+1 ★ 쇼미더지드 골드 2배 ★ 금호시티 첫 충전 70% </span></div></div>
+    <div class="ticker" aria-hidden="true"><div class="ticker-in"><span>★ 11.11 빼빼로데이 특별 이벤트 ★ 오늘 하루만! ★ 빼빼로 획득 2배 ★ 신지다이빙 풍덩! ★ 신지드젤라똥 1+1 ★ 냥코대전쟁 11+1 ★ 쇼미더지드 골드 2배 ★ 금호시티 첫 충전 70% ★ 순애남 고백 성공률 100% </span><span>★ 11.11 빼빼로데이 특별 이벤트 ★ 오늘 하루만! ★ 빼빼로 획득 2배 ★ 신지다이빙 풍덩! ★ 신지드젤라똥 1+1 ★ 냥코대전쟁 11+1 ★ 쇼미더지드 골드 2배 ★ 금호시티 첫 충전 70% ★ 순애남 고백 성공률 100% </span></div></div>
     <div class="bb-grid">
       <img data-src="promo/1111/pepero.webp" alt="빼빼로 데이 이벤트">
       <img data-src="promo/1111/diving.webp" alt="신지다이빙 바다 대축제">
@@ -497,6 +499,7 @@ body.intro .pepero-rain{opacity:0}
       <img data-src="promo/1111/nyanko.webp" alt="냥코대전쟁 겨울 대축제">
       <img data-src="promo/1111/showme.webp" alt="쇼미더지드 이벤트">
       <img data-src="promo/1111/geumho.webp" alt="금호시티 이벤트">
+      <img data-src="promo/1111/sunae.webp" alt="순애남 이벤트">
     </div>
   </section>
 
@@ -520,6 +523,7 @@ body.intro .pepero-rain{opacity:0}
       <div class="promo" id="promo" hidden role="region" aria-roledescription="carousel" aria-label="빼빼로데이 이벤트 광고">
         <div class="promo-track">
           <img data-src="promo/1111/pepero.webp" alt="빼빼로 데이 이벤트 · 빼빼로 획득 2배, 친구 선물 무제한, 11일 출석 SSR">
+          <img data-src="promo/1111/sunae.webp" alt="순애남 이벤트 · 고백 성공률 100%, 커플 보상 2배, 하트 선물 무제한">
           <img data-src="promo/1111/diving.webp" alt="신지다이빙 바다 대축제 · 다이빙 점수 2배, 보물상자 확정">
           <img data-src="promo/1111/gelato.webp" alt="신지드젤라똥 달콤 대축제 · 젤라또 뽑기 1+1, 토핑 추가 무료">
           <img data-src="promo/1111/nyanko.webp" alt="냥코대전쟁 겨울 대축제 · 레어 뽑기 11+1, 통조림 2배">
@@ -1329,7 +1333,8 @@ body.intro .pepero-rain{opacity:0}
       im.src = im.dataset.src;
       im.addEventListener('click', () => {
         im.classList.remove('boing'); void im.offsetWidth; im.classList.add('boing');
-        show(i); restart(); // the shortcut-area banner follows the one you clicked
+        const j = imgs.findIndex((x) => x.dataset.src === im.dataset.src);
+        if (j >= 0) { show(j); restart(); } // the shortcut-area banner follows the one you clicked
       });
       im.addEventListener('animationend', (e) => { if (e.animationName === 'boing') im.classList.remove('boing'); });
     });
