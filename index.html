@@ -384,6 +384,40 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
   .box .chev{width:13px;height:13px}
 }
 
+/* 11.11 promo banners (shown only on the event day, see promo script) */
+.go.has-promo{width:380px}
+.promo{position:relative;margin-bottom:6px;cursor:pointer}
+.promo-track{position:relative;aspect-ratio:640/166;border-radius:12px;overflow:hidden;background:#1d1b24;
+  box-shadow:0 0 0 2px #1d1b24}
+.promo-track img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;
+  opacity:0;transform:translateX(18%) scale(.96);transition:opacity .45s ease, transform .55s cubic-bezier(.2,.9,.25,1.15)}
+.promo-track img.on{opacity:1;transform:none}
+.promo-track img.out{opacity:0;transform:translateX(-18%) scale(.96)}
+/* same rainbow glow as the shortcut buttons, a bit stronger */
+.promo::after{
+  content:"";position:absolute;z-index:-1;left:6%;right:6%;bottom:6px;height:30px;
+  background:linear-gradient(90deg,#ff5f6d,#ffb86b,#ffe66b,#6be38a,#5ec8ff,#8c6bff,#ff6bc4,#ff5f6d);
+  background-size:200% 100%;filter:blur(14px);opacity:.75;animation:rainbow 2.5s linear infinite;
+}
+.promo-dots{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.promo-dots button{width:7px;height:7px;padding:0;border:0;border-radius:99px;background:rgba(20,22,43,.22);
+  cursor:pointer;transition:width .3s, background .3s}
+.promo-dots button[aria-selected="true"]{width:20px;background:var(--violet)}
+.promo-dots button:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+@media (max-width:760px){
+  .go.has-promo{width:100%}
+  .promo{grid-column:1 / -1;margin-bottom:2px}
+  .promo-dots{margin-top:6px}
+}
+/* short phones: drop the footer link so the page still fits one screen,
+   and if the shortcuts still overflow, hide the intro paragraph for the day */
+@media (max-width:760px) and (max-height:740px){
+  body.promo-on footer{display:none}
+}
+@media (max-width:760px){
+  body.promo-tight .about p{display:none}
+}
+
 </style>
 
 <canvas id="trail" aria-hidden="true"></canvas>
@@ -435,6 +469,18 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
     <!-- 바로가기: 각 href="#" 자리에 실제 주소를 넣으세요 -->
     <nav class="go reveal" aria-labelledby="go-title">
       <h2 id="go-title">바로가기</h2>
+      <!-- 11.11 빼빼로데이 한정 광고: 날짜 조건은 맨 아래 promo 스크립트 참고 -->
+      <div class="promo" id="promo" hidden role="region" aria-roledescription="carousel" aria-label="빼빼로데이 이벤트 광고">
+        <div class="promo-track">
+          <img data-src="promo/1111/pepero.webp" alt="빼빼로 데이 이벤트 · 빼빼로 획득 2배, 친구 선물 무제한, 11일 출석 SSR">
+          <img data-src="promo/1111/diving.webp" alt="신지다이빙 바다 대축제 · 다이빙 점수 2배, 보물상자 확정">
+          <img data-src="promo/1111/gelato.webp" alt="신지드젤라똥 달콤 대축제 · 젤라또 뽑기 1+1, 토핑 추가 무료">
+          <img data-src="promo/1111/nyanko.webp" alt="냥코대전쟁 겨울 대축제 · 레어 뽑기 11+1, 통조림 2배">
+          <img data-src="promo/1111/showme.webp" alt="쇼미더지드 이벤트 · 골드 획득 2배, 경험치 부스트 +100%">
+          <img data-src="promo/1111/geumho.webp" alt="금호시티 이벤트 · 첫 충전 보너스 70%, 출석 보상 20%">
+        </div>
+        <div class="promo-dots" role="tablist" aria-label="광고 선택"></div>
+      </div>
       <a class="box" href="/clipboard" data-key="1" title="단축키 1">클립보드<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></a>
       <a class="box" href="#studycafe" data-key="2" data-pin="1" title="단축키 2">오름 스터디카페<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></a>
       <a class="box" href="/abaxnote" data-key="3" title="단축키 3">AbaxNote<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></a>
@@ -1162,6 +1208,72 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
   document.getElementById('replay').addEventListener('click', e=>{ e.stopPropagation(); play(); });
 
   play();
+})();
+</script>
+
+<script>
+/* 11.11 빼빼로데이 광고: 한국 시간 2026-11-11 하루만 보여요.
+   미리 보려면 주소 끝에 ?promo=1 을 붙이세요. */
+(function(){
+  const EVENT_DAY = '2026-11-11';
+  const box = document.getElementById('promo');
+  if (!box) return;
+  const kstToday = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+  const preview = /[?&]promo=1\b/.test(location.search);
+  if (kstToday !== EVENT_DAY && !preview) { box.remove(); return; }
+
+  const imgs = [...box.querySelectorAll('.promo-track img')];
+  const dots = box.querySelector('.promo-dots');
+  const STEP = 4800; // one full loop of each banner animation
+  let cur = 0, timer = null;
+
+  const load = (i) => { const im = imgs[i]; if (im && !im.src) im.src = im.dataset.src; };
+  imgs.forEach((im, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', (i + 1) + '번째 광고');
+    b.addEventListener('click', (e) => { e.stopPropagation(); show(i); restart(); });
+    dots.appendChild(b);
+  });
+
+  function show(i) {
+    imgs.forEach((im, k) => {
+      im.classList.toggle('out', k === cur && k !== i);
+      im.classList.toggle('on', k === i);
+    });
+    [...dots.children].forEach((d, k) => d.setAttribute('aria-selected', k === i ? 'true' : 'false'));
+    cur = i;
+    load(i); load((i + 1) % imgs.length); // fetch only what is about to be seen
+  }
+  function restart() {
+    clearInterval(timer);
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    timer = setInterval(() => show((cur + 1) % imgs.length), STEP);
+  }
+  box.addEventListener('click', () => { show((cur + 1) % imgs.length); restart(); });
+  document.addEventListener('visibilitychange', () => { document.hidden ? clearInterval(timer) : restart(); });
+
+  box.hidden = false;
+  box.closest('.go').classList.add('has-promo');
+  document.body.classList.add('promo-on');
+  show(0);
+  restart();
+
+  // phones show everything on one screen: make room if the last shortcut is cut off
+  function fit() {
+    document.body.classList.remove('promo-tight');
+    const go = box.closest('.go');
+    const last = [...go.querySelectorAll('.box')].pop();
+    // ignore the intro's slide-up offset so we measure the settled layout
+    let shift = 0;
+    try { shift = new DOMMatrixReadOnly(getComputedStyle(go).transform).m42 || 0; } catch (e) {}
+    if (last && innerWidth <= 760 && last.getBoundingClientRect().bottom - shift > innerHeight - 4) {
+      document.body.classList.add('promo-tight');
+    }
+  }
+  fit();
+  if (document.fonts) document.fonts.ready.then(fit);
+  addEventListener('resize', fit);
 })();
 </script>
 
