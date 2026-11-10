@@ -409,6 +409,40 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
   .promo{grid-column:1 / -1;margin-bottom:2px}
   .promo-dots{margin-top:6px}
 }
+/* PC billboard: rainbow ticker + every banner at once */
+.billboard{display:flex;flex-direction:column;gap:14px;margin-top:calc(-1 * clamp(10px, 3vh, 36px))}
+.ticker{position:relative;overflow:hidden;height:36px;border-radius:10px;background:#1d1b24;display:flex;align-items:center;
+  box-shadow:0 0 0 2px #1d1b24, 0 6px 22px rgba(122,77,255,.35)}
+.ticker-in{display:flex;white-space:nowrap;animation:tick 22s linear infinite}
+.ticker span{padding-right:24px;font-size:15px;font-weight:700;letter-spacing:.02em;
+  background:linear-gradient(90deg,#ff5f6d,#ffb86b,#ffe66b,#6be38a,#5ec8ff,#8c6bff,#ff6bc4,#ff5f6d);
+  background-size:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 2s linear infinite}
+@keyframes tick{to{transform:translateX(-50%)}}
+.bb-grid{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:14px}
+.bb-grid img{display:block;width:100%;aspect-ratio:640/166;border-radius:10px;background:#1d1b24;cursor:pointer;
+  box-shadow:0 0 0 2px #1d1b24, 0 10px 24px rgba(122,77,255,.28);
+  animation:bob 2.4s ease-in-out infinite;transition:transform .25s cubic-bezier(.2,1.6,.4,1), box-shadow .25s}
+.bb-grid img:nth-child(2){animation-delay:-.4s}
+.bb-grid img:nth-child(3){animation-delay:-.8s}
+.bb-grid img:nth-child(4){animation-delay:-1.2s}
+.bb-grid img:nth-child(5){animation-delay:-1.6s}
+.bb-grid img:nth-child(6){animation-delay:-2s}
+.bb-grid img:nth-child(odd){rotate:-1deg}
+.bb-grid img:nth-child(even){rotate:1deg}
+@keyframes bob{50%{translate:0 -5px}}
+.bb-grid img:hover{transform:scale(1.12);position:relative;z-index:1;box-shadow:0 0 0 3px #ffe66b, 0 16px 40px rgba(224,85,154,.5)}
+.bb-grid img.boing{animation:boing .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes boing{0%{transform:scale(1)}40%{transform:scale(1.2) rotate(-3deg)}100%{transform:scale(1)}}
+/* falling Pepero sticks (PC only) */
+.pepero-rain{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;transition:opacity .6s}
+body.intro .pepero-rain{opacity:0}
+.pepero-rain i{position:absolute;top:-80px;width:9px;height:62px;border-radius:5px;
+  background:linear-gradient(180deg,var(--c) 0 70%,#f2d29a 70%);box-shadow:0 0 0 1.5px rgba(40,20,10,.35);
+  animation:rain linear infinite}
+@keyframes rain{to{transform:translate(var(--dx), calc(100vh + 160px)) rotate(var(--r))}}
+@media (max-width:760px){ .billboard,.pepero-rain{display:none!important} }
+@media (prefers-reduced-motion: reduce){ .pepero-rain{display:none} .ticker-in,.bb-grid img{animation:none} }
+
 /* short phones: drop the footer link so the page still fits one screen,
    and if the shortcuts still overflow, hide the intro paragraph for the day */
 @media (max-width:760px) and (max-height:740px){
@@ -452,6 +486,19 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
     </div>
     <div class="clock reveal" id="clock"><b id="date">----.--.--</b><i></i><span id="time">--:--</span></div>
   </div>
+
+  <!-- 11.11 PC 전광판: 모든 광고를 한 번에 (promo 스크립트가 날짜 확인 후 보여줌) -->
+  <section class="billboard reveal" id="billboard" hidden aria-label="빼빼로데이 이벤트 광고 모음">
+    <div class="ticker" aria-hidden="true"><div class="ticker-in"><span>★ 11.11 빼빼로데이 특별 이벤트 ★ 오늘 하루만! ★ 빼빼로 획득 2배 ★ 신지다이빙 풍덩! ★ 신지드젤라똥 1+1 ★ 냥코대전쟁 11+1 ★ 쇼미더지드 골드 2배 ★ 금호시티 첫 충전 70% </span><span>★ 11.11 빼빼로데이 특별 이벤트 ★ 오늘 하루만! ★ 빼빼로 획득 2배 ★ 신지다이빙 풍덩! ★ 신지드젤라똥 1+1 ★ 냥코대전쟁 11+1 ★ 쇼미더지드 골드 2배 ★ 금호시티 첫 충전 70% </span></div></div>
+    <div class="bb-grid">
+      <img data-src="promo/1111/pepero.webp" alt="빼빼로 데이 이벤트">
+      <img data-src="promo/1111/diving.webp" alt="신지다이빙 바다 대축제">
+      <img data-src="promo/1111/gelato.webp" alt="신지드젤라똥 달콤 대축제">
+      <img data-src="promo/1111/nyanko.webp" alt="냥코대전쟁 겨울 대축제">
+      <img data-src="promo/1111/showme.webp" alt="쇼미더지드 이벤트">
+      <img data-src="promo/1111/geumho.webp" alt="금호시티 이벤트">
+    </div>
+  </section>
 
   <div class="hero">
     <section class="about" aria-labelledby="about-title">
@@ -1220,7 +1267,7 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
   if (!box) return;
   const kstToday = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
   const preview = /[?&]promo=1\b/.test(location.search);
-  if (kstToday !== EVENT_DAY && !preview) { box.remove(); return; }
+  if (kstToday !== EVENT_DAY && !preview) { box.remove(); const bb0 = document.getElementById('billboard'); if (bb0) bb0.remove(); return; }
 
   const imgs = [...box.querySelectorAll('.promo-track img')];
   const dots = box.querySelector('.promo-dots');
@@ -1274,6 +1321,36 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
   fit();
   if (document.fonts) document.fonts.ready.then(fit);
   addEventListener('resize', fit);
+
+  // PC: billboard with every banner + Pepero rain
+  const bb = document.getElementById('billboard');
+  if (bb && matchMedia('(min-width: 761px)').matches) {
+    bb.querySelectorAll('img').forEach((im, i) => {
+      im.src = im.dataset.src;
+      im.addEventListener('click', () => {
+        im.classList.remove('boing'); void im.offsetWidth; im.classList.add('boing');
+        show(i); restart(); // the shortcut-area banner follows the one you clicked
+      });
+      im.addEventListener('animationend', (e) => { if (e.animationName === 'boing') im.classList.remove('boing'); });
+    });
+    bb.hidden = false;
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const rain = document.createElement('div');
+      rain.className = 'pepero-rain'; rain.setAttribute('aria-hidden', 'true');
+      const cols = ['#5a2408', '#5a2408', '#ff7eb6', '#f4f0e6', '#5a2408'];
+      for (let i = 0; i < 22; i++) {
+        const st = document.createElement('i');
+        const d = 7 + Math.random() * 7;
+        st.style.cssText = 'left:' + (Math.random() * 100) + '%;--c:' + cols[i % cols.length] +
+          ';animation-duration:' + d + 's;animation-delay:' + (-Math.random() * d) + 's;--dx:' +
+          ((Math.random() - .5) * 160) + 'px;--r:' + ((Math.random() < .5 ? -1 : 1) * (180 + Math.random() * 540)) + 'deg;opacity:' + (.55 + Math.random() * .4);
+        rain.appendChild(st);
+      }
+      document.body.appendChild(rain);
+    }
+  } else if (bb) {
+    bb.remove();
+  }
 })();
 </script>
 
