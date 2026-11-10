@@ -385,6 +385,10 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
 }
 
 /* Pepero Day promo banners (event-only version of this page) */
+.about-ad{display:block;width:100%;aspect-ratio:990/250;border-radius:12px;background:#1d1b24;cursor:pointer;
+  box-shadow:0 12px 34px rgba(255,26,46,.35);transition:transform .25s cubic-bezier(.2,1.6,.4,1)}
+@media (hover:hover){ .about-ad:hover{transform:scale(1.03)} }
+.about-ad.boing{animation:boing .5s cubic-bezier(.2,1.6,.4,1)}
 .go.has-promo{width:380px}
 .promo{position:relative;margin-bottom:6px;cursor:pointer}
 .promo-track{position:relative;aspect-ratio:640/162;border-radius:10px;overflow:hidden;background:#1d1b24}
@@ -499,7 +503,7 @@ body.intro .pepero-rain{opacity:0}
     <section class="about" aria-labelledby="about-title">
       <div class="eyebrow reveal">About CONAS · 코나스</div>
       <h1 class="reveal" id="about-title">Small frustrations.<br><em>Complete solutions.</em></h1>
-      <p class="reveal">CONAS(코나스)는 함께 배우고, 도전하고, 만들어 가는 팀입니다. 우리는 아이디어를 실행에 옮기고, 프로젝트를 통해 경험을 쌓으며, 각자의 가능성을 현실로 만들어 갑니다. 작은 시작에서 출발하더라도 끝까지 고민하고 완성하는 과정을 중요하게 생각합니다.</p>
+      <img class="about-ad reveal" data-src="promo/1111/vn-big.webp" alt="금호동 미연시 출시 · 공략 대상 금호동 그 녀석, 호감도 MAX">
       <div class="facts reveal">
         <button type="button" class="fact fact-btn" data-pop="since" aria-haspopup="dialog"><span>Since <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span><b>2020</b></button>
         <button type="button" class="fact fact-btn" data-pop="team" aria-haspopup="dialog"><span>Team <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span><b>8 members</b></button>
@@ -1260,6 +1264,29 @@ body.intro .pepero-rain{opacity:0}
 /* 빼빼로데이 이벤트 전용 버전: 광고가 항상 보여요.
    이벤트가 끝나면 원래 index.html 로 다시 올리면 돼요. */
 (function(){
+  /* ▼ 광고를 눌렀을 때 갈 주소를 '' 안에 넣으세요. 비워 두면 링크 없이 통 튀기만 해요.
+       예) pepero: 'https://example.com/event',   */
+  const PROMO_LINKS = {
+    pepero:  '',  // 빼빼로 데이
+    sunae:   '',  // 순애남
+    dressup: '',  // 옷입히기 SUPER SALE
+    vn:      '',  // 금호동 미연시 (소개 자리 큰 광고 포함)
+    diving:  '',  // 신지다이빙
+    gelato:  '',  // 신지드젤라똥
+    nyanko:  '',  // 냥코대전쟁
+    showme:  '',  // 쇼미더지드
+    geumho:  '',  // 금호시티
+  };
+  const NEW_TAB = true; // 새 탭으로 열기 (false 면 같은 창)
+  /* ▲ 여기까지만 고치면 돼요 */
+
+  const keyOf = (im) => (im.dataset.src.split('/').pop() || '').replace(/(-big)?\.webp$/, '');
+  const linkOf = (im) => (PROMO_LINKS[keyOf(im)] || '').trim();
+  const go = (url) => { if (NEW_TAB) window.open(url, '_blank', 'noopener'); else location.href = url; };
+  const bounce = (im) => { im.classList.remove('boing'); void im.offsetWidth; im.classList.add('boing'); };
+  const markLink = (im) => { const u = linkOf(im); if (u) { im.title = u; im.setAttribute('role', 'link'); im.tabIndex = 0;
+    im.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(u); }); } };
+
   const box = document.getElementById('promo');
   if (!box) return;
 
@@ -1291,7 +1318,8 @@ body.intro .pepero-rain{opacity:0}
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     timer = setInterval(() => show((cur + 1) % imgs.length), STEP);
   }
-  box.addEventListener('click', () => { show((cur + 1) % imgs.length); restart(); });
+  imgs.forEach(markLink);
+  box.addEventListener('click', () => { const u = linkOf(imgs[cur]); if (u) { go(u); return; } show((cur + 1) % imgs.length); restart(); });
   document.addEventListener('visibilitychange', () => { document.hidden ? clearInterval(timer) : restart(); });
 
   box.hidden = false;
@@ -1302,13 +1330,24 @@ body.intro .pepero-rain{opacity:0}
 
   document.documentElement.classList.add('promo-on');
 
+  // big banner where the intro paragraph used to be
+  const big = document.querySelector('.about-ad');
+  if (big) {
+    big.src = big.dataset.src;
+    markLink(big);
+    big.addEventListener('click', () => { const u = linkOf(big); if (u) go(u); else bounce(big); });
+    big.addEventListener('animationend', (e) => { if (e.animationName === 'boing') big.classList.remove('boing'); });
+  }
+
   // billboard with every banner + Pepero rain (PC and phone)
   const bb = document.getElementById('billboard');
   if (bb) {
     bb.querySelectorAll('img').forEach((im, i) => {
       im.src = im.dataset.src;
+      markLink(im);
       im.addEventListener('click', () => {
-        im.classList.remove('boing'); void im.offsetWidth; im.classList.add('boing');
+        const u = linkOf(im); if (u) { go(u); return; }
+        bounce(im);
         const j = imgs.findIndex((x) => x.dataset.src === im.dataset.src);
         if (j >= 0) { show(j); restart(); } // the shortcut-area banner follows the one you clicked
       });
