@@ -338,6 +338,11 @@ footer{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--d
 footer button{background:none;border:0;color:var(--dim);font:inherit;letter-spacing:inherit;cursor:pointer;padding:6px 0;
   text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
 footer button:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
+footer .promo-link{padding:6px 0;font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(224,85,154,.4);
+  background:linear-gradient(90deg,var(--pink),var(--violet),var(--blue),var(--pink));background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 3s linear infinite}
+footer .promo-link:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
+body.promo-on footer .promo-link{display:none}
 
 .skip{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);
   font-size:11px;color:var(--dim);letter-spacing:.04em;z-index:5;transition:opacity .4s;white-space:nowrap}
@@ -387,8 +392,7 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
 /* 11.11 promo banners (shown only on the event day, see promo script) */
 .go.has-promo{width:380px}
 .promo{position:relative;margin-bottom:6px;cursor:pointer}
-.promo-track{position:relative;aspect-ratio:640/166;border-radius:12px;overflow:hidden;background:#1d1b24;
-  box-shadow:0 0 0 2px #1d1b24}
+.promo-track{position:relative;aspect-ratio:640/162;border-radius:10px;overflow:hidden;background:#1d1b24}
 .promo-track img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;
   opacity:0;transform:translateX(18%) scale(.96);transition:opacity .45s ease, transform .55s cubic-bezier(.2,.9,.25,1.15)}
 .promo-track img.on{opacity:1;transform:none}
@@ -410,7 +414,7 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
   .promo-dots{margin-top:6px}
 }
 /* PC billboard: rainbow ticker + every banner at once */
-.billboard{display:flex;flex-direction:column;gap:14px;margin-top:calc(-1 * clamp(10px, 3vh, 36px))}
+.billboard{display:flex;flex-direction:column;gap:8px;margin-top:calc(-1 * clamp(10px, 3vh, 36px))}
 .ticker{position:relative;overflow:hidden;height:36px;border-radius:10px;background:#1d1b24;display:flex;align-items:center;
   box-shadow:0 0 0 2px #1d1b24, 0 6px 22px rgba(122,77,255,.35)}
 .ticker-in{display:flex;white-space:nowrap;animation:tick 22s linear infinite}
@@ -418,21 +422,11 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
   background:linear-gradient(90deg,#ff5f6d,#ffb86b,#ffe66b,#6be38a,#5ec8ff,#8c6bff,#ff6bc4,#ff5f6d);
   background-size:50% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 2s linear infinite}
 @keyframes tick{to{transform:translateX(-50%)}}
-.bb-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
-.bb-grid img{width:calc((100% - 28px) / 3);flex:none}
-.bb-grid img{display:block;aspect-ratio:640/166;border-radius:10px;background:#1d1b24;cursor:pointer;
-  box-shadow:0 0 0 2px #1d1b24, 0 10px 24px rgba(122,77,255,.28);
-  animation:bob 2.4s ease-in-out infinite;transition:transform .25s cubic-bezier(.2,1.6,.4,1), box-shadow .25s}
-.bb-grid img:nth-child(2){animation-delay:-.4s}
-.bb-grid img:nth-child(3){animation-delay:-.8s}
-.bb-grid img:nth-child(4){animation-delay:-1.2s}
-.bb-grid img:nth-child(5){animation-delay:-1.6s}
-.bb-grid img:nth-child(6){animation-delay:-2s}
-.bb-grid img:nth-child(7){animation-delay:-.2s}
-.bb-grid img:nth-child(odd){rotate:-1deg}
-.bb-grid img:nth-child(even){rotate:1deg}
-@keyframes bob{50%{translate:0 -5px}}
-.bb-grid img:hover{transform:scale(1.12);position:relative;z-index:1;box-shadow:0 0 0 3px #ffe66b, 0 16px 40px rgba(224,85,154,.5)}
+.bb-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:2px}
+.bb-grid img{width:calc((100% - 4px) / 3);flex:none}
+.bb-grid img{display:block;aspect-ratio:640/162;background:#1d1b24;cursor:pointer;
+  transition:transform .25s cubic-bezier(.2,1.6,.4,1), box-shadow .25s}
+.bb-grid img:hover{transform:scale(1.12);position:relative;z-index:1;box-shadow:0 16px 40px rgba(224,85,154,.55)}
 .bb-grid img.boing{animation:boing .5s cubic-bezier(.2,1.6,.4,1)}
 @keyframes boing{0%{transform:scale(1)}40%{transform:scale(1.2) rotate(-3deg)}100%{transform:scale(1)}}
 /* falling Pepero sticks (PC only) */
@@ -443,7 +437,7 @@ body.intro .pepero-rain{opacity:0}
   animation:rain linear infinite}
 @keyframes rain{to{transform:translate(var(--dx), calc(100vh + 160px)) rotate(var(--r))}}
 @media (max-width:760px){ .billboard,.pepero-rain{display:none!important} }
-@media (prefers-reduced-motion: reduce){ .pepero-rain{display:none} .ticker-in,.bb-grid img{animation:none} }
+@media (prefers-reduced-motion: reduce){ .pepero-rain{display:none} .ticker-in{animation:none} }
 
 /* short phones: drop the footer link so the page still fits one screen,
    and if the shortcuts still overflow, hide the intro paragraph for the day */
@@ -540,7 +534,7 @@ body.intro .pepero-rain{opacity:0}
     </nav>
   </div>
 
-  <footer class="reveal"><button type="button" id="replay">인트로 다시 보기</button></footer>
+  <footer class="reveal"><a class="promo-link" href="?promo=1">★ 빼빼로데이 이벤트 보기</a><button type="button" id="replay">인트로 다시 보기</button></footer>
 </main>
 <div class="gate" id="gate" hidden>
   <button type="button" class="gate-back" id="gateBack"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8 10 12.5"/></svg>돌아가기</button>
