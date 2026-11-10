@@ -444,6 +444,8 @@ body.intro .pepero-rain{opacity:0}
   .ticker{height:30px}
   .ticker span{font-size:13px}
   .bb-grid img{width:calc((100% - 2px) / 2)}
+  /* the 미연시 banner already shows big in the middle on phones */
+  .bb-grid img[data-src$="/vn.webp"]{display:none}
   .pepero-rain i{width:7px;height:48px}
 }
 @media (prefers-reduced-motion: reduce){ .pepero-rain{display:none} .ticker-in{animation:none} }
