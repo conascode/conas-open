@@ -1267,17 +1267,18 @@ body.intro .pepero-rain{opacity:0}
    이벤트가 끝나면 원래 index.html 로 다시 올리면 돼요. */
 (function(){
   /* ▼ 광고를 눌렀을 때 갈 주소를 '' 안에 넣으세요. 비워 두면 링크 없이 통 튀기만 해요.
-       /game/ 과 .html 사이에 파일 이름만 넣으세요. 예) pepero: '/game/pepero.html',   */
+       game/ 과 .html 사이에 파일 이름만 넣으세요. 예) pepero: 'game/pepero.html',
+       (앞에 / 를 붙이지 않아야 미리보기·GitHub Pages·conas.kr 어디서든 같은 폴더를 찾아가요)   */
   const PROMO_LINKS = {
-    pepero:  '/game/.html',  // 빼빼로 데이
-    sunae:   '/game/.html',  // 순애남
-    dressup: '/game/.html',  // 옷입히기 SUPER SALE
-    vn:      '/game/.html',  // 금호동 미연시 (소개 자리 큰 광고 포함)
-    diving:  '/game/.html',  // 신지다이빙
-    gelato:  '/game/.html',  // 신지드젤라똥
-    nyanko:  '/game/.html',  // 냥코대전쟁
-    showme:  '/game/.html',  // 쇼미더지드
-    geumho:  '/game/.html',  // 금호시티
+    pepero:  'game/.html',  // 빼빼로 데이
+    sunae:   'game/.html',  // 순애남
+    dressup: 'game/.html',  // 옷입히기 SUPER SALE
+    vn:      'game/.html',  // 금호동 미연시 (소개 자리 큰 광고 포함)
+    diving:  'game/.html',  // 신지다이빙
+    gelato:  'game/.html',  // 신지드젤라똥
+    nyanko:  'game/.html',  // 냥코대전쟁
+    showme:  'game/.html',  // 쇼미더지드
+    geumho:  'game/.html',  // 금호시티
   };
   const NEW_TAB = true; // 새 탭으로 열기 (false 면 같은 창)
   /* ▲ 여기까지만 고치면 돼요 */
