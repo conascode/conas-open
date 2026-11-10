@@ -338,11 +338,6 @@ footer{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--d
 footer button{background:none;border:0;color:var(--dim);font:inherit;letter-spacing:inherit;cursor:pointer;padding:6px 0;
   text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
 footer button:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
-footer .promo-link{padding:6px 0;font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(224,85,154,.4);
-  background:linear-gradient(90deg,var(--pink),var(--violet),var(--blue),var(--pink));background-size:200% 100%;
-  -webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 3s linear infinite}
-footer .promo-link:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
-body.promo-on footer .promo-link{display:none}
 
 .skip{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);
   font-size:11px;color:var(--dim);letter-spacing:.04em;z-index:5;transition:opacity .4s;white-space:nowrap}
@@ -389,7 +384,7 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
   .box .chev{width:13px;height:13px}
 }
 
-/* 11.11 promo banners (shown only on the event day, see promo script) */
+/* Pepero Day promo banners (event-only version of this page) */
 .go.has-promo{width:380px}
 .promo{position:relative;margin-bottom:6px;cursor:pointer}
 .promo-track{position:relative;aspect-ratio:640/162;border-radius:10px;overflow:hidden;background:#1d1b24}
@@ -426,27 +421,28 @@ body:not(.intro) .skip{opacity:0;pointer-events:none}
 .bb-grid img{width:calc((100% - 4px) / 3);flex:none}
 .bb-grid img{display:block;aspect-ratio:640/162;background:#1d1b24;cursor:pointer;
   transition:transform .25s cubic-bezier(.2,1.6,.4,1), box-shadow .25s}
-.bb-grid img:hover{transform:scale(1.12);position:relative;z-index:1;box-shadow:0 16px 40px rgba(224,85,154,.55)}
+@media (hover:hover){ .bb-grid img:hover{transform:scale(1.12);position:relative;z-index:1;box-shadow:0 16px 40px rgba(224,85,154,.55)} }
 .bb-grid img.boing{animation:boing .5s cubic-bezier(.2,1.6,.4,1)}
 @keyframes boing{0%{transform:scale(1)}40%{transform:scale(1.2) rotate(-3deg)}100%{transform:scale(1)}}
-/* falling Pepero sticks (PC only) */
+/* falling Pepero sticks */
 .pepero-rain{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;transition:opacity .6s}
 body.intro .pepero-rain{opacity:0}
 .pepero-rain i{position:absolute;top:-80px;width:9px;height:62px;border-radius:5px;
   background:linear-gradient(180deg,var(--c) 0 70%,#f2d29a 70%);box-shadow:0 0 0 1.5px rgba(40,20,10,.35);
   animation:rain linear infinite}
 @keyframes rain{to{transform:translate(var(--dx), calc(100vh + 160px)) rotate(var(--r))}}
-@media (max-width:760px){ .billboard,.pepero-rain{display:none!important} }
-@media (prefers-reduced-motion: reduce){ .pepero-rain{display:none} .ticker-in{animation:none} }
-
-/* short phones: drop the footer link so the page still fits one screen,
-   and if the shortcuts still overflow, hide the intro paragraph for the day */
-@media (max-width:760px) and (max-height:740px){
-  body.promo-on footer{display:none}
-}
 @media (max-width:760px){
-  body.promo-tight .about p{display:none}
+  /* event version: the phone page scrolls so every banner fits */
+  html.promo-on, html.promo-on body{height:auto;overflow:visible;overscroll-behavior:auto}
+  html.promo-on .page{height:auto;min-height:100%}
+  html.promo-on body.intro{overflow:hidden}
+  .billboard{margin-top:0;gap:6px}
+  .ticker{height:30px}
+  .ticker span{font-size:13px}
+  .bb-grid img{width:100%}
+  .pepero-rain i{width:7px;height:48px}
 }
+@media (prefers-reduced-motion: reduce){ .pepero-rain{display:none} .ticker-in{animation:none} }
 
 </style>
 
@@ -483,7 +479,7 @@ body.intro .pepero-rain{opacity:0}
     <div class="clock reveal" id="clock"><b id="date">----.--.--</b><i></i><span id="time">--:--</span></div>
   </div>
 
-  <!-- 11.11 PC 전광판: 모든 광고를 한 번에 (promo 스크립트가 날짜 확인 후 보여줌) -->
+  <!-- 빼빼로데이 전광판: 모든 광고를 한 번에 -->
   <section class="billboard reveal" id="billboard" hidden aria-label="빼빼로데이 이벤트 광고 모음">
     <div class="ticker" aria-hidden="true"><div class="ticker-in"><span>★ 11.11 빼빼로데이 특별 이벤트 ★ 오늘 하루만! ★ 빼빼로 획득 2배 ★ 신지다이빙 풍덩! ★ 신지드젤라똥 1+1 ★ 냥코대전쟁 11+1 ★ 쇼미더지드 골드 2배 ★ 금호시티 첫 충전 70% ★ 순애남 고백 성공률 100% </span><span>★ 11.11 빼빼로데이 특별 이벤트 ★ 오늘 하루만! ★ 빼빼로 획득 2배 ★ 신지다이빙 풍덩! ★ 신지드젤라똥 1+1 ★ 냥코대전쟁 11+1 ★ 쇼미더지드 골드 2배 ★ 금호시티 첫 충전 70% ★ 순애남 고백 성공률 100% </span></div></div>
     <div class="bb-grid">
@@ -513,7 +509,7 @@ body.intro .pepero-rain{opacity:0}
     <!-- 바로가기: 각 href="#" 자리에 실제 주소를 넣으세요 -->
     <nav class="go reveal" aria-labelledby="go-title">
       <h2 id="go-title">바로가기</h2>
-      <!-- 11.11 빼빼로데이 한정 광고: 날짜 조건은 맨 아래 promo 스크립트 참고 -->
+      <!-- 빼빼로데이 광고 (이벤트 전용 버전) -->
       <div class="promo" id="promo" hidden role="region" aria-roledescription="carousel" aria-label="빼빼로데이 이벤트 광고">
         <div class="promo-track">
           <img data-src="promo/1111/pepero.webp" alt="빼빼로 데이 이벤트 · 빼빼로 획득 2배, 친구 선물 무제한, 11일 출석 SSR">
@@ -534,7 +530,7 @@ body.intro .pepero-rain{opacity:0}
     </nav>
   </div>
 
-  <footer class="reveal"><a class="promo-link" href="?promo=1">★ 빼빼로데이 이벤트 보기</a><button type="button" id="replay">인트로 다시 보기</button></footer>
+  <footer class="reveal"><button type="button" id="replay">인트로 다시 보기</button></footer>
 </main>
 <div class="gate" id="gate" hidden>
   <button type="button" class="gate-back" id="gateBack"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8 10 12.5"/></svg>돌아가기</button>
@@ -1257,15 +1253,11 @@ body.intro .pepero-rain{opacity:0}
 </script>
 
 <script>
-/* 11.11 빼빼로데이 광고: 한국 시간 2026-11-11 하루만 보여요.
-   미리 보려면 주소 끝에 ?promo=1 을 붙이세요. */
+/* 빼빼로데이 이벤트 전용 버전: 광고가 항상 보여요.
+   이벤트가 끝나면 원래 index.html 로 다시 올리면 돼요. */
 (function(){
-  const EVENT_DAY = '2026-11-11';
   const box = document.getElementById('promo');
   if (!box) return;
-  const kstToday = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
-  const preview = /[?&]promo=1\b/.test(location.search);
-  if (kstToday !== EVENT_DAY && !preview) { box.remove(); const bb0 = document.getElementById('billboard'); if (bb0) bb0.remove(); return; }
 
   const imgs = [...box.querySelectorAll('.promo-track img')];
   const dots = box.querySelector('.promo-dots');
@@ -1304,25 +1296,11 @@ body.intro .pepero-rain{opacity:0}
   show(0);
   restart();
 
-  // phones show everything on one screen: make room if the last shortcut is cut off
-  function fit() {
-    document.body.classList.remove('promo-tight');
-    const go = box.closest('.go');
-    const last = [...go.querySelectorAll('.box')].pop();
-    // ignore the intro's slide-up offset so we measure the settled layout
-    let shift = 0;
-    try { shift = new DOMMatrixReadOnly(getComputedStyle(go).transform).m42 || 0; } catch (e) {}
-    if (last && innerWidth <= 760 && last.getBoundingClientRect().bottom - shift > innerHeight - 4) {
-      document.body.classList.add('promo-tight');
-    }
-  }
-  fit();
-  if (document.fonts) document.fonts.ready.then(fit);
-  addEventListener('resize', fit);
+  document.documentElement.classList.add('promo-on');
 
-  // PC: billboard with every banner + Pepero rain
+  // billboard with every banner + Pepero rain (PC and phone)
   const bb = document.getElementById('billboard');
-  if (bb && matchMedia('(min-width: 761px)').matches) {
+  if (bb) {
     bb.querySelectorAll('img').forEach((im, i) => {
       im.src = im.dataset.src;
       im.addEventListener('click', () => {
@@ -1337,7 +1315,8 @@ body.intro .pepero-rain{opacity:0}
       const rain = document.createElement('div');
       rain.className = 'pepero-rain'; rain.setAttribute('aria-hidden', 'true');
       const cols = ['#5a2408', '#5a2408', '#ff7eb6', '#f4f0e6', '#5a2408'];
-      for (let i = 0; i < 22; i++) {
+      const count = matchMedia('(max-width: 760px)').matches ? 12 : 22;
+      for (let i = 0; i < count; i++) {
         const st = document.createElement('i');
         const d = 7 + Math.random() * 7;
         st.style.cssText = 'left:' + (Math.random() * 100) + '%;--c:' + cols[i % cols.length] +
@@ -1347,8 +1326,6 @@ body.intro .pepero-rain{opacity:0}
       }
       document.body.appendChild(rain);
     }
-  } else if (bb) {
-    bb.remove();
   }
 })();
 </script>
