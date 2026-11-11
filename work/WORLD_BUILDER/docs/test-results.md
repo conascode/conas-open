@@ -2,7 +2,7 @@
 
 - 실행일: 2026-11-11
 - 환경: Linux 클라우드 샌드박스, Node 22, Chromium(Playwright, headless). **GPU 없음 → WebGL은 SwiftShader(소프트웨어 렌더링)**
-- 결과 요약: **단위 테스트 29/29, 브라우저 E2E 84/84 통과**
+- 결과 요약: **단위 테스트 39/39, 브라우저 E2E 100/100 통과** (Navigator 추가 후 재실행)
 
 ## 1. 단위 테스트 (Node, `node --test tests/*.test.js`)
 
@@ -10,6 +10,7 @@
 |---|---|---|
 | `geometry.test.js` (15) | 다각형 내부 판정, 면적/중심, 최근접점, 자기교차, RDP 단순화, 아핀 행렬, 회전 사각형, 베지어/점선/오프셋/볼록껍질, 카메라 변환·줌 기준점, 공간 인덱스, 지형 마스크·diff·flood fill, 회전 시 지형 재샘플링, RLE, 객체 변형·히트·꼭짓점 편집, 다리 연결 상태 | 15/15 |
 | `project.test.js` (7) | ID 발급·중복 방지, 생성/삭제/Undo/Redo, 변경 키만 기록·병합, Batch·레이어 순서·히스토리 상한, 지형 diff Undo, 문서 이벤트 | 7/7 |
+| `nav.test.js` (10) | 교차 도로 → 사거리 연결, 교차 연결 끄기, 일방통행(차량)/무시(도보), 같은 구간 출발·도착, 최단 시간 vs 최단 거리, 보행 전용 도로·다리, 다리 끝 자동 연결, 스냅 최대 거리, 샘플 지도 도달성, 주행 시간·위치·경유지·방향, 포맷/CSV | 10/10 |
 | `serialization.test.js` (7) | 저장→불러오기 시 위치·속성·지형 유지, 최상위 구조, 잘못된 JSON·음수 크기·중복 ID·경로 탈출·지형 손상 오류, 끊긴 참조 정리, 0.9.0 마이그레이션·상위 버전 거부, ZIP 구조·커스텀 에셋 왕복, 샘플 프로젝트 유효성 | 7/7 |
 
 ## 2. 브라우저 E2E (Playwright, `tests/e2e/*.cjs`)
@@ -49,6 +50,20 @@
 | **빈 브라우저 프로필에서 ZIP 가져오기** → 객체 143개와 커스텀 에셋 이미지 복원, 경고 없음 | PASS |
 | 에셋 없이 JSON만 열기 → Missing Asset 경고, 깨진 JSON / 음수 크기 / 중복 ID 오류 표시 | PASS |
 | 미저장 상태로 나갈 때 브라우저 경고, **새로고침 후 복구 대화상자 → 최신 편집 복구** | PASS |
+
+### Navigator (`navigator.cjs`) 16/16
+| 검사 | 결과 |
+|---|---|
+| 샘플 지도 로드 · 도로망 생성 | PASS |
+| 클릭 2번 = 출발/도착 + 경로 계산, 현수교 경유 | PASS |
+| 클릭 3번째 = 경유지 추가, 경로가 경유지를 지남 | PASS |
+| 거리·시간·턴바이턴 안내 표시 | PASS |
+| 실행 중 차량 이동 + 실시간 정보, `Space` 일시정지 | PASS |
+| 도착까지 주행, GPS 기록 27건 + 이벤트(start / arrived Waypoint 1 / arrived Destination) | PASS |
+| GPS CSV · 경로 JSON 내보내기 | PASS |
+| 마커 드래그 → 재계산, 오른쪽 클릭 → 경유지 삭제 | PASS |
+| 차량으로 섬(보행 전용) 도착 불가 이유 표시, 도보 모드는 보도교 경유 성공 | PASS |
+| 편집기 Navigator 버튼 → 편집 중인 지도가 그대로 열림 | PASS |
 
 ### 성능 (`perf.cjs`) 4/4
 | 검사 | 결과 |
@@ -97,5 +112,5 @@ python3 -m http.server 8765
 다른 터미널에서 (Playwright + Chromium 필요):
 
 ```bash
-node tests/e2e/phase1.cjs && node tests/e2e/phase2.cjs && node tests/e2e/phase3.cjs && node tests/e2e/perf.cjs
+node tests/e2e/phase1.cjs && node tests/e2e/phase2.cjs && node tests/e2e/phase3.cjs && node tests/e2e/perf.cjs && node tests/e2e/navigator.cjs
 ```

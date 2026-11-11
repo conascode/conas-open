@@ -107,6 +107,8 @@ export function buildMenus(editor, root, actions) {
       { label: 'Asset Library', check: () => !document.body.classList.contains('hide-library'), run: () => togglePanel('hide-library', editor) },
       { label: 'Toolbar', check: () => !document.body.classList.contains('hide-toolbar'), run: () => togglePanel('hide-toolbar', editor) },
       'sep',
+      { label: 'Open Navigator (routes & GPS drive)', run: actions.openNavigator },
+      'sep',
       { label: 'Reset Layout', run: () => { document.body.classList.remove('hide-inspector', 'hide-layers', 'hide-library', 'hide-toolbar'); } },
     ]],
     ['Help', [

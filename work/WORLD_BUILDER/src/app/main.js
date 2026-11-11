@@ -101,6 +101,13 @@ async function boot() {
     about: () => aboutDialog(ui),
     perfTest: () => runPerfTest(editor, pm, ui),
     settings: () => settingsDialog(editor, ui),
+    // The Navigator reads the editor's autosave, so write it first to hand over the current map.
+    openNavigator: async () => {
+      const win = window.open('', '_blank');
+      await pm.writeAutosave();
+      if (win) win.location.href = new URL('navigator.html?map=editor', APP_BASE).href;
+      else window.location.href = new URL('navigator.html?map=editor', APP_BASE).href;
+    },
   };
   buildMenus(editor, $('#menus'), actions);
   buildTopBar(editor, pm, actions);
@@ -176,6 +183,7 @@ function buildTopBar(editor, pm, actions) {
   undo.addEventListener('click', () => editor.undo());
   redo.addEventListener('click', () => editor.redo());
   $('#btn-save').addEventListener('click', actions.save);
+  $('#btn-navigator').addEventListener('click', actions.openNavigator);
   $('#btn-settings').addEventListener('click', actions.settings);
   const exportMenu = $('#export-menu');
   $('#btn-export').addEventListener('click', (e) => { e.stopPropagation(); exportMenu.classList.toggle('open'); });

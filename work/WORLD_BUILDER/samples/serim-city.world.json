@@ -4,7 +4,7 @@
     "name": "SERIM_CITY",
     "version": "1.0.0",
     "createdAt": "2026-11-11T00:00:00.000Z",
-    "updatedAt": "2026-11-11T06:17:02.135Z"
+    "updatedAt": "2026-11-11T07:10:22.341Z"
   },
   "world": {
     "width": 12000,
@@ -1188,35 +1188,35 @@
       "roadType": "Main Road",
       "points": [
         {
-          "id": "pmwbq84ok1",
+          "id": "pmwbs4pz51",
           "x": 3700,
           "y": 5000,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84ok2",
+          "id": "pmwbs4pz52",
           "x": 4600,
           "y": 4950,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84ok3",
+          "id": "pmwbs4pz53",
           "x": 5200,
           "y": 5000,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84ok4",
+          "id": "pmwbs4pz54",
           "x": 5900,
           "y": 5050,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84ok5",
+          "id": "pmwbs4pz55",
           "x": 6750,
           "y": 4900,
           "hx": 0,
@@ -1247,21 +1247,21 @@
       "roadType": "Secondary Road",
       "points": [
         {
-          "id": "pmwbq84ok6",
+          "id": "pmwbs4pz76",
           "x": 5200,
           "y": 3900,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84ok7",
+          "id": "pmwbs4pz77",
           "x": 5200,
           "y": 4500,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84ok3",
+          "id": "pmwbs4pz53",
           "x": 5200,
           "y": 5000,
           "hx": 0,
@@ -1276,9 +1276,9 @@
       "islandId": "ISL_0001",
       "connections": [
         {
-          "pointId": "pmwbq84ok3",
+          "pointId": "pmwbs4pz53",
           "roadId": "RD_0001",
-          "targetPointId": "pmwbq84ok3"
+          "targetPointId": "pmwbs4pz53"
         }
       ]
     },
@@ -1298,21 +1298,21 @@
       "roadType": "Secondary Road",
       "points": [
         {
-          "id": "pmwbq84ok8",
+          "id": "pmwbs4pz78",
           "x": 5200,
           "y": 5000,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84ok9",
+          "id": "pmwbs4pz79",
           "x": 5250,
           "y": 5600,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84oka",
+          "id": "pmwbs4pz7a",
           "x": 5400,
           "y": 6150,
           "hx": 0,
@@ -1327,9 +1327,9 @@
       "islandId": "ISL_0001",
       "connections": [
         {
-          "pointId": "pmwbq84ok8",
+          "pointId": "pmwbs4pz78",
           "roadId": "RD_0001",
-          "targetPointId": "pmwbq84ok3"
+          "targetPointId": "pmwbs4pz53"
         }
       ]
     },
@@ -1349,21 +1349,21 @@
       "roadType": "Local Road",
       "points": [
         {
-          "id": "pmwbq84okb",
+          "id": "pmwbs4pz7b",
           "x": 4600,
           "y": 4950,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84okc",
+          "id": "pmwbs4pz7c",
           "x": 4550,
           "y": 5500,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84okd",
+          "id": "pmwbs4pz7d",
           "x": 4300,
           "y": 5800,
           "hx": 0,
@@ -1378,9 +1378,9 @@
       "islandId": "ISL_0001",
       "connections": [
         {
-          "pointId": "pmwbq84okb",
+          "pointId": "pmwbs4pz7b",
           "roadId": "RD_0001",
-          "targetPointId": "pmwbq84ok2"
+          "targetPointId": "pmwbs4pz52"
         }
       ]
     },
@@ -1400,21 +1400,21 @@
       "roadType": "Alley",
       "points": [
         {
-          "id": "pmwbq84ole",
+          "id": "pmwbs4pz7e",
           "x": 5900,
           "y": 5050,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84olf",
+          "id": "pmwbs4pz7f",
           "x": 5950,
           "y": 4600,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84olg",
+          "id": "pmwbs4pz7g",
           "x": 6300,
           "y": 4350,
           "hx": 0,
@@ -1429,9 +1429,9 @@
       "islandId": "ISL_0001",
       "connections": [
         {
-          "pointId": "pmwbq84ole",
+          "pointId": "pmwbs4pz7e",
           "roadId": "RD_0001",
-          "targetPointId": "pmwbq84ok4"
+          "targetPointId": "pmwbs4pz54"
         }
       ]
     },
@@ -1451,21 +1451,21 @@
       "roadType": "Local Road",
       "points": [
         {
-          "id": "pmwbq84olh",
+          "id": "pmwbs4pz7h",
           "x": 7800,
           "y": 4250,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84oli",
+          "id": "pmwbs4pz7i",
           "x": 8400,
           "y": 4200,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84olj",
+          "id": "pmwbs4pz7j",
           "x": 9200,
           "y": 4400,
           "hx": 0,
@@ -1496,21 +1496,21 @@
       "roadType": "Main Road",
       "points": [
         {
-          "id": "pmwbq84olk",
+          "id": "pmwbs4pz7k",
           "x": 4700,
           "y": 8250,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84oll",
+          "id": "pmwbs4pz7l",
           "x": 5500,
           "y": 8150,
           "hx": 0,
           "hy": 0
         },
         {
-          "id": "pmwbq84olm",
+          "id": "pmwbs4pz7m",
           "x": 6300,
           "y": 8300,
           "hx": 0,
@@ -1523,6 +1523,330 @@
       "surface": "Asphalt",
       "speedLimit": 60,
       "islandId": "ISL_0003",
+      "connections": []
+    },
+    {
+      "id": "RD_0008",
+      "type": "road",
+      "name": "Haneul Bridge Approach",
+      "layer": "LYR_INFRA",
+      "x": 6771,
+      "y": 4828,
+      "width": 52,
+      "height": 150,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Main Road",
+      "points": [
+        {
+          "id": "pmwbs4pz8n",
+          "x": 6750,
+          "y": 4900,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz8o",
+          "x": 6792,
+          "y": 4756,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Straight",
+      "lanes": 4,
+      "direction": "Two-way",
+      "surface": "Asphalt",
+      "speedLimit": 60,
+      "islandId": "ISL_0001",
+      "connections": [
+        {
+          "pointId": "pmwbs4pz8n",
+          "roadId": "RD_0001",
+          "targetPointId": "pmwbs4pz55"
+        }
+      ]
+    },
+    {
+      "id": "RD_0009",
+      "type": "road",
+      "name": "Haneul Bridge Road",
+      "layer": "LYR_INFRA",
+      "x": 7679,
+      "y": 4289,
+      "width": 30,
+      "height": 254.26,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Local Road",
+      "points": [
+        {
+          "id": "pmwbs4pz8p",
+          "x": 7558,
+          "y": 4328,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz8q",
+          "x": 7800,
+          "y": 4250,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Straight",
+      "lanes": 2,
+      "direction": "Two-way",
+      "surface": "Asphalt",
+      "speedLimit": 30,
+      "islandId": "ISL_0002",
+      "connections": [
+        {
+          "pointId": "pmwbs4pz8q",
+          "roadId": "RD_0006",
+          "targetPointId": "pmwbs4pz7h"
+        }
+      ]
+    },
+    {
+      "id": "RD_0010",
+      "type": "road",
+      "name": "Port Bridge Approach",
+      "layer": "LYR_INFRA",
+      "x": 5429.5,
+      "y": 6303,
+      "width": 40,
+      "height": 311.64,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Secondary Road",
+      "points": [
+        {
+          "id": "pmwbs4pz8r",
+          "x": 5400,
+          "y": 6150,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz8s",
+          "x": 5459,
+          "y": 6456,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Straight",
+      "lanes": 2,
+      "direction": "Two-way",
+      "surface": "Asphalt",
+      "speedLimit": 50,
+      "islandId": "ISL_0001",
+      "connections": [
+        {
+          "pointId": "pmwbs4pz8r",
+          "roadId": "RD_0003",
+          "targetPointId": "pmwbs4pz7a"
+        }
+      ]
+    },
+    {
+      "id": "RD_0011",
+      "type": "road",
+      "name": "Port Access Road",
+      "layer": "LYR_INFRA",
+      "x": 5488.21533203125,
+      "y": 7910.5,
+      "width": 40,
+      "height": 489.81,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Secondary Road",
+      "points": [
+        {
+          "id": "pmwbs4pz8t",
+          "x": 5455,
+          "y": 7671,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz8u",
+          "x": 5520,
+          "y": 7900,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz8v",
+          "x": 5500,
+          "y": 8150,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Smooth",
+      "lanes": 2,
+      "direction": "Two-way",
+      "surface": "Asphalt",
+      "speedLimit": 50,
+      "islandId": "ISL_0003",
+      "connections": [
+        {
+          "pointId": "pmwbs4pz8v",
+          "roadId": "RD_0007",
+          "targetPointId": "pmwbs4pz7l"
+        }
+      ]
+    },
+    {
+      "id": "RD_0012",
+      "type": "road",
+      "name": "Gull Trail",
+      "layer": "LYR_INFRA",
+      "x": 3675.39453125,
+      "y": 4609.5,
+      "width": 14,
+      "height": 894.81,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Pedestrian Road",
+      "points": [
+        {
+          "id": "pmwbs4pz8w",
+          "x": 3792,
+          "y": 4219,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz8x",
+          "x": 3560,
+          "y": 4500,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz8y",
+          "x": 3700,
+          "y": 5000,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Smooth",
+      "lanes": 0,
+      "direction": "Two-way",
+      "surface": "Cobblestone",
+      "speedLimit": 0,
+      "islandId": "ISL_0001",
+      "connections": [
+        {
+          "pointId": "pmwbs4pz8y",
+          "roadId": "RD_0001",
+          "targetPointId": "pmwbs4pz51"
+        }
+      ]
+    },
+    {
+      "id": "RD_0013",
+      "type": "road",
+      "name": "Lighthouse Path",
+      "layer": "LYR_INFRA",
+      "x": 2625.5,
+      "y": 3015.5,
+      "width": 14,
+      "height": 695.01,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Pedestrian Road",
+      "points": [
+        {
+          "id": "pmwbs4pz8z",
+          "x": 2861,
+          "y": 3271,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz810",
+          "x": 2560,
+          "y": 2950,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz811",
+          "x": 2390,
+          "y": 2760,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Smooth",
+      "lanes": 0,
+      "direction": "Two-way",
+      "surface": "Cobblestone",
+      "speedLimit": 0,
+      "islandId": "ISL_0004",
+      "connections": []
+    },
+    {
+      "id": "RD_0014",
+      "type": "road",
+      "name": "Hospital One-way",
+      "layer": "LYR_INFRA",
+      "x": 4900,
+      "y": 4575,
+      "width": 30,
+      "height": 1167.55,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Local Road",
+      "points": [
+        {
+          "id": "pmwbs4pz812",
+          "x": 4600,
+          "y": 4950,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz813",
+          "x": 4700,
+          "y": 4300,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbs4pz814",
+          "x": 5200,
+          "y": 4200,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Straight",
+      "lanes": 2,
+      "direction": "One-way",
+      "surface": "Asphalt",
+      "speedLimit": 30,
+      "islandId": "ISL_0001",
       "connections": []
     }
   ],

@@ -39,6 +39,7 @@
 | `panels/` | DOM UI. 문서/선택 이벤트에 반응 |
 | `storage/` | 파일 열기/저장, ZIP, IndexedDB 자동 저장, 에셋 Blob 저장소 |
 | `app/` | `Editor`(중앙 컨트롤러), 부트스트랩, 성능 테스트 |
+| `nav/` | Navigator: 도로망 그래프, 길찾기, 주행 시뮬레이션, 페이지 |
 
 ## 3. 좌표계와 카메라
 
@@ -133,7 +134,18 @@
 
 Help ▸ Performance Test 로 5,000개 객체 월드를 만들어 팬/줌 중 FPS를 측정할 수 있습니다. 결과는 [test-results.md](test-results.md).
 
-## 11. 확장 포인트 (PHASE 4)
+## 11. Navigator (`navigator.html`, `src/nav/`)
+
+| 모듈 | 역할 |
+|---|---|
+| `road-graph.js` | 도로·다리를 폴리라인으로 모아 그래프 생성: 교차 지점 삽입(공간 그리드로 선분 쌍 검사), 도로 끝 자동 연결, 다리 끝 ↔ 섬 도로 연결, 좌표가 같은 점 병합. `snapToNetwork`(가장 가까운 도로 위 점), `findRoute`(Dijkstra + 이진 힙, 출발/도착을 임시 노드로 간선에 삽입, 일방통행 반영, 시간/거리 기준), `routeSteps`(같은 도로 묶기 + 좌/우/직진 판정) |
+| `simulation.js` | 구간 목록 → 누적 거리·시간 트랙, `stateAt(t)` 로 위치·방향·속도·구간 계산, 포맷/CSV |
+| `navigator.js` | 페이지: 지도 불러오기(편집기 자동 저장본 / 파일 / 샘플), 편집기와 같은 `Renderer` 로 지도 표시, 마커 입력, 경로 오버레이, 재생 루프, 텔레메트리, 내보내기 |
+
+- 편집기와 같은 출처(origin)이므로 IndexedDB 자동 저장본과 에셋 이미지를 그대로 읽습니다. 편집기의 Navigator 버튼은 자동 저장을 먼저 쓴 뒤 새 탭을 엽니다.
+- 차량 모드: 보행자 도로·보도교·철도교 제외, 일방통행 준수. 도보 모드: 철도교 제외, 5 km/h.
+
+## 12. 확장 포인트 (PHASE 4)
 
 - 모든 객체는 ID로 참조되므로 인물·사건·증거 데이터는 `buildingId`, `islandId`, `areaId` 등으로 연결할 수 있습니다.
 - 건물에는 `investigatable`, `owner`, `address`, `description`, 로컬 좌표 `hitbox` 가 이미 있습니다.

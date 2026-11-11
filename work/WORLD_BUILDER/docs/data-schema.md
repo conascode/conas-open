@@ -210,3 +210,34 @@ SERIM_CITY/
 3. Box 객체(building/prop)는 `x, y` 가 앵커 지점임에 주의 — 이미지 왼쪽 위 = `(x - anchorX·width, y - anchorY·height)`(회전 전)
 4. 섬·영역·도로·다리 좌표는 이미 월드 좌표 — `rotation` 을 다시 적용하지 않기
 5. 클릭 판정은 이미지가 아닌 `hitbox` 사용
+
+## Navigator 경로 내보내기
+
+Navigator ▸ **Route + log JSON** 으로 저장되는 파일입니다(프로젝트 파일과 별개).
+
+```json
+{
+  "format": "world-builder-route",
+  "version": "1.0.0",
+  "project": { "id": "PROJECT_001", "name": "SERIM_CITY" },
+  "mode": "car",
+  "metric": "time",
+  "metersPerPixel": 0.5,
+  "stops": [
+    { "role": "Start", "x": 3720, "y": 5005, "snapped": { "x": 3720.4, "y": 5000.1 } },
+    { "role": "Waypoint 1", "x": 5200, "y": 4300, "snapped": { "x": 5200, "y": 4300 } },
+    { "role": "Destination", "x": 6300, "y": 8280, "snapped": { "x": 6301.2, "y": 8276.8 } }
+  ],
+  "route": {
+    "distanceM": 3440.2,
+    "durationSec": 234.1,
+    "points": [ { "x": 3720.4, "y": 5000.1, "t": 0 }, { "x": 3800.2, "y": 4996.3, "t": 2.4 } ],
+    "steps": [ { "instruction": "start", "road": "Serim Avenue", "distanceM": 742 }, { "arrive": "Waypoint 1" } ]
+  },
+  "gps": [ { "t_sec": 0, "clock": "0:00", "x": 3720.4, "y": 5000.1, "speed_kmh": 60, "heading_deg": -3, "road": "Serim Avenue", "event": "start" } ]
+}
+```
+- `route.points[].t`: 출발 후 경과 시간(초). 점 사이는 직선이며 그 구간 도로의 제한속도로 이동합니다.
+- `steps[].instruction`: `start`, `continue`, `straight`, `left`, `right`.
+- `gps`: 2초(시뮬레이션 시간) 간격 기록 + 이벤트(`start`, `arrived Waypoint N`, `arrived Destination`).
+- 좌표는 프로젝트와 같은 월드 좌표(px)입니다. 이 구조는 추후 프로젝트의 `routes` 배열(PHASE 4)에 넣을 수 있게 설계했습니다.
