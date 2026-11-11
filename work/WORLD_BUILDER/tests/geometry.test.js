@@ -182,3 +182,32 @@ test('bridge connection status', () => {
   assert.equal(bridgeStatus({ ...br, endIslandId: a.id }, get).status, 'warning');
   assert.equal(bridgeStatus({ ...br, endIslandId: 'ISL_9999' }, get).problems[0], 'End island ISL_9999 does not exist');
 });
+
+test('smooth curves do not loop when two points are close together', async () => {
+  const { curveControls, sampleCurve, offsetRuns } = await import('../src/utils/geometry.js');
+  const pts = [{ x: 0, y: 0 }, { x: 330, y: 0 }, { x: 350, y: -10 }, { x: 380, y: 60 }, { x: 750, y: 50 }];
+  const path = sampleCurve(pts, curveControls(pts, 'Smooth'), 16);
+  // between the two close anchors (x 330..350) the curve must move forward, never back on itself
+  const mid = path.filter((p) => p.x >= 320 && p.x <= 390);
+  for (let i = 1; i < mid.length; i++) {
+    const a = mid[i - 1]; const b = mid[i];
+    assert.ok(Math.hypot(b.x - a.x, b.y - a.y) < 40, 'no long jumps');
+  }
+  const xs = path.map((p) => p.x);
+  for (let i = 1; i < xs.length; i++) assert.ok(xs[i] >= xs[i - 1] - 0.5, `x must not run backwards at sample ${i}`);
+  // Bezier handles longer than the segment are clamped the same way
+  const handles = pts.map(() => ({ x: 200, y: 0 }));
+  const bz = sampleCurve(pts, curveControls(pts, 'Bezier', handles), 16);
+  const cross = (a, b, c, d) => {
+    const o = (p, q, r) => Math.sign((q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x));
+    return o(a, b, c) * o(a, b, d) < 0 && o(c, d, a) * o(c, d, b) < 0;
+  };
+  for (let i = 0; i < bz.length - 1; i++) {
+    for (let j = i + 2; j < bz.length - 1; j++) assert.ok(!cross(bz[i], bz[i + 1], bz[j], bz[j + 1]), `bezier path crosses itself (${i}, ${j})`);
+  }
+  // offset lines at a hairpin are split instead of crossing
+  const hairpin = [{ x: 0, y: 0 }, { x: 100, y: 0 }, { x: 102, y: 4 }, { x: 0, y: 8 }];
+  for (const run of offsetRuns(hairpin, 10)) {
+    for (let i = 1; i < run.length; i++) assert.ok(Math.hypot(run[i].x - run[i - 1].x, run[i].y - run[i - 1].y) < 120);
+  }
+});

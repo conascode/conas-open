@@ -3,7 +3,7 @@ import { Tool } from './tool.js';
 import { createBridge } from '../data/defaults.js';
 import { BRIDGE_TYPES, BRIDGE_DEFAULTS, COLORS } from '../data/constants.js';
 import { nearestCoastPoint } from '../objects/bridge.js';
-import { sampleBezierChain, catmullRomHandles } from '../utils/geometry.js';
+import { sampleCurve, curveControls } from '../utils/geometry.js';
 import { strokePts, drawHandle } from '../renderer/overlay.js';
 import { h } from '../utils/dom.js';
 import { selectControl, rangeControl } from '../panels/controls.js';
@@ -112,7 +112,7 @@ export class BridgeTool extends Tool {
     const endPt = snap && snap.islandId !== this.start.islandId ? snap : this.hover?.p;
     const pts = [this.start, ...this.controls, ...(endPt ? [endPt] : [])];
     if (pts.length >= 2) {
-      const path = sampleBezierChain(pts, catmullRomHandles(pts), 12);
+      const path = sampleCurve(pts, curveControls(pts, 'Smooth'), 12);
       strokePts(g, path, false, this.width, 0x5d646b, 0.7);
       const ok = snap && snap.islandId !== this.start.islandId;
       strokePts(g, path, false, 2 / zoom, ok ? COLORS.success : COLORS.warning, 1);

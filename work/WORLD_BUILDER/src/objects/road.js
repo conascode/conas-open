@@ -1,10 +1,10 @@
 // Road geometry: sampling of straight / smooth (Catmull-Rom) / bezier roads.
-import { catmullRomHandles, sampleBezierChain, boundsOfPoints, closestPointOnPath } from '../utils/geometry.js';
+import { curveControls, sampleCurve, boundsOfPoints, closestPointOnPath } from '../utils/geometry.js';
 
-export function roadHandles(road) {
-  if (road.curve === 'Smooth') return catmullRomHandles(road.points);
-  if (road.curve === 'Bezier') return road.points.map((p) => ({ x: p.hx || 0, y: p.hy || 0 }));
-  return road.points.map(() => ({ x: 0, y: 0 }));
+// Per-segment cubic control points (null = straight segment). See curveControls.
+export function roadControls(road) {
+  const handles = road.curve === 'Bezier' ? road.points.map((p) => ({ x: p.hx || 0, y: p.hy || 0 })) : null;
+  return curveControls(road.points, road.curve, handles);
 }
 
 const cache = new WeakMap();
@@ -12,7 +12,7 @@ const cache = new WeakMap();
 export function sampleRoad(road) {
   const c = cache.get(road.points);
   if (c && c.curve === road.curve) return c.path;
-  const path = sampleBezierChain(road.points, roadHandles(road), 16);
+  const path = sampleCurve(road.points, roadControls(road), 16);
   cache.set(road.points, { curve: road.curve, path });
   return path;
 }
@@ -28,9 +28,9 @@ export function closestOnRoad(road, p) {
 // Index of the road segment (between anchor i and i+1) closest to p.
 export function closestRoadSegment(road, p) {
   let best = null;
-  const handles = roadHandles(road);
+  const controls = roadControls(road);
   for (let i = 0; i < road.points.length - 1; i++) {
-    const seg = sampleBezierChain([road.points[i], road.points[i + 1]], [handles[i], handles[i + 1]], 12);
+    const seg = sampleCurve([road.points[i], road.points[i + 1]], [controls[i]], 12);
     const c = closestPointOnPath(p, seg, false);
     if (!best || c.d < best.d) best = { ...c, segment: i };
   }
