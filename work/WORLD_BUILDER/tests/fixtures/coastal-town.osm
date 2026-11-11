@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="WORLD BUILDER test fixture" copyright="synthetic test data" attribution="https://www.openstreetmap.org/copyright" license="https://opendatacommons.org/licenses/odbl/1-0/">
+ <bounds minlat="37.5000000" minlon="126.9000000" maxlat="37.5120000" maxlon="126.9150000"/>
+ <node id="1001" visible="true" version="1" lat="37.5045000" lon="126.8985000"/>
+ <node id="1002" visible="true" version="1" lat="37.5047869" lon="126.8994000"/>
+ <node id="1003" visible="true" version="1" lat="37.5048998" lon="126.9003000"/>
+ <node id="1004" visible="true" version="1" lat="37.5047702" lon="126.9012000"/>
+ <node id="1005" visible="true" version="1" lat="37.5044767" lon="126.9021000"/>
+ <node id="1006" visible="true" version="1" lat="37.5041973" lon="126.9030000"/>
+ <node id="1007" visible="true" version="1" lat="37.5041015" lon="126.9039000"/>
+ <node id="1008" visible="true" version="1" lat="37.5042475" lon="126.9048000"/>
+ <node id="1009" visible="true" version="1" lat="37.5045466" lon="126.9057000"/>
+ <node id="1010" visible="true" version="1" lat="37.5048175" lon="126.9066000"/>
+ <node id="1011" visible="true" version="1" lat="37.5048957" lon="126.9075000"/>
+ <node id="1012" visible="true" version="1" lat="37.5047340" lon="126.9084000"/>
+ <node id="1013" visible="true" version="1" lat="37.5044303" lon="126.9093000"/>
+ <node id="1014" visible="true" version="1" lat="37.5041689" lon="126.9102000"/>
+ <node id="1015" visible="true" version="1" lat="37.5041083" lon="126.9111000"/>
+ <node id="1016" visible="true" version="1" lat="37.5042854" lon="126.9120000"/>
+ <node id="1017" visible="true" version="1" lat="37.5045926" lon="126.9129000"/>
+ <node id="1018" visible="true" version="1" lat="37.5048437" lon="126.9138000"/>
+ <node id="1019" visible="true" version="1" lat="37.5048863" lon="126.9147000"/>
+ <node id="1020" visible="true" version="1" lat="37.5046946" lon="126.9156000"/>
+ <node id="1021" visible="true" version="1" lat="37.5043848" lon="126.9165000"/>
+ <node id="1022" visible="true" version="1" lat="37.5020000" lon="126.9087000"/>
+ <node id="1023" visible="true" version="1" lat="37.5023291" lon="126.9087058"/>
+ <node id="1024" visible="true" version="1" lat="37.5026186" lon="126.9084829"/>
+ <node id="1025" visible="true" version="1" lat="37.5027794" lon="126.9081000"/>
+ <node id="1026" visible="true" version="1" lat="37.5028249" lon="126.9076939"/>
+ <node id="1027" visible="true" version="1" lat="37.5028249" lon="126.9073061"/>
+ <node id="1028" visible="true" version="1" lat="37.5027794" lon="126.9069000"/>
+ <node id="1029" visible="true" version="1" lat="37.5026186" lon="126.9065171"/>
+ <node id="1030" visible="true" version="1" lat="37.5023291" lon="126.9062942"/>
+ <node id="1031" visible="true" version="1" lat="37.5020000" lon="126.9063000"/>
+ <node id="1032" visible="true" version="1" lat="37.5017135" lon="126.9064505"/>
+ <node id="1033" visible="true" version="1" lat="37.5014616" lon="126.9066444"/>
+ <node id="1034" visible="true" version="1" lat="37.5012206" lon="126.9069000"/>
+ <node id="1035" visible="true" version="1" lat="37.5010523" lon="126.9072772"/>
+ <node id="1036" visible="true" version="1" lat="37.5010523" lon="126.9077228"/>
+ <node id="1037" visible="true" version="1" lat="37.5012206" lon="126.9081000"/>
+ <node id="1038" visible="true" version="1" lat="37.5014616" lon="126.9083556"/>
+ <node id="1039" visible="true" version="1" lat="37.5017135" lon="126.9085495"/>
+ <node id="1040" visible="true" version="1" lat="37.5020000" lon="126.9070000">
+    <tag k="place" v="island"/>
+    <tag k="name" v="Gulmaegi-do"/>
+ </node>
+ <node id="1041" visible="true" version="1" lat="37.5080000" lon="126.9075000"/>
+ <node id="1042" visible="true" version="1" lat="37.5080000" lon="126.9040000"/>
+ <node id="1043" visible="true" version="1" lat="37.5081000" lon="126.8995000"/>
+ <node id="1044" visible="true" version="1" lat="37.5082000" lon="126.9020000"/>
+ <node id="1045" visible="true" version="1" lat="37.5079000" lon="126.9110000"/>
+ <node id="1046" visible="true" version="1" lat="37.5078000" lon="126.9155000"/>
+ <node id="1047" visible="true" version="1" lat="37.5052000" lon="126.9075000"/>
+ <node id="1048" visible="true" version="1" lat="37.5110000" lon="126.9075000"/>
+ <node id="1049" visible="true" version="1" lat="37.5065000" lon="126.9075000"/>
+ <node id="1050" visible="true" version="1" lat="37.5022000" lon="126.9075000"/>
+ <node id="1051" visible="true" version="1" lat="37.5040000" lon="126.9075000"/>
+ <node id="1052" visible="true" version="1" lat="37.5030000" lon="126.9075000"/>
+ <node id="1053" visible="true" version="1" lat="37.5022000" lon="126.9066000"/>
+ <node id="1054" visible="true" version="1" lat="37.5021000" lon="126.9085000"/>
+ <node id="1055" visible="true" version="1" lat="37.5095000" lon="126.9042000"/>
+ <node id="1056" visible="true" version="1" lat="37.5108000" lon="126.9045000"/>
+ <node id="1057" visible="true" version="1" lat="37.5098000" lon="126.9100000"/>
+ <node id="1058" visible="true" version="1" lat="37.5103000" lon="126.9120000"/>
+ <node id="1059" visible="true" version="1" lat="37.5099000" lon="126.9135000"/>
+ <node id="1060" visible="true" version="1" lat="37.5070000" lon="126.9120000"/>
+ <node id="1061" visible="true" version="1" lat="37.5072000" lon="126.9135000"/>
+ <node id="1062" visible="true" version="1" lat="37.5084000" lon="126.9050000"/>
+ <node id="1063" visible="true" version="1" lat="37.5084000" lon="126.9058000"/>
+ <node id="1064" visible="true" version="1" lat="37.5088000" lon="126.9058000"/>
+ <node id="1065" visible="true" version="1" lat="37.5088000" lon="126.9050000"/>
+ <node id="1066" visible="true" version="1" lat="37.5090000" lon="126.9080000"/>
+ <node id="1067" visible="true" version="1" lat="37.5090000" lon="126.9092000"/>
+ <node id="1068" visible="true" version="1" lat="37.5097000" lon="126.9092000"/>
+ <node id="1069" visible="true" version="1" lat="37.5097000" lon="126.9080000"/>
+ <node id="1070" visible="true" version="1" lat="37.5070000" lon="126.9060000"/>
+ <node id="1071" visible="true" version="1" lat="37.5071500" lon="126.9062500"/>
+ <node id="1072" visible="true" version="1" lat="37.5070000" lon="126.9064500"/>
+ <node id="1073" visible="true" version="1" lat="37.5068500" lon="126.9062000"/>
+ <node id="1074" visible="true" version="1" lat="37.5070000" lon="126.9085000"/>
+ <node id="1075" visible="true" version="1" lat="37.5070000" lon="126.9095000"/>
+ <node id="1076" visible="true" version="1" lat="37.5075000" lon="126.9095000"/>
+ <node id="1077" visible="true" version="1" lat="37.5075000" lon="126.9085000"/>
+ <node id="1078" visible="true" version="1" lat="37.5023000" lon="126.9078000"/>
+ <node id="1079" visible="true" version="1" lat="37.5023000" lon="126.9082000"/>
+ <node id="1080" visible="true" version="1" lat="37.5026000" lon="126.9082000"/>
+ <node id="1081" visible="true" version="1" lat="37.5026000" lon="126.9078000"/>
+ <node id="1082" visible="true" version="1" lat="37.5100000" lon="126.9015000"/>
+ <node id="1083" visible="true" version="1" lat="37.5101736" lon="126.9014505"/>
+ <node id="1084" visible="true" version="1" lat="37.5103127" lon="126.9013117"/>
+ <node id="1085" visible="true" version="1" lat="37.5103900" lon="126.9011113"/>
+ <node id="1086" visible="true" version="1" lat="37.5103900" lon="126.9008887"/>
+ <node id="1087" visible="true" version="1" lat="37.5103127" lon="126.9006883"/>
+ <node id="1088" visible="true" version="1" lat="37.5101736" lon="126.9005495"/>
+ <node id="1089" visible="true" version="1" lat="37.5100000" lon="126.9005000"/>
+ <node id="1090" visible="true" version="1" lat="37.5098264" lon="126.9005495"/>
+ <node id="1091" visible="true" version="1" lat="37.5096873" lon="126.9006883"/>
+ <node id="1092" visible="true" version="1" lat="37.5096100" lon="126.9008887"/>
+ <node id="1093" visible="true" version="1" lat="37.5096100" lon="126.9011113"/>
+ <node id="1094" visible="true" version="1" lat="37.5096873" lon="126.9013117"/>
+ <node id="1095" visible="true" version="1" lat="37.5098264" lon="126.9014505"/>
+ <node id="1096" visible="true" version="1" lat="37.5047000" lon="126.9020000"/>
+ <node id="1097" visible="true" version="1" lat="37.5047000" lon="126.9060000"/>
+ <node id="1098" visible="true" version="1" lat="37.5056000" lon="126.9060000"/>
+ <node id="1099" visible="true" version="1" lat="37.5056000" lon="126.9020000"/>
+ <node id="1100" visible="true" version="1" lat="37.5066000" lon="126.9110000"/>
+ <node id="1101" visible="true" version="1" lat="37.5066000" lon="126.9140000"/>
+ <node id="1102" visible="true" version="1" lat="37.5076000" lon="126.9140000"/>
+ <node id="1103" visible="true" version="1" lat="37.5076000" lon="126.9110000"/>
+ <node id="1104" visible="true" version="1" lat="37.5095000" lon="126.9095000"/>
+ <node id="1105" visible="true" version="1" lat="37.5095000" lon="126.9140000"/>
+ <node id="1106" visible="true" version="1" lat="37.5110000" lon="126.9140000"/>
+ <node id="1107" visible="true" version="1" lat="37.5110000" lon="126.9095000"/>
+ <node id="1108" visible="true" version="1" lat="37.5115000" lon="126.8990000"/>
+ <node id="1109" visible="true" version="1" lat="37.5105000" lon="126.9000000"/>
+ <node id="1110" visible="true" version="1" lat="37.5098000" lon="126.9012000"/>
+ <node id="1111" visible="true" version="1" lat="37.5100000" lon="126.9105000">
+    <tag k="natural" v="tree"/>
+ </node>
+ <node id="1112" visible="true" version="1" lat="37.5102000" lon="126.9112000">
+    <tag k="natural" v="tree"/>
+ </node>
+ <node id="1113" visible="true" version="1" lat="37.5085000" lon="126.9030000">
+    <tag k="natural" v="tree"/>
+ </node>
+ <way id="5001" visible="true" version="1">
+  <nd ref="1001"/>
+  <nd ref="1002"/>
+  <nd ref="1003"/>
+  <nd ref="1004"/>
+  <nd ref="1005"/>
+  <nd ref="1006"/>
+  <nd ref="1007"/>
+  <nd ref="1008"/>
+  <nd ref="1009"/>
+  <nd ref="1010"/>
+  <nd ref="1011"/>
+    <tag k="natural" v="coastline"/>
+ </way>
+ <way id="5002" visible="true" version="1">
+  <nd ref="1011"/>
+  <nd ref="1012"/>
+  <nd ref="1013"/>
+  <nd ref="1014"/>
+  <nd ref="1015"/>
+  <nd ref="1016"/>
+  <nd ref="1017"/>
+  <nd ref="1018"/>
+  <nd ref="1019"/>
+  <nd ref="1020"/>
+  <nd ref="1021"/>
+    <tag k="natural" v="coastline"/>
+ </way>
+ <way id="5003" visible="true" version="1">
+  <nd ref="1022"/>
+  <nd ref="1023"/>
+  <nd ref="1024"/>
+  <nd ref="1025"/>
+  <nd ref="1026"/>
+  <nd ref="1027"/>
+  <nd ref="1028"/>
+  <nd ref="1029"/>
+  <nd ref="1030"/>
+  <nd ref="1031"/>
+  <nd ref="1032"/>
+  <nd ref="1033"/>
+  <nd ref="1034"/>
+  <nd ref="1035"/>
+  <nd ref="1036"/>
+  <nd ref="1037"/>
+  <nd ref="1038"/>
+  <nd ref="1039"/>
+  <nd ref="1022"/>
+    <tag k="natural" v="coastline"/>
+ </way>
+ <way id="5004" visible="true" version="1">
+  <nd ref="1043"/>
+  <nd ref="1044"/>
+  <nd ref="1042"/>
+  <nd ref="1041"/>
+  <nd ref="1045"/>
+  <nd ref="1046"/>
+    <tag k="highway" v="primary"/>
+    <tag k="name" v="Haebyeon-ro"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="lanes" v="4"/>
+ </way>
+ <way id="5005" visible="true" version="1">
+  <nd ref="1048"/>
+  <nd ref="1041"/>
+  <nd ref="1049"/>
+  <nd ref="1047"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Sandbox-gil"/>
+ </way>
+ <way id="5006" visible="true" version="1">
+  <nd ref="1047"/>
+  <nd ref="1051"/>
+  <nd ref="1052"/>
+  <nd ref="1050"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="bridge" v="yes"/>
+    <tag k="layer" v="1"/>
+    <tag k="name" v="Seom-daegyo"/>
+ </way>
+ <way id="5007" visible="true" version="1">
+  <nd ref="1053"/>
+  <nd ref="1050"/>
+  <nd ref="1054"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Seom-ro"/>
+ </way>
+ <way id="5008" visible="true" version="1">
+  <nd ref="1042"/>
+  <nd ref="1055"/>
+  <nd ref="1056"/>
+    <tag k="highway" v="tertiary"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="name" v="Ilbang-gil"/>
+ </way>
+ <way id="5009" visible="true" version="1">
+  <nd ref="1057"/>
+  <nd ref="1058"/>
+  <nd ref="1059"/>
+    <tag k="highway" v="footway"/>
+    <tag k="name" v="Park path"/>
+ </way>
+ <way id="5010" visible="true" version="1">
+  <nd ref="1060"/>
+  <nd ref="1061"/>
+    <tag k="highway" v="service"/>
+    <tag k="service" v="parking_aisle"/>
+ </way>
+ <way id="5011" visible="true" version="1">
+  <nd ref="1062"/>
+  <nd ref="1063"/>
+  <nd ref="1064"/>
+  <nd ref="1065"/>
+  <nd ref="1062"/>
+    <tag k="building" v="yes"/>
+    <tag k="amenity" v="police"/>
+    <tag k="name" v="Haebyeon Police Station"/>
+    <tag k="addr:street" v="Haebyeon-ro"/>
+    <tag k="addr:housenumber" v="12"/>
+ </way>
+ <way id="5012" visible="true" version="1">
+  <nd ref="1066"/>
+  <nd ref="1067"/>
+  <nd ref="1068"/>
+  <nd ref="1069"/>
+  <nd ref="1066"/>
+    <tag k="building" v="school"/>
+    <tag k="name" v="Haebyeon Elementary School"/>
+ </way>
+ <way id="5013" visible="true" version="1">
+  <nd ref="1070"/>
+  <nd ref="1071"/>
+  <nd ref="1072"/>
+  <nd ref="1073"/>
+  <nd ref="1070"/>
+    <tag k="building" v="house"/>
+    <tag k="addr:street" v="Sandbox-gil"/>
+    <tag k="addr:housenumber" v="3"/>
+ </way>
+ <way id="5014" visible="true" version="1">
+  <nd ref="1074"/>
+  <nd ref="1075"/>
+  <nd ref="1076"/>
+  <nd ref="1077"/>
+  <nd ref="1074"/>
+    <tag k="building" v="apartments"/>
+    <tag k="name" v="Bada Apartments"/>
+ </way>
+ <way id="5015" visible="true" version="1">
+  <nd ref="1078"/>
+  <nd ref="1079"/>
+  <nd ref="1080"/>
+  <nd ref="1081"/>
+  <nd ref="1078"/>
+    <tag k="building" v="yes"/>
+    <tag k="name" v="Island Store"/>
+    <tag k="shop" v="convenience"/>
+ </way>
+ <way id="5016" visible="true" version="1">
+  <nd ref="1082"/>
+  <nd ref="1083"/>
+  <nd ref="1084"/>
+  <nd ref="1085"/>
+  <nd ref="1086"/>
+  <nd ref="1087"/>
+  <nd ref="1088"/>
+  <nd ref="1089"/>
+  <nd ref="1090"/>
+  <nd ref="1091"/>
+  <nd ref="1092"/>
+  <nd ref="1093"/>
+  <nd ref="1094"/>
+  <nd ref="1095"/>
+  <nd ref="1082"/>
+    <tag k="natural" v="water"/>
+    <tag k="name" v="Seo Lake"/>
+ </way>
+ <way id="5017" visible="true" version="1">
+  <nd ref="1096"/>
+  <nd ref="1097"/>
+  <nd ref="1098"/>
+  <nd ref="1099"/>
+  <nd ref="1096"/>
+    <tag k="natural" v="beach"/>
+ </way>
+ <way id="5018" visible="true" version="1">
+  <nd ref="1100"/>
+  <nd ref="1101"/>
+  <nd ref="1102"/>
+  <nd ref="1103"/>
+  <nd ref="1100"/>
+    <tag k="landuse" v="commercial"/>
+ </way>
+ <way id="5019" visible="true" version="1">
+  <nd ref="1104"/>
+  <nd ref="1105"/>
+  <nd ref="1106"/>
+ </way>
+ <way id="5020" visible="true" version="1">
+  <nd ref="1106"/>
+  <nd ref="1107"/>
+  <nd ref="1104"/>
+ </way>
+ <way id="5021" visible="true" version="1">
+  <nd ref="1108"/>
+  <nd ref="1109"/>
+  <nd ref="1110"/>
+    <tag k="waterway" v="stream"/>
+    <tag k="name" v="Small stream"/>
+ </way>
+ <relation id="9001" visible="true" version="1">
+  <member type="way" ref="5019" role="outer"/>
+  <member type="way" ref="5020" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="leisure" v="park"/>
+    <tag k="name" v="Haebyeon Park"/>
+ </relation>
+</osm>

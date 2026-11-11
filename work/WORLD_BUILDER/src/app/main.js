@@ -23,6 +23,7 @@ import { AssetStore } from '../storage/asset-store.js';
 import { ProjectManager } from '../storage/project-manager.js';
 import { createProjectData } from '../data/defaults.js';
 import { buildPerfProject, measureFps } from './perf.js';
+import { importOsmDialog } from '../panels/osm-dialog.js';
 import { h, icon, refreshIcons } from '../utils/dom.js';
 
 const $ = (sel) => document.querySelector(sel);
@@ -95,6 +96,7 @@ async function boot() {
     exportJSON: () => pm.exportJSON(),
     exportZip: () => pm.exportZip(),
     importZip: () => pm.importZip(),
+    importOsm: () => importOsmDialog(editor, pm, ui),
     recover: () => recoverDialog(editor, pm, ui, true),
     importAsset: () => library.openDialog(),
     shortcuts: () => shortcutsDialog(ui),

@@ -118,6 +118,11 @@ function loadData(data, name) {
   camera.setWorldSize(data.world.width, data.world.height);
   S.mapName = name;
   S.stops = [];
+  // maps imported from OpenStreetMap carry their real scale
+  const mpp = Number(data.metadata?.metersPerPixel);
+  if (mpp > 0) S.mpp = mpp;
+  const attr = document.getElementById('nav-attribution');
+  if (attr) attr.textContent = data.metadata?.attribution || '';
   rebuildGraph();
   fitContent();
   $('#map-name').textContent = name;

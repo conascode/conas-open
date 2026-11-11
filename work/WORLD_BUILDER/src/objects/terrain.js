@@ -154,3 +154,35 @@ export function terrainUsage(terrain) {
 export function islandContains(island, p) {
   return pointInPolygon(p, island.polygon);
 }
+
+// Set every cell whose centre is inside `polygon` (and inside `mask`, if given) to `value`.
+// Scanline fill limited to the polygon's rows; used by importers.
+export function fillPolygon(terrain, polygon, value, mask = null) {
+  const { cols, rows, cellSize, originX, originY, cells } = terrain;
+  let minY = Infinity; let maxY = -Infinity;
+  for (const p of polygon) { if (p.y < minY) minY = p.y; if (p.y > maxY) maxY = p.y; }
+  const r0 = Math.max(0, Math.floor((minY - originY) / cellSize));
+  const r1 = Math.min(rows - 1, Math.ceil((maxY - originY) / cellSize));
+  const n = polygon.length;
+  let count = 0;
+  for (let r = r0; r <= r1; r++) {
+    const y = originY + (r + 0.5) * cellSize;
+    const xs = [];
+    for (let i = 0, j = n - 1; i < n; j = i++) {
+      const a = polygon[i]; const b = polygon[j];
+      if ((a.y > y) !== (b.y > y)) xs.push(a.x + ((y - a.y) / (b.y - a.y)) * (b.x - a.x));
+    }
+    xs.sort((p, q) => p - q);
+    for (let k = 0; k + 1 < xs.length; k += 2) {
+      const c0 = Math.max(0, Math.ceil((xs[k] - originX) / cellSize - 0.5));
+      const c1 = Math.min(cols - 1, Math.floor((xs[k + 1] - originX) / cellSize - 0.5));
+      for (let c = c0; c <= c1; c++) {
+        const i = r * cols + c;
+        if (mask && !mask[i]) continue;
+        cells[i] = value;
+        count++;
+      }
+    }
+  }
+  return count;
+}

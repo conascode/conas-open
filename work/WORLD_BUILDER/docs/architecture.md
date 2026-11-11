@@ -40,6 +40,7 @@
 | `storage/` | 파일 열기/저장, ZIP, IndexedDB 자동 저장, 에셋 Blob 저장소 |
 | `app/` | `Editor`(중앙 컨트롤러), 부트스트랩, 성능 테스트 |
 | `nav/` | Navigator: 도로망 그래프, 길찾기, 주행 시뮬레이션, 페이지 |
+| `data/osm-import.js` | OpenStreetMap(.osm / GeoJSON / Overpass JSON) → 프로젝트 변환 |
 
 ## 3. 좌표계와 카메라
 
@@ -145,7 +146,17 @@ Help ▸ Performance Test 로 5,000개 객체 월드를 만들어 팬/줌 중 FP
 - 편집기와 같은 출처(origin)이므로 IndexedDB 자동 저장본과 에셋 이미지를 그대로 읽습니다. 편집기의 Navigator 버튼은 자동 저장을 먼저 쓴 뒤 새 탭을 엽니다.
 - 차량 모드: 보행자 도로·보도교·철도교 제외, 일방통행 준수. 도보 모드: 철도교 제외, 5 km/h.
 
-## 12. 확장 포인트 (PHASE 4)
+## 12. OpenStreetMap 가져오기 (`src/data/osm-import.js`, `src/panels/osm-dialog.js`)
+
+- **파싱**: OSM XML 은 DOM 없이 정규식 스트리밍 파서로(Node 테스트 가능), Overpass JSON·GeoJSON 은 같은 내부 모델 `{nodes, ways, relations, bounds}` 로 변환. GeoJSON 은 좌표가 같은 꼭짓점을 같은 노드로 합쳐 교차로가 유지됩니다.
+- **투영**: 영역 중심 위도 기준 등장방형(equirectangular) — `x = Δlon·111320·cos(lat0)`, `y = Δlat·110574` (m) → `/ metersPerPixel` + 여백 300 px, y 반전.
+- **육지**: 해안선 way 를 끝점으로 이어 체인 구성 → 닫힌 체인 = 섬, 열린 체인은 영역 상자로 클리핑(Liang–Barsky) 후 "육지는 왼쪽" 규칙으로 상자 둘레를 반시계 방향으로 따라 닫아 육지 다각형 생성. 영역 경계에 닿은 꼭짓점은 월드 끝으로 확장.
+- **지형**: 섬마다 지형 격자(셀 수 ≤ 300만이 되도록 셀 크기 조정)에 토지 이용 다각형을 순서대로 스캔라인 채우기(`fillPolygon`), 강은 폭만큼 브러시.
+- **도로**: 노드 공유로 교차점 연결(`connections`), 폭은 기본 폭 × (0.5 / mpp) 또는 차선 × 3.3 m.
+- **건물**: 외곽선 볼록 껍질의 최소 면적 사각형(rotating calipers) → 위치·크기·회전(±45° 이내), 외곽선을 건물 로컬 좌표 Hitbox 로.
+- 변환 결과는 프로젝트 파일과 같은 검증(`parseProject`)을 통과해야 열립니다.
+
+## 13. 확장 포인트 (PHASE 4)
 
 - 모든 객체는 ID로 참조되므로 인물·사건·증거 데이터는 `buildingId`, `islandId`, `areaId` 등으로 연결할 수 있습니다.
 - 건물에는 `investigatable`, `owner`, `address`, `description`, 로컬 좌표 `hitbox` 가 이미 있습니다.
