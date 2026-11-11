@@ -1,7 +1,7 @@
 // Display objects for each world object type. A view owns up to three parts that live in the
 // owning layer's sub-containers: `under` (shadows, road beds), `main`, and `over` (markings, details).
 import { Container, Graphics, Sprite, TilingSprite, Texture } from '../../lib/pixi.min.js';
-import { boundsOfPoints, offsetPath, dashPath, pathLength, DEG } from '../utils/geometry.js';
+import { boundsOfPoints, offsetPath, offsetRuns, dashPath, pathLength, DEG } from '../utils/geometry.js';
 import { sampleRoad } from '../objects/road.js';
 import { bridgePath, bridgeStatus } from '../objects/bridge.js';
 import { materialTexture, materialCanvas, COASTLINE_STYLE, MATERIAL_COLORS } from './textures.js';
@@ -23,6 +23,17 @@ function strokePath(g, pts, style, closed = false) {
 
 function strokeDashed(g, pts, dash, gap, style) {
   for (const seg of dashPath(pts, dash, gap)) strokePath(g, seg, style);
+}
+
+// Lines parallel to a path; pieces that would cross over at sharp bends are left out.
+function strokeOffset(g, path, offset, style) {
+  if (Math.abs(offset) < 1e-6) { strokePath(g, path, style); return; }
+  for (const run of offsetRuns(path, offset)) strokePath(g, run, style);
+}
+
+function strokeOffsetDashed(g, path, offset, dash, gap, style) {
+  const runs = Math.abs(offset) < 1e-6 ? [path] : offsetRuns(path, offset);
+  for (const run of runs) strokeDashed(g, run, dash, gap, style);
 }
 
 class BaseView {
@@ -269,22 +280,22 @@ export class RoadView extends BaseView {
     const lanes = obj.lanes;
     if (!pedestrian && lanes > 0 && pathLength(path) > 1) {
       const edge = w / 2 - 3;
-      strokePath(g, offsetPath(path, edge), { width: 1.4, color: 0xe9e9e2, alpha: 0.85 });
-      strokePath(g, offsetPath(path, -edge), { width: 1.4, color: 0xe9e9e2, alpha: 0.85 });
+      strokeOffset(g, path, edge, { width: 1.4, color: 0xe9e9e2, alpha: 0.85 });
+      strokeOffset(g, path, -edge, { width: 1.4, color: 0xe9e9e2, alpha: 0.85 });
       const laneW = (2 * edge) / lanes;
       const twoWay = obj.direction === 'Two-way';
       for (let k = 1; k < lanes; k++) {
         const off = -edge + k * laneW;
         const isCenter = twoWay && lanes % 2 === 0 && k === lanes / 2;
         if (isCenter) continue;
-        strokeDashed(g, offsetPath(path, off), 12, 12, { width: 1.3, color: 0xffffff, alpha: 0.8 });
+        strokeOffsetDashed(g, path, off, 12, 12, { width: 1.3, color: 0xffffff, alpha: 0.8 });
       }
       if (twoWay && lanes >= 2) {
         const c = lanes % 2 === 0 ? 0 : -edge + Math.floor(lanes / 2) * laneW;
         if (obj.roadType === 'Highway' || obj.roadType === 'Main Road') {
-          strokePath(g, offsetPath(path, c - 1.6), { width: 1.4, color: 0xf2c94c });
-          strokePath(g, offsetPath(path, c + 1.6), { width: 1.4, color: 0xf2c94c });
-        } else strokeDashed(g, offsetPath(path, c), 16, 10, { width: 1.6, color: 0xf2c94c });
+          strokeOffset(g, path, c - 1.6, { width: 1.4, color: 0xf2c94c });
+          strokeOffset(g, path, c + 1.6, { width: 1.4, color: 0xf2c94c });
+        } else strokeOffsetDashed(g, path, c, 16, 10, { width: 1.6, color: 0xf2c94c });
       }
       if (obj.direction === 'One-way') this.drawArrows(g, path);
     } else if (pedestrian) {
@@ -354,16 +365,16 @@ export class BridgeView extends BaseView {
     strokePath(g, path, { width: w + 6, color: 0x2b3036 });
     strokePath(g, path, { width: w, color });
     // railings
-    strokePath(g, offsetPath(path, w / 2), { width: 2.5, color: 0xbfc4c8 });
-    strokePath(g, offsetPath(path, -w / 2), { width: 2.5, color: 0xbfc4c8 });
+    strokeOffset(g, path, w / 2, { width: 2.5, color: 0xbfc4c8 });
+    strokeOffset(g, path, -w / 2, { width: 2.5, color: 0xbfc4c8 });
 
     const d = this.detail;
     d.clear();
     switch (obj.bridgeType) {
       case 'Railway Bridge':
         strokeDashed(d, path, 3, 7, { width: w * 0.8, color: 0x4a3b2d, cap: 'butt' });
-        strokePath(d, offsetPath(path, w * 0.18), { width: 2, color: 0xc9ced2 });
-        strokePath(d, offsetPath(path, -w * 0.18), { width: 2, color: 0xc9ced2 });
+        strokeOffset(d, path, w * 0.18, { width: 2, color: 0xc9ced2 });
+        strokeOffset(d, path, -w * 0.18, { width: 2, color: 0xc9ced2 });
         break;
       case 'Pedestrian Bridge':
         strokeDashed(d, path, 2, 6, { width: w * 0.9, color: 0x7d6143, cap: 'butt' });
@@ -372,8 +383,8 @@ export class BridgeView extends BaseView {
         const len = pathLength(path);
         const towers = [0.22, 0.78].map((t) => pointAt(path, len * t));
         for (const t of towers) d.rect(t.x - w * 0.55, t.y - w * 0.55, w * 1.1, w * 1.1).fill(0x8a9096).stroke({ width: 2, color: 0x30363c });
-        strokePath(d, offsetPath(path, w / 2 - 1), { width: 2, color: 0xe0b14a, alpha: 0.9 });
-        strokePath(d, offsetPath(path, -w / 2 + 1), { width: 2, color: 0xe0b14a, alpha: 0.9 });
+        strokeOffset(d, path, w / 2 - 1, { width: 2, color: 0xe0b14a, alpha: 0.9 });
+        strokeOffset(d, path, -w / 2 + 1, { width: 2, color: 0xe0b14a, alpha: 0.9 });
         break;
       }
       case 'Drawbridge': {
@@ -390,8 +401,8 @@ export class BridgeView extends BaseView {
     const st = bridgeStatus(obj, (id) => this.renderer.doc.island(id));
     this.status = st.status;
     if (st.status === 'warning') {
-      strokeDashed(d, offsetPath(path, w / 2 + 6), 10, 8, { width: 3, color: COLORS.warning });
-      strokeDashed(d, offsetPath(path, -w / 2 - 6), 10, 8, { width: 3, color: COLORS.warning });
+      strokeOffsetDashed(d, path, w / 2 + 6, 10, 8, { width: 3, color: COLORS.warning });
+      strokeOffsetDashed(d, path, -w / 2 - 6, 10, 8, { width: 3, color: COLORS.warning });
       const m = pointAt(path, pathLength(path) / 2);
       d.circle(m.x, m.y, 12).fill(COLORS.warning).stroke({ width: 2, color: 0x111820 });
       d.rect(m.x - 1.5, m.y - 7, 3, 8).fill(0x111820);

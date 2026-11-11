@@ -4,8 +4,8 @@ import { Tool } from './tool.js';
 import { AddCommand, PatchCommand, BatchCommand } from '../core/commands.js';
 import { createRoad, roadPoint } from '../data/defaults.js';
 import { ROAD_TYPES, ROAD_DEFAULTS, CURVE_MODES, ROAD_DIRECTIONS } from '../data/constants.js';
-import { closestRoadSegment, sampleRoad, roadHandles } from '../objects/road.js';
-import { dist, sampleBezierChain, catmullRomHandles } from '../utils/geometry.js';
+import { closestRoadSegment, sampleRoad } from '../objects/road.js';
+import { dist, sampleCurve, curveControls, smoothHandles } from '../utils/geometry.js';
 import { strokePts, drawHandle } from '../renderer/overlay.js';
 import { h } from '../utils/dom.js';
 import { selectControl, rangeControl, segmented } from '../panels/controls.js';
@@ -100,7 +100,7 @@ export class RoadTool extends Tool {
     const id = this.doc.newId('road');
     const roadPts = pts.map((p) => roadPoint(p.x, p.y));
     if (this.curve === 'Bezier') {
-      const hs = catmullRomHandles(roadPts);
+      const hs = smoothHandles(roadPts);
       roadPts.forEach((p, i) => { p.hx = hs[i].x; p.hy = hs[i].y; });
     }
     const connections = [];
@@ -134,8 +134,7 @@ export class RoadTool extends Tool {
   drawOverlay(g, zoom) {
     const pts = this.cursorPt && this.points.length ? [...this.points, this.cursorPt] : this.points;
     if (pts.length >= 2) {
-      const handles = this.curve === 'Straight' ? pts.map(() => ({ x: 0, y: 0 })) : catmullRomHandles(pts);
-      const path = sampleBezierChain(pts, handles, 12);
+      const path = sampleCurve(pts, curveControls(pts, this.curve === 'Straight' ? 'Straight' : 'Smooth'), 12);
       strokePts(g, path, false, this.width, 0x3b4046, 0.75);
       strokePts(g, path, false, 2 / zoom, 0xf2c94c, 1);
     }
@@ -163,4 +162,4 @@ export class RoadTool extends Tool {
   }
 }
 
-export { sampleRoad, roadHandles };
+export { sampleRoad };

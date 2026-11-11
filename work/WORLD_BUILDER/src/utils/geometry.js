@@ -394,3 +394,95 @@ export function convexHull(points) {
   lower.pop();
   return lower.concat(upper);
 }
+
+// ---------- loop-free curves ----------
+// Catmull-Rom style curves whose control points are limited by each segment's own length,
+// so two anchors placed close together never make the curve overshoot into a loop.
+
+function unit(v) {
+  const l = Math.hypot(v.x, v.y);
+  return l > 1e-9 ? { x: v.x / l, y: v.y / l } : { x: 0, y: 0 };
+}
+
+// Unit tangent at every anchor (direction from the previous to the next anchor).
+export function smoothTangents(points) {
+  const n = points.length;
+  return points.map((p, i) => {
+    const a = points[Math.max(0, i - 1)];
+    const b = points[Math.min(n - 1, i + 1)];
+    return unit({ x: b.x - a.x, y: b.y - a.y });
+  });
+}
+
+// Symmetric handles for a smooth curve (used when converting to editable Bezier handles):
+// length = 1/3 of the shorter neighbouring segment.
+export function smoothHandles(points) {
+  const T = smoothTangents(points);
+  return points.map((p, i) => {
+    const prev = i > 0 ? dist(points[i - 1], p) : Infinity;
+    const next = i < points.length - 1 ? dist(p, points[i + 1]) : Infinity;
+    const L = Math.min(prev, next);
+    const k = Number.isFinite(L) ? L / 3 : 0;
+    return { x: T[i].x * k, y: T[i].y * k };
+  });
+}
+
+// Per-segment control points. mode: 'Straight' | 'Smooth' | 'Bezier' (handles = [{x,y}] per anchor).
+export function curveControls(points, mode, handles) {
+  const out = [];
+  const T = mode === 'Smooth' ? smoothTangents(points) : null;
+  const clampLen = (h, max) => {
+    const l = Math.hypot(h.x, h.y);
+    return l > max && l > 0 ? { x: (h.x / l) * max, y: (h.y / l) * max } : h;
+  };
+  for (let i = 0; i < points.length - 1; i++) {
+    const a = points[i]; const b = points[i + 1];
+    const L = dist(a, b);
+    if (mode === 'Smooth') {
+      out.push([{ x: a.x + (T[i].x * L) / 3, y: a.y + (T[i].y * L) / 3 }, { x: b.x - (T[i + 1].x * L) / 3, y: b.y - (T[i + 1].y * L) / 3 }]);
+    } else if (mode === 'Bezier' && handles) {
+      const ho = clampLen(handles[i], L / 2);
+      const hi = clampLen(handles[i + 1], L / 2);
+      out.push([{ x: a.x + ho.x, y: a.y + ho.y }, { x: b.x - hi.x, y: b.y - hi.y }]);
+    } else out.push(null); // straight segment
+  }
+  return out;
+}
+
+export function sampleCurve(points, controls, segmentsPerCurve = 16) {
+  if (points.length < 2) return points.map((p) => ({ x: p.x, y: p.y }));
+  const out = [{ x: points[0].x, y: points[0].y }];
+  for (let i = 0; i < points.length - 1; i++) {
+    const a = points[i]; const b = points[i + 1]; const c = controls[i];
+    if (!c) { out.push({ x: b.x, y: b.y }); continue; }
+    // fewer samples on short segments
+    const n = Math.max(2, Math.min(segmentsPerCurve, Math.ceil(dist(a, b) / 6)));
+    for (let s = 1; s <= n; s++) out.push(cubicPoint(a, c[0], c[1], b, s / n));
+  }
+  return out;
+}
+
+// Offset a polyline sideways, dropping pieces that would run backwards at sharp bends
+// (which otherwise draw as crossed, tangled lines). Returns an array of polylines.
+export function offsetRuns(points, offset) {
+  const off = offsetPath(points, offset);
+  const runs = [];
+  let cur = [];
+  for (let i = 0; i < points.length; i++) {
+    if (i > 0) {
+      const dx = points[i].x - points[i - 1].x; const dy = points[i].y - points[i - 1].y;
+      const ox = off[i].x - off[i - 1].x; const oy = off[i].y - off[i - 1].y;
+      // keep the piece only if it still points the same way and is not wildly stretched
+      const ok = dx * ox + dy * oy > 0 && Math.hypot(ox, oy) < Math.hypot(dx, dy) * 3 + Math.abs(offset);
+      if (!ok) {
+        if (cur.length > 1) runs.push(cur);
+        cur = [];
+        continue;
+      }
+      if (!cur.length) cur.push(off[i - 1]);
+    }
+    if (i === 0) cur.push(off[0]); else cur.push(off[i]);
+  }
+  if (cur.length > 1) runs.push(cur);
+  return runs;
+}

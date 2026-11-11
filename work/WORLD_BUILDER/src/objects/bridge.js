@@ -1,5 +1,5 @@
 // Bridge geometry and connection status.
-import { catmullRomHandles, sampleBezierChain, boundsOfPoints, closestPointOnPath, pointInPolygon } from '../utils/geometry.js';
+import { curveControls, sampleCurve, boundsOfPoints, closestPointOnPath, pointInPolygon } from '../utils/geometry.js';
 
 export function bridgeAnchors(bridge) {
   return [bridge.startPosition, ...bridge.controlPoints, bridge.endPosition];
@@ -8,7 +8,7 @@ export function bridgeAnchors(bridge) {
 export function bridgePath(bridge) {
   const pts = bridgeAnchors(bridge);
   if (pts.length === 2) return pts.map((p) => ({ x: p.x, y: p.y }));
-  return sampleBezierChain(pts, catmullRomHandles(pts), 16);
+  return sampleCurve(pts, curveControls(pts, 'Smooth'), 16);
 }
 
 export function bridgeBounds(bridge) {

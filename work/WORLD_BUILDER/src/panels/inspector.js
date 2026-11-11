@@ -12,7 +12,7 @@ import {
   ISLAND_TYPES, TERRAIN_MATERIALS, COASTLINE_TYPES, ROAD_TYPES, ROAD_SURFACES, ROAD_DIRECTIONS, CURVE_MODES,
   BRIDGE_TYPES, BUILDING_TYPES, HITBOX_TYPES, AREA_TYPES,
 } from '../data/constants.js';
-import { translation, scaleAbout, rotationAbout, DEG, boundsCenter, catmullRomHandles, convexHull, round } from '../utils/geometry.js';
+import { translation, scaleAbout, rotationAbout, DEG, boundsCenter, smoothHandles, convexHull, round } from '../utils/geometry.js';
 
 const TYPE_LABEL = { island: 'Island', road: 'Road', bridge: 'Bridge', building: 'Building', prop: 'Object', area: 'Area' };
 const TYPE_ICON = { island: 'land-plot', road: 'route', bridge: 'rainbow', building: 'building-2', prop: 'box', area: 'square-dashed' };
@@ -363,7 +363,7 @@ export class Inspector {
             set: (t, v) => {
               const patch = { curve: v };
               if (v === 'Bezier' && t.points.every((p) => !p.hx && !p.hy)) {
-                const hs = catmullRomHandles(t.points);
+                const hs = smoothHandles(t.points);
                 patch.points = t.points.map((p, i) => ({ ...p, hx: hs[i].x, hy: hs[i].y }));
               }
               return { ...patch, ...roadMeta({ ...t, ...patch }) };
