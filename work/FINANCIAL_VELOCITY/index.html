@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CONAS — Financial Velocity</title>
+<style>
+  @font-face { font-family: 'Pretendard'; font-weight: 900; src: url('fonts/Pretendard-Black.woff2') format('woff2'); }
+  @font-face { font-family: 'Pretendard'; font-weight: 800; src: url('fonts/Pretendard-ExtraBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Pretendard'; font-weight: 600; src: url('fonts/Pretendard-SemiBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Pretendard'; font-weight: 500; src: url('fonts/Pretendard-Medium.woff2') format('woff2'); }
+  html, body { margin: 0; height: 100%; background: #050505; overflow: hidden; }
+  canvas { display: block; }
+  #hud { position: fixed; left: 12px; bottom: 10px; font: 12px/1.4 monospace; color: #888; }
+</style>
+</head>
+<body>
+<div id="hud"></div>
+<!--
+  Render mode (used by tools/render.cjs): ?w=3840&h=2160&blur=3   -> window.FILM.renderFrame(t)
+  Preview mode: ?preview=1 plays the film in real time (lower resolution recommended).
+-->
+<script type="module" src="src/film.js"></script>
+</body>
+</html>
