@@ -65,6 +65,14 @@
 | 차량으로 섬(보행 전용) 도착 불가 이유 표시, 도보 모드는 보도교 경유 성공 | PASS |
 | 편집기 Navigator 버튼 → 편집 중인 지도가 그대로 열림 | PASS |
 
+### 도로 너비 (`road-width.cjs`) 14/14
+| 검사 | 결과 |
+|---|---|
+| 도로 선택 시 옵션 바에 Road width 표시, 슬라이더·숫자·+/− 버튼 | PASS |
+| `]` 넓게, `Shift+[` 10px 좁게, 숫자 칸 동기화 | PASS |
+| Undo 단계별 복원 | PASS |
+| 여러 도로 동시 변경, 다리 Deck width, Inspector 입력 | PASS |
+
 ### 성능 (`perf.cjs`) 4/4
 | 검사 | 결과 |
 |---|---|
@@ -112,5 +120,5 @@ python3 -m http.server 8765
 다른 터미널에서 (Playwright + Chromium 필요):
 
 ```bash
-node tests/e2e/phase1.cjs && node tests/e2e/phase2.cjs && node tests/e2e/phase3.cjs && node tests/e2e/perf.cjs && node tests/e2e/navigator.cjs
+node tests/e2e/phase1.cjs && node tests/e2e/phase2.cjs && node tests/e2e/phase3.cjs && node tests/e2e/perf.cjs && node tests/e2e/navigator.cjs && node tests/e2e/road-width.cjs
 ```
