@@ -1,0 +1,52 @@
+/* Main editor layout: top bar, left toolbar, centre canvas + asset library, right panels, status bar. */
+.app {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 52px minmax(0, 1fr) 320px;
+  grid-template-rows: 44px minmax(0, 1fr) 26px;
+  grid-template-areas: "top top top" "tools center right" "status status status";
+}
+body.hide-toolbar .app { grid-template-columns: 0 minmax(0, 1fr) 320px; }
+body.hide-inspector.hide-layers .app { grid-template-columns: 52px minmax(0, 1fr) 0; }
+body.hide-toolbar.hide-inspector.hide-layers .app { grid-template-columns: 0 minmax(0, 1fr) 0; }
+body.hide-toolbar .toolbar { display: none; }
+body.hide-inspector .inspector, body.hide-layers .layers { display: none; }
+body.hide-inspector.hide-layers .right { display: none; }
+body.hide-library .library { display: none; }
+
+.topbar { grid-area: top; display: flex; align-items: center; gap: 12px; padding: 0 10px; background: var(--panel); border-bottom: 1px solid var(--border); min-width: 0; }
+.brand { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 0 1 auto; }
+.logo { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 5px; background: #0f2233; border: 1px solid #23435f; }
+.brand-name { font-weight: 700; letter-spacing: 0.12em; font-size: 12px; white-space: nowrap; }
+.divider { width: 1px; height: 20px; background: var(--border); flex: none; }
+.project-name { background: none; border: 1px solid transparent; border-radius: var(--radius); padding: 3px 6px; font-weight: 600; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.project-name:hover { border-color: var(--border); background: var(--panel-2); }
+.save-status { font-size: 11px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 260px; }
+.save-status.saved { color: var(--success); background: rgba(76, 191, 122, 0.12); }
+.save-status.dirty { color: var(--warning); background: rgba(232, 163, 61, 0.12); }
+.menus { display: flex; gap: 2px; flex: 1; justify-content: center; }
+.top-actions { display: flex; align-items: center; gap: 6px; }
+
+.toolbar { grid-area: tools; background: var(--panel); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; overflow-y: auto; }
+
+.center { grid-area: center; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.tool-options { height: 40px; flex: none; display: flex; align-items: center; gap: 12px; padding: 0 12px; background: var(--panel-2); border-bottom: 1px solid var(--border); overflow-x: auto; white-space: nowrap; }
+.canvas-host { position: relative; flex: 1; min-height: 0; overflow: hidden; background: #0e151c; }
+.canvas-host canvas { display: block; outline: none; }
+.canvas-host.drop::after { content: "Drop to place asset"; position: absolute; inset: 8px; border: 2px dashed var(--accent); border-radius: 8px; display: grid; place-items: center; color: var(--accent); font-weight: 600; pointer-events: none; background: rgba(75, 157, 232, 0.06); }
+.library { height: 196px; flex: none; background: var(--panel); border-top: 1px solid var(--border); display: flex; flex-direction: column; min-height: 0; }
+
+.right { grid-area: right; display: flex; flex-direction: column; min-height: 0; background: var(--panel); border-left: 1px solid var(--border); }
+.right .inspector { flex: 1 1 58%; min-height: 0; }
+.right .layers { flex: 1 1 42%; min-height: 0; border-top: 1px solid var(--border); }
+
+.statusbar { grid-area: status; display: flex; align-items: center; gap: 14px; padding: 0 10px; background: #0d141b; border-top: 1px solid var(--border); color: var(--text-2); font-size: 11.5px; min-width: 0; }
+.status-hint { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.status-item { white-space: nowrap; background: none; border: 0; padding: 0; color: var(--text-2); }
+.status-item.link:hover { color: var(--text); }
+.status-item.on { color: var(--accent); }
+
+@media (max-width: 1280px) {
+  .app { grid-template-columns: 48px minmax(0, 1fr) 280px; }
+  .brand-name { display: none; }
+}

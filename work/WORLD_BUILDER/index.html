@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WORLD BUILDER</title>
+<meta name="description" content="WORLD BUILDER 1.0 — 2D world map editor for mystery and open-world games.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="styles/layout.css">
+<link rel="stylesheet" href="styles/panels.css">
+<link rel="stylesheet" href="styles/components.css">
+<script src="lib/lucide.min.js"></script>
+<script src="lib/jszip.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M3 17c3-1 4-5 8-5s5 3 10 2" fill="none" stroke="#4B9DE8" stroke-width="2" stroke-linecap="round"/><path d="M5 8.5c1.5-2.5 4-4 7-4 2.5 0 4.6 1.1 6 2.8" fill="none" stroke="#7FB8EE" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="1.8" fill="#4B9DE8"/></svg></span>
+      <span class="brand-name">WORLD BUILDER</span>
+      <span class="divider"></span>
+      <button class="project-name" id="project-name" title="Project settings"></button>
+      <span class="save-status" id="save-status"></span>
+    </div>
+    <nav class="menus" id="menus" aria-label="Main menu"></nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="btn-undo" aria-label="Undo"><i data-lucide="undo-2"></i></button>
+      <button class="icon-btn" id="btn-redo" aria-label="Redo"><i data-lucide="redo-2"></i></button>
+      <span class="divider"></span>
+      <button class="btn small" id="btn-save" title="Save (Ctrl+S)"><i data-lucide="save"></i>Save</button>
+      <div class="export-wrap" id="export-wrap">
+        <button class="btn small primary" id="btn-export" aria-haspopup="true"><i data-lucide="download"></i>Export</button>
+        <div class="dropdown" id="export-menu" role="menu">
+          <button class="menu-item" id="export-json" role="menuitem"><span class="check"></span><span class="menu-label">Export JSON</span><span class="menu-key">.world.json</span></button>
+          <button class="menu-item" id="export-zip" role="menuitem"><span class="check"></span><span class="menu-label">Export ZIP Package</span><span class="menu-key">.zip</span></button>
+        </div>
+      </div>
+      <button class="icon-btn" id="btn-settings" aria-label="Settings" title="Settings"><i data-lucide="settings"></i></button>
+    </div>
+  </header>
+
+  <aside class="toolbar" id="toolbar" aria-label="Tools"></aside>
+
+  <main class="center">
+    <div class="tool-options" id="tool-options"></div>
+    <div class="canvas-host" id="canvas-host"></div>
+    <section class="library" id="library" aria-label="Asset Library"></section>
+  </main>
+
+  <aside class="right">
+    <section class="panel inspector">
+      <header class="panel-head"><i data-lucide="sliders-horizontal"></i><span>Inspector</span></header>
+      <div class="panel-body" id="inspector-body"></div>
+    </section>
+    <section class="panel layers">
+      <header class="panel-head tabs" role="tablist">
+        <button class="tab active" data-tab="layers" role="tab" aria-selected="true"><i data-lucide="layers"></i>Layers</button>
+        <button class="tab" data-tab="hierarchy" role="tab" aria-selected="false"><i data-lucide="list-tree"></i>Hierarchy</button>
+      </header>
+      <div class="panel-body tab-panel" id="layers-body"></div>
+      <div class="panel-body tab-panel" id="hierarchy-body" hidden></div>
+    </section>
+  </aside>
+
+  <footer class="statusbar" id="statusbar"></footer>
+</div>
+<div class="boot" aria-hidden="true">Loading WORLD BUILDER…</div>
+<script type="module" src="src/app/main.js"></script>
+</body>
+</html>
