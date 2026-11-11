@@ -1,0 +1,4847 @@
+{
+  "project": {
+    "id": "PROJECT_001",
+    "name": "SERIM_CITY",
+    "version": "1.0.0",
+    "createdAt": "2026-11-11T00:00:00.000Z",
+    "updatedAt": "2026-11-11T06:17:02.135Z"
+  },
+  "world": {
+    "width": 12000,
+    "height": 12000,
+    "background": "#173B50",
+    "gridSize": 64
+  },
+  "layers": [
+    {
+      "id": "LYR_OCEAN",
+      "name": "Ocean",
+      "visible": true,
+      "locked": true,
+      "opacity": 1
+    },
+    {
+      "id": "LYR_TERRAIN",
+      "name": "Terrain",
+      "visible": true,
+      "locked": false,
+      "opacity": 1
+    },
+    {
+      "id": "LYR_INFRA",
+      "name": "Infrastructure",
+      "visible": true,
+      "locked": false,
+      "opacity": 1
+    },
+    {
+      "id": "LYR_BUILDINGS",
+      "name": "Buildings",
+      "visible": true,
+      "locked": false,
+      "opacity": 1
+    },
+    {
+      "id": "LYR_ENV",
+      "name": "Environment",
+      "visible": true,
+      "locked": false,
+      "opacity": 1
+    },
+    {
+      "id": "LYR_FACILITIES",
+      "name": "Facilities",
+      "visible": true,
+      "locked": false,
+      "opacity": 1
+    },
+    {
+      "id": "LYR_INVESTIGATION",
+      "name": "Investigation",
+      "visible": true,
+      "locked": false,
+      "opacity": 1
+    },
+    {
+      "id": "LYR_CHARACTERS",
+      "name": "Characters",
+      "visible": true,
+      "locked": false,
+      "opacity": 1
+    },
+    {
+      "id": "LYR_ROUTES",
+      "name": "Routes",
+      "visible": true,
+      "locked": false,
+      "opacity": 1
+    }
+  ],
+  "assets": [
+    {
+      "id": "AST_OFFICE",
+      "name": "Office Tower",
+      "category": "Buildings",
+      "path": "assets/buildings/office.svg",
+      "mime": "image/svg+xml",
+      "width": 160,
+      "height": 160,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_RESIDENTIAL",
+      "name": "Apartment Block",
+      "category": "Buildings",
+      "path": "assets/buildings/residential.svg",
+      "mime": "image/svg+xml",
+      "width": 140,
+      "height": 100,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_HOUSE",
+      "name": "House",
+      "category": "Buildings",
+      "path": "assets/buildings/house.svg",
+      "mime": "image/svg+xml",
+      "width": 80,
+      "height": 70,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_COMMERCIAL",
+      "name": "Shopping Mall",
+      "category": "Buildings",
+      "path": "assets/buildings/commercial.svg",
+      "mime": "image/svg+xml",
+      "width": 200,
+      "height": 140,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_INDUSTRIAL",
+      "name": "Factory",
+      "category": "Buildings",
+      "path": "assets/buildings/industrial.svg",
+      "mime": "image/svg+xml",
+      "width": 220,
+      "height": 150,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_GOVERNMENT",
+      "name": "City Hall",
+      "category": "Buildings",
+      "path": "assets/buildings/government.svg",
+      "mime": "image/svg+xml",
+      "width": 180,
+      "height": 140,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_POLICE",
+      "name": "Police Station",
+      "category": "Buildings",
+      "path": "assets/buildings/police.svg",
+      "mime": "image/svg+xml",
+      "width": 140,
+      "height": 110,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_HOSPITAL",
+      "name": "Hospital",
+      "category": "Buildings",
+      "path": "assets/buildings/hospital.svg",
+      "mime": "image/svg+xml",
+      "width": 180,
+      "height": 160,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_SCHOOL",
+      "name": "School",
+      "category": "Buildings",
+      "path": "assets/buildings/school.svg",
+      "mime": "image/svg+xml",
+      "width": 200,
+      "height": 130,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_HOTEL",
+      "name": "Hotel",
+      "category": "Buildings",
+      "path": "assets/buildings/hotel.svg",
+      "mime": "image/svg+xml",
+      "width": 150,
+      "height": 150,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_WAREHOUSE",
+      "name": "Warehouse",
+      "category": "Buildings",
+      "path": "assets/buildings/warehouse.svg",
+      "mime": "image/svg+xml",
+      "width": 200,
+      "height": 120,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_PINE",
+      "name": "Pine Tree",
+      "category": "Trees",
+      "path": "assets/objects/tree-pine.svg",
+      "mime": "image/svg+xml",
+      "width": 48,
+      "height": 48,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_OAK",
+      "name": "Oak Tree",
+      "category": "Trees",
+      "path": "assets/objects/tree-oak.svg",
+      "mime": "image/svg+xml",
+      "width": 56,
+      "height": 56,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_PALM",
+      "name": "Palm Tree",
+      "category": "Trees",
+      "path": "assets/objects/tree-palm.svg",
+      "mime": "image/svg+xml",
+      "width": 52,
+      "height": 52,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_CAR",
+      "name": "Car",
+      "category": "Vehicles",
+      "path": "assets/objects/car.svg",
+      "mime": "image/svg+xml",
+      "width": 20,
+      "height": 40,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_BUS",
+      "name": "Bus",
+      "category": "Vehicles",
+      "path": "assets/objects/bus.svg",
+      "mime": "image/svg+xml",
+      "width": 26,
+      "height": 72,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_BOAT",
+      "name": "Boat",
+      "category": "Vehicles",
+      "path": "assets/objects/boat.svg",
+      "mime": "image/svg+xml",
+      "width": 36,
+      "height": 90,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_STREETLIGHT",
+      "name": "Street Light",
+      "category": "Facilities",
+      "path": "assets/objects/streetlight.svg",
+      "mime": "image/svg+xml",
+      "width": 16,
+      "height": 16,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_FOUNTAIN",
+      "name": "Fountain",
+      "category": "Facilities",
+      "path": "assets/objects/fountain.svg",
+      "mime": "image/svg+xml",
+      "width": 64,
+      "height": 64,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_HELIPAD",
+      "name": "Helipad",
+      "category": "Facilities",
+      "path": "assets/objects/helipad.svg",
+      "mime": "image/svg+xml",
+      "width": 90,
+      "height": 90,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_LIGHTHOUSE",
+      "name": "Lighthouse",
+      "category": "Facilities",
+      "path": "assets/objects/lighthouse.svg",
+      "mime": "image/svg+xml",
+      "width": 56,
+      "height": 56,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_PARKING",
+      "name": "Parking Lot",
+      "category": "Roads",
+      "path": "assets/roads/parking.svg",
+      "mime": "image/svg+xml",
+      "width": 160,
+      "height": 110,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_CROSSWALK",
+      "name": "Crosswalk",
+      "category": "Roads",
+      "path": "assets/roads/crosswalk.svg",
+      "mime": "image/svg+xml",
+      "width": 48,
+      "height": 24,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_PIER",
+      "name": "Wooden Pier",
+      "category": "Bridges",
+      "path": "assets/bridges/pier.svg",
+      "mime": "image/svg+xml",
+      "width": 40,
+      "height": 160,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_ROCKS",
+      "name": "Rock Cluster",
+      "category": "Terrain",
+      "path": "assets/terrain/rocks.svg",
+      "mime": "image/svg+xml",
+      "width": 96,
+      "height": 80,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_POND",
+      "name": "Pond",
+      "category": "Terrain",
+      "path": "assets/terrain/pond.svg",
+      "mime": "image/svg+xml",
+      "width": 120,
+      "height": 90,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_ISLET",
+      "name": "Rocky Islet",
+      "category": "Islands",
+      "path": "assets/terrain/islet.svg",
+      "mime": "image/svg+xml",
+      "width": 140,
+      "height": 110,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_CRATE",
+      "name": "Cargo Container",
+      "category": "Miscellaneous",
+      "path": "assets/objects/container.svg",
+      "mime": "image/svg+xml",
+      "width": 30,
+      "height": 70,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    },
+    {
+      "id": "AST_TENT",
+      "name": "Tent",
+      "category": "Miscellaneous",
+      "path": "assets/objects/tent.svg",
+      "mime": "image/svg+xml",
+      "width": 44,
+      "height": 44,
+      "anchor": {
+        "preset": "Center",
+        "x": 0.5,
+        "y": 0.5
+      },
+      "builtin": true
+    }
+  ],
+  "islands": [
+    {
+      "id": "ISL_0001",
+      "type": "island",
+      "name": "Serim Central",
+      "layer": "LYR_TERRAIN",
+      "x": 5052.5,
+      "y": 5125,
+      "width": 3751,
+      "height": 2742,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "islandType": "Urban",
+      "polygon": [
+        {
+          "x": 6644,
+          "y": 5000
+        },
+        {
+          "x": 6711,
+          "y": 5206
+        },
+        {
+          "x": 6667,
+          "y": 5412
+        },
+        {
+          "x": 6648,
+          "y": 5645
+        },
+        {
+          "x": 6583,
+          "y": 5895
+        },
+        {
+          "x": 6362,
+          "y": 6068
+        },
+        {
+          "x": 6091,
+          "y": 6191
+        },
+        {
+          "x": 5831,
+          "y": 6338
+        },
+        {
+          "x": 5530,
+          "y": 6445
+        },
+        {
+          "x": 5200,
+          "y": 6496
+        },
+        {
+          "x": 4860,
+          "y": 6486
+        },
+        {
+          "x": 4566,
+          "y": 6344
+        },
+        {
+          "x": 4350,
+          "y": 6135
+        },
+        {
+          "x": 4257,
+          "y": 5867
+        },
+        {
+          "x": 4124,
+          "y": 5697
+        },
+        {
+          "x": 3894,
+          "y": 5582
+        },
+        {
+          "x": 3612,
+          "y": 5446
+        },
+        {
+          "x": 3400,
+          "y": 5245
+        },
+        {
+          "x": 3177,
+          "y": 5000
+        },
+        {
+          "x": 3224,
+          "y": 4731
+        },
+        {
+          "x": 3357,
+          "y": 4482
+        },
+        {
+          "x": 3615,
+          "y": 4294
+        },
+        {
+          "x": 3914,
+          "y": 4168
+        },
+        {
+          "x": 4109,
+          "y": 3997
+        },
+        {
+          "x": 4328,
+          "y": 3835
+        },
+        {
+          "x": 4618,
+          "y": 3767
+        },
+        {
+          "x": 4915,
+          "y": 3754
+        },
+        {
+          "x": 5200,
+          "y": 3786
+        },
+        {
+          "x": 5479,
+          "y": 3779
+        },
+        {
+          "x": 5782,
+          "y": 3765
+        },
+        {
+          "x": 6110,
+          "y": 3784
+        },
+        {
+          "x": 6478,
+          "y": 3825
+        },
+        {
+          "x": 6822,
+          "y": 3950
+        },
+        {
+          "x": 6928,
+          "y": 4230
+        },
+        {
+          "x": 6886,
+          "y": 4527
+        },
+        {
+          "x": 6780,
+          "y": 4785
+        }
+      ],
+      "texture": "Grass",
+      "elevation": 0,
+      "coastline": {
+        "type": "Sand",
+        "width": 26,
+        "edgeTypes": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "Seawall",
+          "Seawall",
+          "Seawall",
+          "Seawall",
+          "Seawall",
+          "Seawall",
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "terrain": {
+        "cellSize": 16,
+        "originX": 3152,
+        "originY": 3728,
+        "cols": 237,
+        "rows": 174,
+        "data": "801*0,4*5,231*0,1*5,1*0,2*5,1*0,3*5,224*0,1*5,1*0,3*5,1*0,7*5,221*0,12*5,3*0,2*5,218*0,1*5,1*0,2*5,1*0,4*5,1*0,8*5,215*0,3*5,1*0,16*5,2*0,1*5,211*0,5*5,1*0,17*5,211*0,1*5,1*0,1*5,1*0,16*5,1*0,6*5,209*0,13*5,1*0,11*5,2*0,2*5,106*0,1*2,100*0,24*5,2*0,1*5,110*0,2*2,96*0,1*5,1*0,1*5,2*0,10*5,1*0,4*5,1*0,1*5,1*0,3*5,1*0,3*5,104*0,1*2,2*0,1*2,5*0,1*2,92*0,1*5,1*0,14*5,1*0,3*5,1*0,3*5,1*0,1*5,109*0,1*2,1*0,4*6,1*2,1*6,2*0,1*2,90*0,21*5,1*0,2*5,1*0,1*5,110*0,2*6,2*2,2*6,1*2,3*6,1*2,88*0,19*5,2*0,1*5,1*0,1*5,111*0,1*2,14*6,1*0,1*2,84*0,17*5,2*0,1*5,1*0,1*5,112*0,1*2,1*0,2*2,1*6,3*2,1*6,1*2,2*6,1*2,4*6,3*2,82*0,20*5,116*0,1*2,4*6,2*2,2*6,2*2,4*6,1*2,1*6,83*0,16*5,1*0,2*5,116*0,1*2,1*0,1*2,8*6,3*2,1*6,1*2,2*6,1*2,1*6,1*0,1*2,79*0,15*5,1*0,1*5,121*0,2*2,2*6,1*2,1*6,1*2,6*6,1*2,2*6,4*2,77*0,8*5,2*0,4*5,123*0,2*2,1*0,1*6,2*2,4*6,2*2,1*6,1*2,1*6,1*2,5*6,79*0,7*5,1*0,1*5,2*0,1*5,125*0,1*2,2*0,4*6,1*2,1*6,1*2,4*6,2*2,2*6,1*2,2*6,1*2,76*0,1*5,1*0,5*5,1*0,4*5,130*0,1*6,1*2,1*6,1*2,1*6,9*2,3*6,1*2,76*0,6*5,1*0,2*5,131*0,2*2,1*0,2*2,1*6,1*2,3*6,2*2,1*6,7*2,1*6,1*0,1*2,73*0,1*5,1*0,1*5,1*0,3*5,134*0,2*2,1*0,4*6,8*2,2*6,1*2,2*6,1*2,75*0,2*5,1*0,2*5,139*0,1*2,2*6,2*2,7*6,2*2,4*6,73*0,1*5,1*0,2*5,142*0,1*2,1*6,1*2,3*6,1*2,1*6,1*2,1*6,2*2,5*6,221*0,4*2,2*6,3*2,7*6,1*0,1*2,220*0,4*6,1*2,1*6,2*2,2*6,4*2,223*0,1*2,4*6,1*2,1*6,2*2,1*6,1*2,2*6,1*2,1*0,1*2,220*0,1*2,2*0,1*2,8*6,2*2,2*0,1*2,222*0,1*2,3*0,1*6,4*2,228*0,1*2,2*0,1*2,5*0,2*2,230*0,1*2,2256*0,84*4,152*0,86*4,150*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,88*4,149*0,88*4,149*0,88*4,149*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,88*4,149*0,88*4,149*0,88*4,149*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,88*4,149*0,88*4,149*0,88*4,149*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,87*4,150*0,88*4,149*0,88*4,149*0,87*4,150*0,88*4,149*0,88*4,149*0,88*4,150*0,86*4,151*0,85*4,154*0,82*4,4158*0,1*2,248*0,1*2,3*0,1*2,1*0,1*2,220*0,1*2,8*0,3*2,1*0,3*2,222*0,1*2,7*0,6*2,224*0,1*2,4*0,5*2,1*0,2*2,1*0,4*2,219*0,2*2,1*0,15*2,220*0,15*2,1*0,1*2,221*0,17*2,220*0,14*2,1*0,2*2,221*0,16*2,221*0,12*2,225*0,12*2,1*0,1*2,224*0,12*2,225*0,12*2,225*0,11*2,227*0,10*2,227*0,9*2,228*0,5*2,1*0,1*2,231*0,2*2,1*0,2*2,232*0,4*2,234*0,2*2,6560*0"
+      }
+    },
+    {
+      "id": "ISL_0002",
+      "type": "island",
+      "name": "Haneul Residential",
+      "layer": "LYR_TERRAIN",
+      "x": 8570,
+      "y": 4318.5,
+      "width": 2186,
+      "height": 1989,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "islandType": "Residential",
+      "polygon": [
+        {
+          "x": 9624,
+          "y": 4300
+        },
+        {
+          "x": 9498,
+          "y": 4466
+        },
+        {
+          "x": 9472,
+          "y": 4639
+        },
+        {
+          "x": 9443,
+          "y": 4842
+        },
+        {
+          "x": 9404,
+          "y": 5110
+        },
+        {
+          "x": 9219,
+          "y": 5313
+        },
+        {
+          "x": 8912,
+          "y": 5285
+        },
+        {
+          "x": 8650,
+          "y": 5181
+        },
+        {
+          "x": 8444,
+          "y": 5074
+        },
+        {
+          "x": 8253,
+          "y": 5006
+        },
+        {
+          "x": 8045,
+          "y": 4950
+        },
+        {
+          "x": 7871,
+          "y": 4833
+        },
+        {
+          "x": 7701,
+          "y": 4692
+        },
+        {
+          "x": 7666,
+          "y": 4492
+        },
+        {
+          "x": 7539,
+          "y": 4300
+        },
+        {
+          "x": 7477,
+          "y": 4070
+        },
+        {
+          "x": 7540,
+          "y": 3842
+        },
+        {
+          "x": 7773,
+          "y": 3701
+        },
+        {
+          "x": 8084,
+          "y": 3691
+        },
+        {
+          "x": 8306,
+          "y": 3688
+        },
+        {
+          "x": 8454,
+          "y": 3563
+        },
+        {
+          "x": 8650,
+          "y": 3409
+        },
+        {
+          "x": 8910,
+          "y": 3324
+        },
+        {
+          "x": 9162,
+          "y": 3388
+        },
+        {
+          "x": 9344,
+          "y": 3555
+        },
+        {
+          "x": 9497,
+          "y": 3721
+        },
+        {
+          "x": 9628,
+          "y": 3896
+        },
+        {
+          "x": 9663,
+          "y": 4102
+        }
+      ],
+      "texture": "Grass",
+      "elevation": 0,
+      "coastline": {
+        "type": "Sand",
+        "width": 26,
+        "edgeTypes": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "terrain": {
+        "cellSize": 16,
+        "originX": 7456,
+        "originY": 3296,
+        "cols": 139,
+        "rows": 128,
+        "data": "11736*0,4*2,1*0,1*2,1*0,1*2,28*0,1*2,1*0,3*2,1*0,1*2,96*0,3*2,1*0,3*2,3*0,1*2,23*0,3*2,1*0,3*2,1*0,3*2,90*0,6*2,1*0,8*2,21*0,7*2,1*0,3*2,91*0,1*2,1*0,12*2,1*0,1*2,1*0,1*2,17*0,2*2,1*0,8*2,1*0,2*2,1*0,1*2,86*0,1*2,1*0,21*2,12*0,19*2,84*0,1*2,1*0,20*2,1*0,1*2,11*0,19*2,82*0,30*2,6*0,20*2,1*0,1*2,78*0,53*2,1*0,2*2,1*0,3*2,76*0,2*2,1*0,2*2,1*0,56*2,77*0,1*2,2*0,58*2,76*0,1*2,1*0,61*2,77*0,1*2,1*0,57*2,80*0,21*2,2*0,33*2,3*0,1*2,80*0,15*2,1*0,2*2,6*0,23*2,1*0,5*2,83*0,1*2,3*0,15*2,10*0,26*2,85*0,2*2,1*0,1*2,1*0,11*2,13*0,11*2,1*0,11*2,89*0,1*2,1*0,11*2,16*0,19*2,89*0,1*2,2*0,5*2,1*0,4*2,21*0,1*2,1*0,6*2,1*0,2*2,95*0,3*2,2*0,2*2,1*0,2*2,25*0,7*2,1*0,3*2,95*0,3*2,1*0,1*2,32*0,1*2,1*0,1*2,3391*0"
+      }
+    },
+    {
+      "id": "ISL_0003",
+      "type": "island",
+      "name": "Port Industrial",
+      "layer": "LYR_TERRAIN",
+      "x": 5582.5,
+      "y": 8408.5,
+      "width": 2319,
+      "height": 1599,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "islandType": "Industrial",
+      "polygon": [
+        {
+          "x": 6742,
+          "y": 8350
+        },
+        {
+          "x": 6687,
+          "y": 8541
+        },
+        {
+          "x": 6540,
+          "y": 8706
+        },
+        {
+          "x": 6278,
+          "y": 8800
+        },
+        {
+          "x": 6059,
+          "y": 8879
+        },
+        {
+          "x": 5877,
+          "y": 8998
+        },
+        {
+          "x": 5647,
+          "y": 9141
+        },
+        {
+          "x": 5340,
+          "y": 9208
+        },
+        {
+          "x": 5040,
+          "y": 9141
+        },
+        {
+          "x": 4844,
+          "y": 8970
+        },
+        {
+          "x": 4672,
+          "y": 8828
+        },
+        {
+          "x": 4543,
+          "y": 8678
+        },
+        {
+          "x": 4423,
+          "y": 8523
+        },
+        {
+          "x": 4427,
+          "y": 8350
+        },
+        {
+          "x": 4466,
+          "y": 8184
+        },
+        {
+          "x": 4490,
+          "y": 8004
+        },
+        {
+          "x": 4538,
+          "y": 7794
+        },
+        {
+          "x": 4736,
+          "y": 7628
+        },
+        {
+          "x": 5069,
+          "y": 7609
+        },
+        {
+          "x": 5368,
+          "y": 7640
+        },
+        {
+          "x": 5616,
+          "y": 7727
+        },
+        {
+          "x": 5863,
+          "y": 7726
+        },
+        {
+          "x": 6135,
+          "y": 7750
+        },
+        {
+          "x": 6384,
+          "y": 7839
+        },
+        {
+          "x": 6592,
+          "y": 7976
+        },
+        {
+          "x": 6645,
+          "y": 8166
+        }
+      ],
+      "texture": "Concrete",
+      "elevation": 0,
+      "coastline": {
+        "type": "Concrete",
+        "width": 26,
+        "edgeTypes": [
+          null,
+          null,
+          null,
+          null,
+          "Harbor",
+          "Harbor",
+          "Harbor",
+          "Harbor",
+          "Harbor",
+          "Harbor",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "terrain": null
+    },
+    {
+      "id": "ISL_0004",
+      "type": "island",
+      "name": "Gull Rock",
+      "layer": "LYR_TERRAIN",
+      "x": 2431.5,
+      "y": 2859.5,
+      "width": 1001,
+      "height": 875,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "islandType": "Uninhabited",
+      "polygon": [
+        {
+          "x": 2914,
+          "y": 2900
+        },
+        {
+          "x": 2929,
+          "y": 3048
+        },
+        {
+          "x": 2932,
+          "y": 3260
+        },
+        {
+          "x": 2697,
+          "y": 3297
+        },
+        {
+          "x": 2500,
+          "y": 3191
+        },
+        {
+          "x": 2326,
+          "y": 3250
+        },
+        {
+          "x": 2127,
+          "y": 3211
+        },
+        {
+          "x": 2013,
+          "y": 3068
+        },
+        {
+          "x": 1931,
+          "y": 2900
+        },
+        {
+          "x": 2040,
+          "y": 2741
+        },
+        {
+          "x": 2246,
+          "y": 2688
+        },
+        {
+          "x": 2332,
+          "y": 2562
+        },
+        {
+          "x": 2500,
+          "y": 2422
+        },
+        {
+          "x": 2696,
+          "y": 2505
+        },
+        {
+          "x": 2805,
+          "y": 2646
+        },
+        {
+          "x": 2895,
+          "y": 2764
+        }
+      ],
+      "texture": "Rock",
+      "elevation": 0,
+      "coastline": {
+        "type": "Rock",
+        "width": 26,
+        "edgeTypes": [
+          "Cliff",
+          "Cliff",
+          "Cliff",
+          "Cliff",
+          "Cliff",
+          "Cliff",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "terrain": {
+        "cellSize": 16,
+        "originX": 1904,
+        "originY": 2400,
+        "cols": 66,
+        "rows": 58,
+        "data": "103*0,1*3,64*0,4*3,61*0,7*3,57*0,12*3,53*0,15*3,50*0,18*3,47*0,20*3,45*0,22*3,42*0,25*3,40*0,27*3,39*0,27*3,38*0,29*3,36*0,31*3,35*0,32*3,33*0,33*3,32*0,35*3,31*0,36*3,27*0,40*3,23*0,43*3,19*0,48*3,14*0,53*3,13*0,54*3,11*0,55*3,10*0,56*3,10*0,56*3,9*0,57*3,8*0,59*3,7*0,59*3,6*0,27*3,1*1,2*3,1*1,1*3,1*1,1*3,2*1,1*3,1*1,22*3,5*0,27*3,1*1,1*3,6*1,1*3,5*1,20*3,5*0,27*3,11*1,1*3,3*1,1*3,1*1,17*3,5*0,26*3,3*1,1*3,7*1,1*3,4*1,1*3,1*1,17*3,6*0,25*3,13*1,1*3,2*1,1*3,2*1,16*3,6*0,23*3,19*1,1*3,1*1,16*3,7*0,22*3,1*1,1*3,17*1,19*3,6*0,22*3,15*1,1*3,1*1,1*3,1*1,19*3,7*0,23*3,1*1,2*3,6*1,1*3,3*1,1*3,2*1,1*3,1*1,18*3,7*0,24*3,1*1,1*3,3*1,1*3,3*1,2*3,2*1,1*3,1*1,20*3,8*0,58*3,8*0,58*3,9*0,57*3,9*0,57*3,10*0,56*3,11*0,55*3,12*0,54*3,13*0,53*3,13*0,53*3,14*0,52*3,15*0,51*3,16*0,20*3,5*0,25*3,20*0,13*3,10*0,23*3,25*0,5*3,15*0,21*3,47*0,19*3,49*0,12*3,56*0,4*3,145*0"
+      }
+    }
+  ],
+  "roads": [
+    {
+      "id": "RD_0001",
+      "type": "road",
+      "name": "Serim Avenue",
+      "layer": "LYR_INFRA",
+      "x": 5225,
+      "y": 4976.66015625,
+      "width": 52,
+      "height": 3070.48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Main Road",
+      "points": [
+        {
+          "id": "pmwbq84ok1",
+          "x": 3700,
+          "y": 5000,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84ok2",
+          "x": 4600,
+          "y": 4950,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84ok3",
+          "x": 5200,
+          "y": 5000,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84ok4",
+          "x": 5900,
+          "y": 5050,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84ok5",
+          "x": 6750,
+          "y": 4900,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Smooth",
+      "lanes": 4,
+      "direction": "Two-way",
+      "surface": "Asphalt",
+      "speedLimit": 60,
+      "islandId": "ISL_0001",
+      "connections": []
+    },
+    {
+      "id": "RD_0002",
+      "type": "road",
+      "name": "Harbor Street",
+      "layer": "LYR_INFRA",
+      "x": 5200,
+      "y": 4450,
+      "width": 40,
+      "height": 1100,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Secondary Road",
+      "points": [
+        {
+          "id": "pmwbq84ok6",
+          "x": 5200,
+          "y": 3900,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84ok7",
+          "x": 5200,
+          "y": 4500,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84ok3",
+          "x": 5200,
+          "y": 5000,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Straight",
+      "lanes": 2,
+      "direction": "Two-way",
+      "surface": "Asphalt",
+      "speedLimit": 50,
+      "islandId": "ISL_0001",
+      "connections": [
+        {
+          "pointId": "pmwbq84ok3",
+          "roadId": "RD_0001",
+          "targetPointId": "pmwbq84ok3"
+        }
+      ]
+    },
+    {
+      "id": "RD_0003",
+      "type": "road",
+      "name": "Market Road",
+      "layer": "LYR_INFRA",
+      "x": 5300,
+      "y": 5575,
+      "width": 40,
+      "height": 1172.79,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Secondary Road",
+      "points": [
+        {
+          "id": "pmwbq84ok8",
+          "x": 5200,
+          "y": 5000,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84ok9",
+          "x": 5250,
+          "y": 5600,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84oka",
+          "x": 5400,
+          "y": 6150,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Smooth",
+      "lanes": 2,
+      "direction": "Two-way",
+      "surface": "Asphalt",
+      "speedLimit": 50,
+      "islandId": "ISL_0001",
+      "connections": [
+        {
+          "pointId": "pmwbq84ok8",
+          "roadId": "RD_0001",
+          "targetPointId": "pmwbq84ok3"
+        }
+      ]
+    },
+    {
+      "id": "RD_0004",
+      "type": "road",
+      "name": "Elm Lane",
+      "layer": "LYR_INFRA",
+      "x": 4450,
+      "y": 5375,
+      "width": 30,
+      "height": 948.22,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Local Road",
+      "points": [
+        {
+          "id": "pmwbq84okb",
+          "x": 4600,
+          "y": 4950,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84okc",
+          "x": 4550,
+          "y": 5500,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84okd",
+          "x": 4300,
+          "y": 5800,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Smooth",
+      "lanes": 2,
+      "direction": "Two-way",
+      "surface": "Asphalt",
+      "speedLimit": 30,
+      "islandId": "ISL_0001",
+      "connections": [
+        {
+          "pointId": "pmwbq84okb",
+          "roadId": "RD_0001",
+          "targetPointId": "pmwbq84ok2"
+        }
+      ]
+    },
+    {
+      "id": "RD_0005",
+      "type": "road",
+      "name": "Night Alley",
+      "layer": "LYR_INFRA",
+      "x": 6100,
+      "y": 4700,
+      "width": 18,
+      "height": 882.89,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Alley",
+      "points": [
+        {
+          "id": "pmwbq84ole",
+          "x": 5900,
+          "y": 5050,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84olf",
+          "x": 5950,
+          "y": 4600,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84olg",
+          "x": 6300,
+          "y": 4350,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Straight",
+      "lanes": 1,
+      "direction": "Two-way",
+      "surface": "Concrete",
+      "speedLimit": 20,
+      "islandId": "ISL_0001",
+      "connections": [
+        {
+          "pointId": "pmwbq84ole",
+          "roadId": "RD_0001",
+          "targetPointId": "pmwbq84ok4"
+        }
+      ]
+    },
+    {
+      "id": "RD_0006",
+      "type": "road",
+      "name": "Haneul-ro",
+      "layer": "LYR_INFRA",
+      "x": 8500,
+      "y": 4297.308349609375,
+      "width": 30,
+      "height": 1429.27,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Local Road",
+      "points": [
+        {
+          "id": "pmwbq84olh",
+          "x": 7800,
+          "y": 4250,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84oli",
+          "x": 8400,
+          "y": 4200,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84olj",
+          "x": 9200,
+          "y": 4400,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Smooth",
+      "lanes": 2,
+      "direction": "Two-way",
+      "surface": "Asphalt",
+      "speedLimit": 30,
+      "islandId": "ISL_0002",
+      "connections": []
+    },
+    {
+      "id": "RD_0007",
+      "type": "road",
+      "name": "Port Road",
+      "layer": "LYR_INFRA",
+      "x": 5500,
+      "y": 8225,
+      "width": 52,
+      "height": 1620.17,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "roadType": "Main Road",
+      "points": [
+        {
+          "id": "pmwbq84olk",
+          "x": 4700,
+          "y": 8250,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84oll",
+          "x": 5500,
+          "y": 8150,
+          "hx": 0,
+          "hy": 0
+        },
+        {
+          "id": "pmwbq84olm",
+          "x": 6300,
+          "y": 8300,
+          "hx": 0,
+          "hy": 0
+        }
+      ],
+      "curve": "Straight",
+      "lanes": 4,
+      "direction": "Two-way",
+      "surface": "Asphalt",
+      "speedLimit": 60,
+      "islandId": "ISL_0003",
+      "connections": []
+    }
+  ],
+  "bridges": [
+    {
+      "id": "BR_0001",
+      "type": "bridge",
+      "name": "Haneul Suspension Bridge",
+      "layer": "LYR_INFRA",
+      "x": 7175,
+      "y": 4542,
+      "width": 56,
+      "height": 878.27,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "bridgeType": "Suspension Bridge",
+      "startIslandId": "ISL_0001",
+      "endIslandId": "ISL_0002",
+      "startPosition": {
+        "x": 6792,
+        "y": 4756
+      },
+      "endPosition": {
+        "x": 7558,
+        "y": 4328
+      },
+      "controlPoints": [
+        {
+          "x": 7250,
+          "y": 4520
+        }
+      ],
+      "lanes": 4,
+      "status": "connected"
+    },
+    {
+      "id": "BR_0002",
+      "type": "bridge",
+      "name": "Port Bridge",
+      "layer": "LYR_INFRA",
+      "x": 5457,
+      "y": 7063.5,
+      "width": 44,
+      "height": 1215.01,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "bridgeType": "Road Bridge",
+      "startIslandId": "ISL_0001",
+      "endIslandId": "ISL_0003",
+      "startPosition": {
+        "x": 5459,
+        "y": 6456
+      },
+      "endPosition": {
+        "x": 5455,
+        "y": 7671
+      },
+      "controlPoints": [],
+      "lanes": 2,
+      "status": "connected"
+    },
+    {
+      "id": "BR_0003",
+      "type": "bridge",
+      "name": "Gull Footbridge",
+      "layer": "LYR_INFRA",
+      "x": 3326.5,
+      "y": 3745,
+      "width": 16,
+      "height": 1328.71,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "bridgeType": "Pedestrian Bridge",
+      "startIslandId": "ISL_0001",
+      "endIslandId": "ISL_0004",
+      "startPosition": {
+        "x": 3792,
+        "y": 4219
+      },
+      "endPosition": {
+        "x": 2861,
+        "y": 3271
+      },
+      "controlPoints": [],
+      "lanes": 0,
+      "status": "connected"
+    }
+  ],
+  "buildings": [
+    {
+      "id": "BLD_0001",
+      "type": "building",
+      "name": "Serim City Hall",
+      "layer": "LYR_BUILDINGS",
+      "x": 5480,
+      "y": 4700,
+      "width": 180,
+      "height": 140,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Government",
+      "assetId": "AST_GOVERNMENT",
+      "islandId": "ISL_0001",
+      "owner": "City of Serim",
+      "address": "1 Serim Avenue",
+      "description": "",
+      "investigatable": true,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -90,
+            "y": -70
+          },
+          {
+            "x": 90,
+            "y": -70
+          },
+          {
+            "x": 90,
+            "y": 70
+          },
+          {
+            "x": -90,
+            "y": 70
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0002",
+      "type": "building",
+      "name": "Central Police Station",
+      "layer": "LYR_BUILDINGS",
+      "x": 4900,
+      "y": 4700,
+      "width": 140,
+      "height": 110,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Police",
+      "assetId": "AST_POLICE",
+      "islandId": "ISL_0001",
+      "owner": "Serim Police",
+      "address": "12 Serim Avenue",
+      "description": "",
+      "investigatable": true,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -70,
+            "y": -55
+          },
+          {
+            "x": 70,
+            "y": -55
+          },
+          {
+            "x": 70,
+            "y": 55
+          },
+          {
+            "x": -70,
+            "y": 55
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0003",
+      "type": "building",
+      "name": "Daewon Tower",
+      "layer": "LYR_BUILDINGS",
+      "x": 4850,
+      "y": 5280,
+      "width": 160,
+      "height": 160,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Office",
+      "assetId": "AST_OFFICE",
+      "islandId": "ISL_0001",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -80,
+            "y": -80
+          },
+          {
+            "x": 80,
+            "y": -80
+          },
+          {
+            "x": 80,
+            "y": 80
+          },
+          {
+            "x": -80,
+            "y": 80
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0004",
+      "type": "building",
+      "name": "Serim Finance Center",
+      "layer": "LYR_BUILDINGS",
+      "x": 5600,
+      "y": 5300,
+      "width": 160,
+      "height": 160,
+      "rotation": 8,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Office",
+      "assetId": "AST_OFFICE",
+      "islandId": "ISL_0001",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -80,
+            "y": -80
+          },
+          {
+            "x": 80,
+            "y": -80
+          },
+          {
+            "x": 80,
+            "y": 80
+          },
+          {
+            "x": -80,
+            "y": 80
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0005",
+      "type": "building",
+      "name": "Serim General Hospital",
+      "layer": "LYR_BUILDINGS",
+      "x": 5550,
+      "y": 4250,
+      "width": 180,
+      "height": 160,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Hospital",
+      "assetId": "AST_HOSPITAL",
+      "islandId": "ISL_0001",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -90,
+            "y": -80
+          },
+          {
+            "x": 90,
+            "y": -80
+          },
+          {
+            "x": 90,
+            "y": 80
+          },
+          {
+            "x": -90,
+            "y": 80
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0006",
+      "type": "building",
+      "name": "Bayfront Mall",
+      "layer": "LYR_BUILDINGS",
+      "x": 6200,
+      "y": 5400,
+      "width": 200,
+      "height": 140,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Commercial",
+      "assetId": "AST_COMMERCIAL",
+      "islandId": "ISL_0001",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -100,
+            "y": -70
+          },
+          {
+            "x": 100,
+            "y": -70
+          },
+          {
+            "x": 100,
+            "y": 70
+          },
+          {
+            "x": -100,
+            "y": 70
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0007",
+      "type": "building",
+      "name": "Harbor View Hotel",
+      "layer": "LYR_BUILDINGS",
+      "x": 4250,
+      "y": 4650,
+      "width": 150,
+      "height": 150,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Hotel",
+      "assetId": "AST_HOTEL",
+      "islandId": "ISL_0001",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -75,
+            "y": -75
+          },
+          {
+            "x": 75,
+            "y": -75
+          },
+          {
+            "x": 75,
+            "y": 75
+          },
+          {
+            "x": -75,
+            "y": 75
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0008",
+      "type": "building",
+      "name": "Serim High School",
+      "layer": "LYR_BUILDINGS",
+      "x": 4150,
+      "y": 5400,
+      "width": 200,
+      "height": 130,
+      "rotation": -6,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "School",
+      "assetId": "AST_SCHOOL",
+      "islandId": "ISL_0001",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -100,
+            "y": -65
+          },
+          {
+            "x": 100,
+            "y": -65
+          },
+          {
+            "x": 100,
+            "y": 65
+          },
+          {
+            "x": -100,
+            "y": 65
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0009",
+      "type": "building",
+      "name": "The Last Lantern (bar)",
+      "layer": "LYR_BUILDINGS",
+      "x": 6150,
+      "y": 4520,
+      "width": 80,
+      "height": 70,
+      "rotation": 20,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_HOUSE",
+      "islandId": "ISL_0001",
+      "owner": "",
+      "address": "",
+      "description": "Small bar at the end of Night Alley.",
+      "investigatable": true,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": 35
+          },
+          {
+            "x": -40,
+            "y": 35
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0010",
+      "type": "building",
+      "name": "Haneul Apartments 1",
+      "layer": "LYR_BUILDINGS",
+      "x": 8150,
+      "y": 3850,
+      "width": 140,
+      "height": 100,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_RESIDENTIAL",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": 50
+          },
+          {
+            "x": -70,
+            "y": 50
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0011",
+      "type": "building",
+      "name": "Haneul Apartments 2",
+      "layer": "LYR_BUILDINGS",
+      "x": 8480,
+      "y": 3850,
+      "width": 140,
+      "height": 100,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_RESIDENTIAL",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": 50
+          },
+          {
+            "x": -70,
+            "y": 50
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0012",
+      "type": "building",
+      "name": "Haneul Apartments 3",
+      "layer": "LYR_BUILDINGS",
+      "x": 8810,
+      "y": 3850,
+      "width": 140,
+      "height": 100,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_RESIDENTIAL",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": 50
+          },
+          {
+            "x": -70,
+            "y": 50
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0013",
+      "type": "building",
+      "name": "Haneul Apartments 4",
+      "layer": "LYR_BUILDINGS",
+      "x": 8150,
+      "y": 4610,
+      "width": 140,
+      "height": 100,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_RESIDENTIAL",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": 50
+          },
+          {
+            "x": -70,
+            "y": 50
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0014",
+      "type": "building",
+      "name": "Haneul Apartments 5",
+      "layer": "LYR_BUILDINGS",
+      "x": 8480,
+      "y": 4610,
+      "width": 140,
+      "height": 100,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_RESIDENTIAL",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": 50
+          },
+          {
+            "x": -70,
+            "y": 50
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0015",
+      "type": "building",
+      "name": "Haneul Apartments 6",
+      "layer": "LYR_BUILDINGS",
+      "x": 8810,
+      "y": 4610,
+      "width": 140,
+      "height": 100,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_RESIDENTIAL",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": -50
+          },
+          {
+            "x": 70,
+            "y": 50
+          },
+          {
+            "x": -70,
+            "y": 50
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0016",
+      "type": "building",
+      "name": "House",
+      "layer": "LYR_BUILDINGS",
+      "x": 8100,
+      "y": 4650,
+      "width": 80,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_HOUSE",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": 35
+          },
+          {
+            "x": -40,
+            "y": 35
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0017",
+      "type": "building",
+      "name": "House",
+      "layer": "LYR_BUILDINGS",
+      "x": 8240,
+      "y": 4770,
+      "width": 80,
+      "height": 70,
+      "rotation": 5,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_HOUSE",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": 35
+          },
+          {
+            "x": -40,
+            "y": 35
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0018",
+      "type": "building",
+      "name": "House",
+      "layer": "LYR_BUILDINGS",
+      "x": 8380,
+      "y": 4650,
+      "width": 80,
+      "height": 70,
+      "rotation": 10,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_HOUSE",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": 35
+          },
+          {
+            "x": -40,
+            "y": 35
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0019",
+      "type": "building",
+      "name": "House",
+      "layer": "LYR_BUILDINGS",
+      "x": 8520,
+      "y": 4770,
+      "width": 80,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_HOUSE",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": 35
+          },
+          {
+            "x": -40,
+            "y": 35
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0020",
+      "type": "building",
+      "name": "House",
+      "layer": "LYR_BUILDINGS",
+      "x": 8660,
+      "y": 4650,
+      "width": 80,
+      "height": 70,
+      "rotation": 5,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_HOUSE",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": 35
+          },
+          {
+            "x": -40,
+            "y": 35
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0021",
+      "type": "building",
+      "name": "House",
+      "layer": "LYR_BUILDINGS",
+      "x": 8800,
+      "y": 4770,
+      "width": 80,
+      "height": 70,
+      "rotation": 10,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_HOUSE",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": 35
+          },
+          {
+            "x": -40,
+            "y": 35
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0022",
+      "type": "building",
+      "name": "House",
+      "layer": "LYR_BUILDINGS",
+      "x": 8940,
+      "y": 4650,
+      "width": 80,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_HOUSE",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": 35
+          },
+          {
+            "x": -40,
+            "y": 35
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0023",
+      "type": "building",
+      "name": "House",
+      "layer": "LYR_BUILDINGS",
+      "x": 9080,
+      "y": 4770,
+      "width": 80,
+      "height": 70,
+      "rotation": 5,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Residential",
+      "assetId": "AST_HOUSE",
+      "islandId": "ISL_0002",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": -35
+          },
+          {
+            "x": 40,
+            "y": 35
+          },
+          {
+            "x": -40,
+            "y": 35
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0024",
+      "type": "building",
+      "name": "Serim Shipworks",
+      "layer": "LYR_BUILDINGS",
+      "x": 5000,
+      "y": 8500,
+      "width": 220,
+      "height": 150,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Industrial",
+      "assetId": "AST_INDUSTRIAL",
+      "islandId": "ISL_0003",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -110,
+            "y": -75
+          },
+          {
+            "x": 110,
+            "y": -75
+          },
+          {
+            "x": 110,
+            "y": 75
+          },
+          {
+            "x": -110,
+            "y": 75
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0025",
+      "type": "building",
+      "name": "Warehouse 7",
+      "layer": "LYR_BUILDINGS",
+      "x": 5800,
+      "y": 8500,
+      "width": 200,
+      "height": 120,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Warehouse",
+      "assetId": "AST_WAREHOUSE",
+      "islandId": "ISL_0003",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": true,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -100,
+            "y": -60
+          },
+          {
+            "x": 100,
+            "y": -60
+          },
+          {
+            "x": 100,
+            "y": 60
+          },
+          {
+            "x": -100,
+            "y": 60
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLD_0026",
+      "type": "building",
+      "name": "Warehouse 9",
+      "layer": "LYR_BUILDINGS",
+      "x": 6150,
+      "y": 7950,
+      "width": 200,
+      "height": 120,
+      "rotation": 90,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "buildingType": "Warehouse",
+      "assetId": "AST_WAREHOUSE",
+      "islandId": "ISL_0003",
+      "owner": "",
+      "address": "",
+      "description": "",
+      "investigatable": false,
+      "hitbox": {
+        "type": "Rectangle",
+        "points": [
+          {
+            "x": -100,
+            "y": -60
+          },
+          {
+            "x": 100,
+            "y": -60
+          },
+          {
+            "x": 100,
+            "y": 60
+          },
+          {
+            "x": -100,
+            "y": 60
+          }
+        ]
+      }
+    }
+  ],
+  "facilities": [
+    {
+      "id": "OBJ_0058",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 3900,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0059",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 3900,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0060",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 4120,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0061",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 4120,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0062",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 4340,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0063",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 4340,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0064",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 4560,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0065",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 4560,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0066",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 4780,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0067",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 4780,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0068",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 5000,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0069",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 5000,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0070",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 5220,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0071",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 5220,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0072",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 5440,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0073",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 5440,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0074",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 5660,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0075",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 5660,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0076",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 5880,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0077",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 5880,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0078",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 6100,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0079",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 6100,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0080",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 6320,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0081",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 6320,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0082",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 6540,
+      "y": 4930,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0083",
+      "type": "prop",
+      "name": "Street Light",
+      "layer": "LYR_FACILITIES",
+      "x": 6540,
+      "y": 5085,
+      "width": 16,
+      "height": 16,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_STREETLIGHT",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0084",
+      "type": "prop",
+      "name": "Fountain",
+      "layer": "LYR_FACILITIES",
+      "x": 5200,
+      "y": 4790,
+      "width": 64,
+      "height": 64,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_FOUNTAIN",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0085",
+      "type": "prop",
+      "name": "Helipad",
+      "layer": "LYR_FACILITIES",
+      "x": 5780,
+      "y": 4180,
+      "width": 90,
+      "height": 90,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_HELIPAD",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0086",
+      "type": "prop",
+      "name": "Lighthouse",
+      "layer": "LYR_FACILITIES",
+      "x": 2350,
+      "y": 2700,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Facilities",
+      "assetId": "AST_LIGHTHOUSE",
+      "islandId": "ISL_0004",
+      "description": ""
+    }
+  ],
+  "objects": [
+    {
+      "id": "OBJ_0001",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 5638.154171396191,
+      "y": 3987.0322273923384,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0002",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 6244.661765633768,
+      "y": 3894.7643031317407,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0003",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 5767.533567517561,
+      "y": 3826.675572271157,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0004",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 6362.497386487665,
+      "y": 4231.69431726606,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0005",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4093.8078297710117,
+      "y": 5420.521967877188,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0006",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4336.627193295049,
+      "y": 4667.824402514681,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0007",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 4867.855574672907,
+      "y": 6017.207428642741,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0008",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 6732.225114975334,
+      "y": 4314.552352684133,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0009",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 6546.091284273278,
+      "y": 4349.976968904935,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0010",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 4224.362054815853,
+      "y": 5220.41964551473,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0011",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 3965.36101844661,
+      "y": 4980.11693207558,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0012",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4559.769543455699,
+      "y": 5797.626151142294,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0013",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 4391.247420563593,
+      "y": 5105.758420848993,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0014",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4087.458186491819,
+      "y": 4607.100481174049,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0015",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 4661.136347019241,
+      "y": 4031.7110223990967,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0016",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 5854.859342709984,
+      "y": 5633.441373550744,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0017",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 5142.608338634119,
+      "y": 4395.172333899114,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0018",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4613.648687269211,
+      "y": 4377.094988317317,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0019",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 4848.789008333151,
+      "y": 5761.3671935734965,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0020",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4660.33550506489,
+      "y": 3842.8014073919517,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0021",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 6124.4996662479825,
+      "y": 3920.652712993932,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0022",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4221.738026963303,
+      "y": 4346.211574362788,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0023",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 5369.188400655229,
+      "y": 4345.06369060377,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0024",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 3817.510929114661,
+      "y": 4968.153117567444,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0025",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 3736.822049214339,
+      "y": 5085.968497103051,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0026",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 5544.884008304109,
+      "y": 3920.3919665146545,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0027",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4013.2236962795478,
+      "y": 4418.681268970186,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0028",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 5592.139593690764,
+      "y": 5538.299766311701,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0029",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 4255.744170496002,
+      "y": 4812.57818398306,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0030",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 5359.161180173197,
+      "y": 4179.613099228231,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0031",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 6241.536873105482,
+      "y": 4098.350704366668,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0032",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 5703.903787586748,
+      "y": 6062.52226481449,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0033",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 4541.095491862945,
+      "y": 5539.600715916232,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0034",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 6535.526008331706,
+      "y": 4807.727756544694,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0035",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4213.4007850786675,
+      "y": 5637.830273283487,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0036",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4268.435277294773,
+      "y": 3939.4377236621804,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0037",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 5253.529012299636,
+      "y": 4208.817008890973,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0038",
+      "type": "prop",
+      "name": "Oak Tree",
+      "layer": "LYR_ENV",
+      "x": 4284.549088715155,
+      "y": 4102.949299200391,
+      "width": 56,
+      "height": 56,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_OAK",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0039",
+      "type": "prop",
+      "name": "Pine Tree",
+      "layer": "LYR_ENV",
+      "x": 5444.721100008786,
+      "y": 6001.847287082903,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PINE",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0040",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 3750,
+      "y": 6000,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0041",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 3795,
+      "y": 6050.488259088474,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0042",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 3840,
+      "y": 6054.557845609541,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0043",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 3885,
+      "y": 6008.467200483592,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0044",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 3930,
+      "y": 5954.591850281524,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0045",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 3975,
+      "y": 5942.464543520212,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0046",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4020,
+      "y": 5983.235070108064,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0047",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4065,
+      "y": 6039.4191959231275,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0048",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4110,
+      "y": 6059.361494797403,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0049",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4155,
+      "y": 6024.727109114506,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0050",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4200,
+      "y": 5967.358733346638,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0051",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4245,
+      "y": 5940.000587606958,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0052",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4290,
+      "y": 5967.8056249199735,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0053",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4335,
+      "y": 6025.210022209599,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0054",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4380,
+      "y": 6059.436441341692,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0055",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4425,
+      "y": 6039.017270409427,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0056",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4470,
+      "y": 5982.725801000096,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0057",
+      "type": "prop",
+      "name": "Palm Tree",
+      "layer": "LYR_ENV",
+      "x": 4515,
+      "y": 5942.316150487227,
+      "width": 52,
+      "height": 52,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Trees",
+      "assetId": "AST_PALM",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0087",
+      "type": "prop",
+      "name": "Parking Lot",
+      "layer": "LYR_INFRA",
+      "x": 6250,
+      "y": 5750,
+      "width": 160,
+      "height": 110,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Roads",
+      "assetId": "AST_PARKING",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0088",
+      "type": "prop",
+      "name": "Car",
+      "layer": "LYR_ENV",
+      "x": 5000,
+      "y": 4985,
+      "width": 20,
+      "height": 40,
+      "rotation": 90,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Vehicles",
+      "assetId": "AST_CAR",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0089",
+      "type": "prop",
+      "name": "Car",
+      "layer": "LYR_ENV",
+      "x": 5600,
+      "y": 5020,
+      "width": 20,
+      "height": 40,
+      "rotation": -90,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Vehicles",
+      "assetId": "AST_CAR",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0090",
+      "type": "prop",
+      "name": "Bus",
+      "layer": "LYR_ENV",
+      "x": 4400,
+      "y": 4960,
+      "width": 26,
+      "height": 72,
+      "rotation": 90,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Vehicles",
+      "assetId": "AST_BUS",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0091",
+      "type": "prop",
+      "name": "Boat",
+      "layer": "LYR_ENV",
+      "x": 4500,
+      "y": 7700,
+      "width": 36,
+      "height": 90,
+      "rotation": 30,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Vehicles",
+      "assetId": "AST_BOAT",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0092",
+      "type": "prop",
+      "name": "Boat",
+      "layer": "LYR_ENV",
+      "x": 6600,
+      "y": 7900,
+      "width": 36,
+      "height": 90,
+      "rotation": -60,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Vehicles",
+      "assetId": "AST_BOAT",
+      "islandId": null,
+      "description": ""
+    },
+    {
+      "id": "OBJ_0093",
+      "type": "prop",
+      "name": "Cargo Container",
+      "layer": "LYR_ENV",
+      "x": 5200,
+      "y": 8050,
+      "width": 30,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Miscellaneous",
+      "assetId": "AST_CRATE",
+      "islandId": "ISL_0003",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0094",
+      "type": "prop",
+      "name": "Cargo Container",
+      "layer": "LYR_ENV",
+      "x": 5240,
+      "y": 8050,
+      "width": 30,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Miscellaneous",
+      "assetId": "AST_CRATE",
+      "islandId": "ISL_0003",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0095",
+      "type": "prop",
+      "name": "Cargo Container",
+      "layer": "LYR_ENV",
+      "x": 5280,
+      "y": 8050,
+      "width": 30,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Miscellaneous",
+      "assetId": "AST_CRATE",
+      "islandId": "ISL_0003",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0096",
+      "type": "prop",
+      "name": "Cargo Container",
+      "layer": "LYR_ENV",
+      "x": 5320,
+      "y": 8050,
+      "width": 30,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Miscellaneous",
+      "assetId": "AST_CRATE",
+      "islandId": "ISL_0003",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0097",
+      "type": "prop",
+      "name": "Cargo Container",
+      "layer": "LYR_ENV",
+      "x": 5200,
+      "y": 8130,
+      "width": 30,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Miscellaneous",
+      "assetId": "AST_CRATE",
+      "islandId": "ISL_0003",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0098",
+      "type": "prop",
+      "name": "Cargo Container",
+      "layer": "LYR_ENV",
+      "x": 5240,
+      "y": 8130,
+      "width": 30,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Miscellaneous",
+      "assetId": "AST_CRATE",
+      "islandId": "ISL_0003",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0099",
+      "type": "prop",
+      "name": "Cargo Container",
+      "layer": "LYR_ENV",
+      "x": 5280,
+      "y": 8130,
+      "width": 30,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Miscellaneous",
+      "assetId": "AST_CRATE",
+      "islandId": "ISL_0003",
+      "description": ""
+    },
+    {
+      "id": "OBJ_0100",
+      "type": "prop",
+      "name": "Cargo Container",
+      "layer": "LYR_ENV",
+      "x": 5320,
+      "y": 8130,
+      "width": 30,
+      "height": 70,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "category": "Miscellaneous",
+      "assetId": "AST_CRATE",
+      "islandId": "ISL_0003",
+      "description": ""
+    },
+    {
+      "id": "AREA_0001",
+      "type": "area",
+      "name": "Crime Scene — Night Alley",
+      "layer": "LYR_INVESTIGATION",
+      "x": 6200,
+      "y": 4525,
+      "width": 360,
+      "height": 390,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "areaType": "Investigation",
+      "polygon": [
+        {
+          "x": 6020,
+          "y": 4380
+        },
+        {
+          "x": 6330,
+          "y": 4330
+        },
+        {
+          "x": 6380,
+          "y": 4650
+        },
+        {
+          "x": 6080,
+          "y": 4720
+        }
+      ],
+      "color": "#E8A33D",
+      "islandId": "ISL_0001",
+      "description": ""
+    },
+    {
+      "id": "AREA_0002",
+      "type": "area",
+      "name": "Restricted — Gull Rock",
+      "layer": "LYR_INVESTIGATION",
+      "x": 2525,
+      "y": 2900,
+      "width": 750,
+      "height": 700,
+      "rotation": 0,
+      "visible": true,
+      "locked": false,
+      "groupId": null,
+      "areaType": "Restricted",
+      "polygon": [
+        {
+          "x": 2150,
+          "y": 2600
+        },
+        {
+          "x": 2800,
+          "y": 2550
+        },
+        {
+          "x": 2900,
+          "y": 3150
+        },
+        {
+          "x": 2250,
+          "y": 3250
+        }
+      ],
+      "color": "#E0524D",
+      "islandId": "ISL_0004",
+      "description": ""
+    }
+  ],
+  "routes": [],
+  "metadata": {
+    "description": "Sample archipelago for WORLD BUILDER 1.0",
+    "author": "WORLD BUILDER sample generator"
+  }
+}
