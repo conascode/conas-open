@@ -47,6 +47,7 @@ export function buildMenus(editor, root, actions) {
       { label: 'Export JSON', run: actions.exportJSON },
       { label: 'Export ZIP Package', run: actions.exportZip },
       { label: 'Import ZIP Package…', run: actions.importZip },
+      { label: 'Import OpenStreetMap…', run: actions.importOsm },
       'sep',
       { label: 'Recover Autosave…', run: actions.recover },
       { label: 'Project Settings', run: () => editor.selection.clear() },
@@ -180,7 +181,15 @@ export function buildStatusBar(editor, root) {
   const objs = h('span', { class: 'status-item mono', title: 'Rendered (in view) / total objects' }, '');
   const fps = h('span', { class: 'status-item mono', title: 'Frames per second' }, '');
   const snap = h('button', { class: 'status-item link', title: 'Toggle snap to grid (Shift+G)', onclick: () => editor.setSetting('snapToGrid', !editor.settings.snapToGrid) }, '');
-  root.replaceChildren(hintEl, h('span', { class: 'spacer' }), snap, sel, objs, coords, zoom, fps);
+  const attribution = h('span', { class: 'status-item attribution', title: 'Map data source' });
+  root.replaceChildren(hintEl, h('span', { class: 'spacer' }), attribution, snap, sel, objs, coords, zoom, fps);
+  const syncAttribution = () => {
+    const a = editor.doc.data?.metadata?.attribution;
+    attribution.textContent = a || '';
+    attribution.hidden = !a;
+  };
+  editor.on('project', syncAttribution);
+  syncAttribution();
   const updateHint = () => { hintEl.textContent = editor.tools.active?.hint || ''; };
   editor.on('hint', updateHint);
   editor.tools.on('change', updateHint);

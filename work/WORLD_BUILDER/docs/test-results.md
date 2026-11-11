@@ -2,7 +2,7 @@
 
 - 실행일: 2026-11-11
 - 환경: Linux 클라우드 샌드박스, Node 22, Chromium(Playwright, headless). **GPU 없음 → WebGL은 SwiftShader(소프트웨어 렌더링)**
-- 결과 요약: **단위 테스트 39/39, 브라우저 E2E 100/100 통과** (Navigator 추가 후 재실행)
+- 결과 요약: **단위 테스트 50/50, 브라우저 E2E 130/130 통과** (OpenStreetMap 가져오기 추가 후 재실행)
 
 ## 1. 단위 테스트 (Node, `node --test tests/*.test.js`)
 
@@ -80,6 +80,20 @@
 | 도로 끝을 다른 도로 중간에 놓기 → 교차점 삽입(T자), 교차점 이동 시 두 도로 함께 이동, Undo 한 번에 복원 | PASS |
 | 도로가 없는 곳에 놓기 → 이동만 | PASS |
 
+### OpenStreetMap 가져오기 (`osm-import.cjs`) 9/9 · 단위 `osm.test.js` 10/10
+테스트 데이터: `tests/fixtures/coastal-town.osm` — openstreetmap.org Export 와 같은 XML 형식의 합성 해안 마을(이 테스트 환경에서는 OSM 서버 접속이 막혀 있어 실제 다운로드 파일로는 검증하지 못했습니다).
+
+| 검사 | 결과 |
+|---|---|
+| XML/Overpass JSON/GeoJSON 파싱, 엔티티, 잘못된 파일 오류 | PASS |
+| 열린 해안선(2개 way로 나뉨) → 북쪽 육지/남쪽 바다, 닫힌 해안선 → 이름 있는 섬 | PASS |
+| 도로 종류·이름·제한속도·차선·일방통행(oneway=-1 반전)·주차 통로, 공유 노드 → 교차점 4개 | PASS |
+| 건물 종류·이미지·주소 이름·로컬 좌표 Hitbox(꼭짓점이 OSM 외곽선과 0.5px 이내) | PASS |
+| 호수·공원(multipolygon)·해변·상업지·개울 → 지형, 나무 3그루 | PASS |
+| 해안선 없는 영역 = 전체 육지, 항목 끄기, 큰 영역 축척 자동 조정 | PASS |
+| 편집기 메뉴 → 대화상자 → 가져오기 → 편집·Undo 가능, 상태바 출처 표시 | PASS |
+| Navigator: 가져온 지도의 축척 사용, 본토 → 다리 → 섬 경로 | PASS |
+
 ### 성능 (`perf.cjs`) 4/4
 | 검사 | 결과 |
 |---|---|
@@ -127,5 +141,5 @@ python3 -m http.server 8765
 다른 터미널에서 (Playwright + Chromium 필요):
 
 ```bash
-node tests/e2e/phase1.cjs && node tests/e2e/phase2.cjs && node tests/e2e/phase3.cjs && node tests/e2e/perf.cjs && node tests/e2e/navigator.cjs && node tests/e2e/road-width.cjs && node tests/e2e/road-connect.cjs
+node tests/e2e/phase1.cjs && node tests/e2e/phase2.cjs && node tests/e2e/phase3.cjs && node tests/e2e/perf.cjs && node tests/e2e/navigator.cjs && node tests/e2e/road-width.cjs && node tests/e2e/road-connect.cjs && node tests/e2e/osm-import.cjs
 ```

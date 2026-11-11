@@ -181,5 +181,43 @@ Polygon/Freehand로 구역을 그립니다. 구역 유형(Zone, Investigation, R
 - 도로 끝이 다른 도로 바로 옆(도로 폭/2 + 12px 이내)에 있으면 자동으로 이어집니다. 다리 끝은 800px 안의 섬 도로와 자동으로 이어지며, 이런 "자동 연결"은 Show road network 에서 주황 점선으로 보입니다.
 - **Metres per map pixel**(기본 0.5)로 거리·시간 환산 비율을 바꿉니다.
 
-## 12. 아직 없는 기능
+## 12. 실제 지도 불러오기 (OpenStreetMap)
+
+**File ▸ Import OpenStreetMap…** 으로 실제 지역의 지도 데이터를 WORLD BUILDER 지도로 바꿉니다. 결과는 새 프로젝트로 열립니다.
+
+### 파일 받기
+1. https://www.openstreetmap.org 에서 원하는 지역으로 이동 → 상단 **Export(내보내기)**.
+2. "Manually select a different area(다른 영역 직접 선택)"로 상자를 그리고 **Export** → `map.osm` 이 내려받아집니다. 2 × 2 km 이하가 적당합니다(openstreetmap.org 는 큰 영역 내보내기를 거부합니다).
+3. 더 큰 영역은 https://overpass-turbo.eu 에서 GeoJSON 또는 raw OSM data 로 내보내면 됩니다.
+
+### 가져오기
+1. File ▸ Import OpenStreetMap… → 파일 선택(`.osm`, `.geojson`, Overpass `.json`).
+2. 영역 크기와 발견된 도로·건물·해안선 수가 표시됩니다.
+3. 프로젝트 이름, **축척(1픽셀 = 몇 m, 기본 0.5)** — 옆에 만들어질 지도 크기가 표시됩니다.
+4. 가져올 항목: 도로 / 보행로·골목·서비스 도로 / 건물 / 물·공원·해변·토지 이용(지형) / 나무.
+5. **Import map**.
+
+### 변환 규칙
+| OSM | WORLD BUILDER |
+|---|---|
+| 해안선(natural=coastline) | 섬. 육지는 해안선 진행 방향의 왼쪽. 닫힌 해안선 = 섬(place=island 이름 사용). 해안선이 없으면 영역 전체가 육지 |
+| 내보낸 영역의 경계 | 육지가 영역 밖으로 이어지는 곳은 월드 끝까지 육지(가장자리는 Concrete 경계선) |
+| highway=motorway/trunk · primary · secondary/tertiary · residential 등 · service · footway/path 등 | Highway · Main Road · Secondary Road · Local Road · Alley(주차 통로 = Parking Road) · Pedestrian Road |
+| oneway / junction=roundabout · lanes · maxspeed · surface · name | 일방통행(oneway=-1 은 방향 반전) · 차선 수/폭 · 제한속도(mph 변환) · 노면 · 이름 |
+| 도로가 공유하는 노드 | 연결된 교차점(Navigator 길찾기에 그대로 사용) |
+| building=* (+ amenity, shop, office, tourism) | 건물: 실제 외곽선의 최소 사각형 크기·회전, 외곽선 = Hitbox, 종류별 이미지, 이름 또는 주소 이름, 주소, 경찰·병원·관공서·호텔은 Investigatable |
+| natural=water, riverbank, reservoir | Water 지형 |
+| waterway=river/canal/stream | 폭(강 30 m, 운하 15 m, 개울 4 m)으로 Water 칠하기 |
+| park, garden, forest, wood, grass… | Grass |
+| residential, commercial, industrial, retail, railway, parking… | Concrete |
+| beach, sand | Sand · bare_rock, scree, quarry → Rock · farmland, orchard… → Soil |
+| natural=tree | 나무(Oak Tree) |
+
+- 다각형 관계(multipolygon)의 바깥 고리도 처리합니다(구멍은 무시).
+- 다리(bridge=yes) 도로는 도로로 들어옵니다(물 위를 지나는 도로). 필요하면 Bridge 도구로 다리 객체를 추가하세요.
+- 영역이 너무 커서 200,000 px 를 넘으면 축척이 자동으로 커지고 경고가 표시됩니다. 건물은 최대 8,000개, 나무는 5,000개까지 가져옵니다.
+- 프로젝트 metadata 에 출처(`source`), 저작권 표시(`attribution`), 라이선스, 축척(`metersPerPixel`), 위경도 범위(`bounds`)가 저장되고 상태바에 "© OpenStreetMap contributors" 가 표시됩니다. Navigator 는 이 축척을 자동으로 사용합니다.
+- **게임에 사용할 때는 "© OpenStreetMap contributors" 출처를 표시해야 합니다(ODbL 1.0).**
+
+## 13. 아직 없는 기능
 PHASE 4(인물, 이동 경로, 건물 출입 기록, 사건, 증거, 시간별 경로 재생)는 구현되지 않았습니다. Characters / Routes / Investigation 레이어와 JSON의 `routes` 배열은 이를 위해 비워 둔 자리입니다.

@@ -35,7 +35,7 @@
 | `facilities` | Facilities 카테고리 에셋으로 만든 객체 |
 | `objects` | 그 외 에셋 객체(나무, 차량, 기타)와 영역(Area) |
 | `routes` | PHASE 4(이동 경로)용으로 예약. 현재 편집기는 비워 두며 내용은 그대로 보존합니다 |
-| `metadata` | 자유 형식 키-값 |
+| `metadata` | 자유 형식 키-값. OpenStreetMap 에서 가져온 지도는 `source`, `attribution`, `license`, `metersPerPixel`, `bounds{minlat,minlon,maxlat,maxlon}`, `importedAt` 을 가집니다 |
 
 ## 공통 객체 필드 (Base)
 

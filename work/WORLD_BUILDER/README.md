@@ -55,7 +55,7 @@ node --test tests/*.test.js
 node tests/e2e/phase1.cjs
 ```
 
-`phase2.cjs`, `phase3.cjs`, `perf.cjs`, `navigator.cjs` 도 같은 방식입니다. 결과는 [docs/test-results.md](docs/test-results.md).
+`phase2.cjs`, `phase3.cjs`, `perf.cjs`, `navigator.cjs`, `road-width.cjs`, `road-connect.cjs`, `osm-import.cjs` 도 같은 방식입니다. 결과는 [docs/test-results.md](docs/test-results.md).
 
 ## 폴더 구조
 
@@ -71,15 +71,15 @@ WORLD_BUILDER/
 │  ├─ tools/      select · island · coastline · terrain · road · bridge · place · area · pan
 │  ├─ objects/    shapes(경계/히트/변형) · terrain · road · bridge
 │  ├─ panels/     inspector · layers/hierarchy · asset-library · dialogs · chrome(메뉴/툴바/상태바)
-│  ├─ data/       constants · defaults(팩토리) · schema(Zod) · serialize · migrations · builtin-assets
+│  ├─ data/       constants · defaults(팩토리) · schema(Zod) · serialize · migrations · builtin-assets · osm-import
 │  ├─ storage/    idb · asset-store · zip · project-manager
 │  └─ utils/      geometry · id · rle · dom · events · thumbnail
 ├─ assets/        terrain/ buildings/ roads/ bridges/ objects/  (샘플 SVG 에셋)
 ├─ styles/        main.css · layout.css · panels.css · components.css · navigator.css
 ├─ samples/       serim-city.world.json (샘플 프로젝트)
 ├─ docs/          architecture.md · data-schema.md · user-guide.md · test-results.md · screenshot.jpg
-├─ tests/         geometry · project · serialization · nav (.test.js) + e2e/ (Playwright)
-├─ scripts/       generate-assets.mjs · generate-sample.mjs
+├─ tests/         geometry · project · serialization · nav · osm (.test.js) + e2e/ (Playwright) + fixtures/
+├─ scripts/       generate-assets.mjs · generate-sample.mjs · generate-osm-fixture.mjs
 └─ lib/           pixi.min.js · zod.js · jszip.min.js · lucide.min.js
 ```
 
@@ -96,6 +96,7 @@ WORLD_BUILDER/
 | PHASE 2 — World Construction (섬, 해안선, 지형, 도로, 다리, 건물) | 완료 |
 | PHASE 3 — Asset Management (에셋 등록/라이브러리, 레이어, Inspector, ZIP, 불러오기, 자동 저장/복구) | 완료 |
 | Navigator — 길찾기(차량/도보, 최단 시간/거리, 경유지), GPS 주행 시뮬레이션, GPS 기록 내보내기 | 완료 |
+| OpenStreetMap 가져오기 — 실제 지역의 해안선·도로·교차로·건물·물·공원을 지도로 변환 (File ▸ Import OpenStreetMap…) | 완료 |
 | PHASE 4 — Investigation Expansion (인물, 이동 경로, 사건, 증거, 시간별 재생) | **미구현** — `routes` 배열과 Characters / Routes / Investigation 레이어만 예약되어 있습니다 |
 
 ## 라이선스 참고
