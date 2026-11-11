@@ -73,6 +73,13 @@
 | Undo 단계별 복원 | PASS |
 | 여러 도로 동시 변경, 다리 Deck width, Inspector 입력 | PASS |
 
+### 기존 도로 끝 연결 (`road-connect.cjs`) 7/7
+| 검사 | 결과 |
+|---|---|
+| 도로 끝을 다른 도로의 점에 놓기 → 교차로, Undo | PASS |
+| 도로 끝을 다른 도로 중간에 놓기 → 교차점 삽입(T자), 교차점 이동 시 두 도로 함께 이동, Undo 한 번에 복원 | PASS |
+| 도로가 없는 곳에 놓기 → 이동만 | PASS |
+
 ### 성능 (`perf.cjs`) 4/4
 | 검사 | 결과 |
 |---|---|
@@ -120,5 +127,5 @@ python3 -m http.server 8765
 다른 터미널에서 (Playwright + Chromium 필요):
 
 ```bash
-node tests/e2e/phase1.cjs && node tests/e2e/phase2.cjs && node tests/e2e/phase3.cjs && node tests/e2e/perf.cjs && node tests/e2e/navigator.cjs && node tests/e2e/road-width.cjs
+node tests/e2e/phase1.cjs && node tests/e2e/phase2.cjs && node tests/e2e/phase3.cjs && node tests/e2e/perf.cjs && node tests/e2e/navigator.cjs && node tests/e2e/road-width.cjs && node tests/e2e/road-connect.cjs
 ```
