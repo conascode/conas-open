@@ -4,11 +4,12 @@
 
 | | |
 |---|---|
-| Final film | `output/CONAS_FINANCIAL_VELOCITY_4K60.mp4` (see "Delivery" below) |
+| Final film | `output/CONAS_FINANCIAL_VELOCITY_4K60.mp4` (82.5 MB) |
 | Duration | 15.000 s (900 frames) |
 | Resolution / rate | 3840 × 2160 (16:9), 60 fps |
-| Video | H.264 High @ L5.2, CRF 14, yuv420p, BT.709 |
-| Audio | AAC 320 kbps, 48 kHz stereo, fully synthesized |
+| Video | H.264 High @ L5.2, two-pass 44 Mb/s, yuv420p, BT.709 |
+| Audio | AAC 320 kbps, 48 kHz stereo, fully synthesized; −18.8 LUFS integrated, peak −1 dBFS |
+| Master | `output/CONAS_FINANCIAL_VELOCITY_4K60_master.mp4`, CRF 14 (855 MB): produced by `tools/encode.sh`, not committed because GitHub limits files to 100 MB |
 
 ## Sequence
 
@@ -44,7 +45,7 @@ tools/stills.cjs      quick still frames for review
 
 **Look.** ACES filmic tone mapping, PMREM room environment for metal reflections, key directional light + red rim light + camera-following red point lights, exponential fog for depth, restrained bloom (strength 0.34, threshold 0.9), vignette, speed-dependent chromatic aberration, fine grain. Palette #050505 / #F5F5F5 / #E5242B with silver and charcoal.
 
-**Motion blur and anti-aliasing.** Each output frame averages 2 sub-frames (3 in the fastest tunnel section, 3.0–6.8 s) spread over a 180° shutter (1/120 s). Sub-frames never cross a hard cut. Each sub-frame also gets a sub-pixel (Halton) camera jitter, so the same accumulation anti-aliases the image.
+**Motion blur and anti-aliasing.** Each output frame averages 2–4 sub-frames (4 in the tunnel, where the camera is fastest) spread over a 180° shutter (1/120 s). Sub-frames never cross a hard cut. Each sub-frame also gets a sub-pixel (Halton) camera jitter, so the same accumulation anti-aliases the image.
 
 **Object counts** (from `FILM.stats()`): ~1,600 meshes, ~5,100 instanced elements (ring teeth, candlesticks, histogram bars), ~770 text planes, ~220 line objects, 6,600 particles; ~110 data panels (42 in the universe, 38 in the tunnel, 36 in the swarm, 14 in the core); ~35 rings; ~25 floating chart objects; 15+ large 3D type objects.
 
@@ -84,7 +85,9 @@ No stock footage, images or audio samples are used.
 | MSAA | off (replaced by jittered accumulation) |
 | Frame capture | JPEG quality 95 (intermediate) |
 | Workers | 3 in parallel (`--from k --step 3`) |
-| Encode | `tools/encode.sh`: x264 preset slow, CRF 14, High@5.2, yuv420p, BT.709, GOP 60, faststart; AAC 320k 48 kHz |
+| Samples per frame (final) | 4 in the tunnel (3.0–6.8 s); 3 in scene 1, the collision, the push-in and the letter flight; 2 elsewhere |
+| Render time | ≈ 60 min for 900 frames (3 workers, ~12 s per frame each, CPU-only SwiftShader) |
+| Encode | `tools/encode.sh`: master x264 CRF 14; delivery x264 two-pass 44 Mb/s (max 60), preset slow, High@5.2, yuv420p, BT.709, GOP 60, faststart; AAC 320k 48 kHz |
 
 ### Reproduce
 
@@ -95,7 +98,21 @@ node tools/render.cjs --out frames --w 3840 --h 2160 --blur 2 --from 0 --step 3 
 node tools/render.cjs --out frames --w 3840 --h 2160 --blur 2 --from 1 --step 3 &
 node tools/render.cjs --out frames --w 3840 --h 2160 --blur 2 --from 2 --step 3 &
 wait
-tools/encode.sh frames output/CONAS_FINANCIAL_VELOCITY_4K60.mp4
+tools/encode.sh frames
 ```
 
 Real-time preview in a browser: `http://localhost:8790/?preview=1&w=1280&h=720` (lower resolution recommended).
+
+## Quality control (final render)
+
+| Check | Result |
+|---|---|
+| Duration | 15.000 s, exactly 900 frames at 60 fps |
+| Wordmark | reads CONAS; extruded from the Pretendard Black glyphs, outline-spaced, shared baseline |
+| Korean text | rendered from the Pretendard font files; `document.fonts.check` gates rendering; glyph extraction fails on any missing glyph |
+| Missing fonts | none (all four weights load before the first frame) |
+| Density / camera / tunnel / data variety | see sequence and object counts above; reviewed on contact sheets of every scene |
+| Logo hold | everything settles by 13.95 s; 1.05 s clean hold, no other objects |
+| Playback | full decode with FFmpeg reports no errors |
+
+Bug found and fixed during QC: the first 4K render came out at half brightness with no motion blur, because the accumulation buffer was auto-cleared before every sub-frame. It was fixed and the film was fully re-rendered.
