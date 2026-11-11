@@ -3,9 +3,10 @@
 import { Tool } from './tool.js';
 import { LiveEdit } from './live-edit.js';
 import {
-  isBoxType, transformPatch, editableVertices, moveVertexPatch, insertionPoint, insertVertexPatch, removeVertexPatch, getShapeBounds,
+  isBoxType, transformPatch, roadPatch, editableVertices, moveVertexPatch, insertionPoint, insertVertexPatch, removeVertexPatch, getShapeBounds,
 } from '../objects/shapes.js';
 import { nearestCoastPoint } from '../objects/bridge.js';
+import { closestRoadSegment } from '../objects/road.js';
 import {
   boxCorners, worldToLocal, localToWorld, translation, rotationAbout, scaleAbout, dist, DEG, boundsContainsBounds, snapValue,
 } from '../utils/geometry.js';
@@ -266,10 +267,14 @@ export class SelectTool extends Tool {
     const o = s.live.original(s.v.id);
     let p = ed.snap(e.world);
     let extra = {};
-    let link = null;
+    let link = null; // snapped onto another road's point
+    let segLink = null; // snapped onto the middle of another road
     if (s.v.mode === 'shape' && o.type === 'road' && s.v.kind === 'vertex' && ed.settings.snapToObjects) {
       const snapPt = this.snapRoadPoint(o, e.world);
-      if (snapPt) { p = { x: snapPt.x, y: snapPt.y }; link = snapPt; }
+      if (snapPt) { p = { x: snapPt.x, y: snapPt.y }; link = snapPt; } else {
+        const seg = this.snapRoadSegment(o, e.world);
+        if (seg) { p = { x: seg.x, y: seg.y }; segLink = seg; }
+      }
     }
     if (s.v.mode === 'shape' && o.type === 'bridge' && s.v.kind === 'endpoint') {
       const isl = this.nearestIsland(e.world, ed.tol(30));
@@ -280,14 +285,38 @@ export class SelectTool extends Tool {
       }
     }
     const patch = { ...moveVertexPatch(o, s.v.key, p), ...extra };
-    if (final && link && o.type === 'road') {
+    const patches = new Map([[o.id, patch]]);
+    if (final && o.type === 'road' && (link || segLink)) {
       const pid = o.points[s.v.index].id;
-      if (!o.connections.some((c) => c.pointId === pid && c.roadId === link.roadId)) {
-        patch.connections = [...o.connections, { pointId: pid, roadId: link.roadId, targetPointId: link.pointId }];
+      let target = link;
+      if (segLink) {
+        // Insert a junction point into the other road where the end was dropped.
+        const other = this.doc.get(segLink.roadId);
+        const np = roadPoint(p.x, p.y);
+        const pts = other.points.slice();
+        pts.splice(segLink.segment + 1, 0, np);
+        patches.set(other.id, roadPatch(other, { points: pts }));
+        target = { roadId: other.id, pointId: np.id };
+      }
+      if (!o.connections.some((c) => c.pointId === pid && c.roadId === target.roadId && c.targetPointId === target.pointId)) {
+        patch.connections = [...o.connections, { pointId: pid, roadId: target.roadId, targetPointId: target.pointId }];
       }
     }
-    s.snapHint = link || extra.startIslandId || extra.endIslandId ? p : null;
-    return { patches: new Map([[o.id, patch]]) };
+    s.snapHint = link || segLink || extra.startIslandId || extra.endIslandId ? p : null;
+    return { patches };
+  }
+
+  // Nearest point on the centre line of another road (for T-junctions).
+  snapRoadSegment(road, p) {
+    let best = null;
+    for (const id of this.editor.renderer.spatial.queryPoint(p, this.editor.tol(10) + 80)) {
+      const r = this.doc.get(id);
+      if (!r || r.type !== 'road' || r.id === road.id || !this.editor.isEditable(r)) continue;
+      const c = closestRoadSegment(r, p);
+      const tol = Math.max(this.editor.tol(10), r.width / 2);
+      if (c && c.d <= tol && (!best || c.d < best.d)) best = { x: c.x, y: c.y, d: c.d, roadId: r.id, segment: c.segment };
+    }
+    return best;
   }
 
   snapRoadPoint(road, p) {
