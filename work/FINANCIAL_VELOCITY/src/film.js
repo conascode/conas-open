@@ -1042,8 +1042,9 @@ const halton = (i, b) => { let f = 1; let r = 0; while (i > 0) { f /= b; r += f 
 // Sub-frames per output frame: more where the camera is fastest.
 function samplesAt(t) {
   if (BLUR <= 1) return 1;
-  if (t >= 3.0 && t < 6.8) return BLUR + 1;
-  return BLUR;
+  if (t >= 3.0 && t < 6.8) return BLUR + 2; // tunnel: fastest camera
+  if (t < 9.0 || (t >= 11.0 && t < 13.6)) return BLUR + 1; // universe, collision, push-in, letter flight
+  return BLUR; // calm convergence and the static hold (still anti-aliased by jitter)
 }
 function renderFrame(t) {
   const shutter = 0.5 / FPS; // 180-degree shutter
@@ -1063,7 +1064,11 @@ function renderFrame(t) {
     accumMat.uniforms.w.value = 1 / n;
     quad.material = accumMat;
     renderer.setRenderTarget(accum);
+    // add into the buffer: renderer.render() would otherwise clear it before every sub-frame
+    const autoClear = renderer.autoClear;
+    renderer.autoClear = false;
     renderer.render(quadScene, quadCam);
+    renderer.autoClear = autoClear;
   }
   camera.clearViewOffset();
   quad.material = copyMat;

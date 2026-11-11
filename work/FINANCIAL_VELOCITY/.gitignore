@@ -1,0 +1,4 @@
+# 4K master renders are too large for GitHub (100 MB limit); delivery encodes are committed separately
+output/*_master.mp4
+output/CONAS_FINANCIAL_VELOCITY_4K60.mp4
+frames/
