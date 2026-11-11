@@ -209,7 +209,9 @@ export function buildToolOptions(editor, root) {
   };
   editor.tools.on('change', render);
   editor.on('tool-options', render);
-  editor.on('selection', () => { if (editor.tools.activeId === 'coastline') render(); });
+  editor.on('selection', () => { if (editor.tools.activeId === 'coastline' || editor.tools.activeId === 'select') render(); });
+  // Keep the select tool's width control in step with undo/redo, but never rebuild it mid-drag.
+  editor.on('history', () => { if (editor.tools.activeId === 'select' && !root.contains(document.activeElement)) render(); });
   render();
 }
 
@@ -249,7 +251,7 @@ export function shortcutsDialog(ui) {
     ['Finish polygon / road', 'Double-click or Enter'],
     ['Remove last point while drawing', 'Right-click or Backspace'],
     ['Remove a vertex', 'Alt+click it (or select it and press Delete)'],
-    ['Terrain brush size', '[ and ]'],
+    ['Terrain brush size / selected road width', '[ and ]  (Shift = bigger steps for roads)'],
     ['Rotate asset before placing', 'R (Building / Asset tool)'],
     ['Toggle grid / snap / outlines', 'G / Shift+G / O'],
   ];

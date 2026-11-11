@@ -11,8 +11,11 @@ import {
 } from '../utils/geometry.js';
 import { PatchCommand } from '../core/commands.js';
 import { roadPoint } from '../data/defaults.js';
+import { h } from '../utils/dom.js';
 import { drawHandle, drawVertices, strokePts, drawHitbox, ACCENT } from '../renderer/overlay.js';
 
+const MIN_WIDTH = 2;
+const MAX_WIDTH = 400;
 const HANDLE_SIGNS = [[-1, -1], [1, -1], [1, 1], [-1, 1], [0, -1], [1, 0], [0, 1], [-1, 0]];
 const RESIZE_CURSORS = ['nwse-resize', 'nesw-resize', 'nwse-resize', 'nesw-resize', 'ns-resize', 'ew-resize', 'ns-resize', 'ew-resize'];
 
@@ -345,7 +348,55 @@ export class SelectTool extends Tool {
     }
   }
 
+  // Selected objects when they are all roads/bridges (the ones that have a road/deck width).
+  widthTargets() {
+    const sel = this.editableSelection();
+    return sel.length && sel.every((o) => o.type === 'road' || o.type === 'bridge') ? sel : null;
+  }
+
+  setWidth(objs, value) {
+    const v = Math.round(Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, value)));
+    const ids = objs.map((o) => o.id);
+    this.editor.execute(PatchCommand.from(this.doc, ids.map((id) => [id, { width: v }]), 'Road Width', `width:${ids.join(',')}`));
+    this.requestOverlay();
+    return v;
+  }
+
+  // Tool option bar: width control for selected roads / bridges.
+  options() {
+    const objs = this.widthTargets();
+    if (!objs) return null;
+    const cur = objs[0].width;
+    const mixed = objs.some((o) => o.width !== cur);
+    const range = h('input', { type: 'range', class: 'range', min: MIN_WIDTH, max: 200, step: 1, value: Math.min(200, cur), 'aria-label': 'Width' });
+    const num = h('input', { type: 'number', class: 'input num', min: MIN_WIDTH, max: MAX_WIDTH, step: 1, value: mixed ? '' : cur, placeholder: 'mixed', style: { width: '70px' }, 'aria-label': 'Width in pixels' });
+    const sync = (v) => { range.value = Math.min(200, v); num.value = v; };
+    range.addEventListener('input', () => sync(this.setWidth(objs, Number(range.value))));
+    range.addEventListener('change', () => this.editor.history.seal());
+    num.addEventListener('change', () => {
+      const v = Number(num.value);
+      if (Number.isFinite(v) && v > 0) sync(this.setWidth(objs, v));
+      this.editor.history.seal();
+    });
+    const step = (d) => h('button', { class: 'btn small', title: d < 0 ? 'Narrower ([)' : 'Wider (])', onclick: () => { sync(this.setWidth(objs, Number(num.value || cur) + d)); this.editor.history.seal(); } }, d < 0 ? '−' : '+');
+    const kind = objs.every((o) => o.type === 'bridge') ? 'Deck width' : 'Road width';
+    return h('div', { class: 'opts' },
+      h('label', { class: 'ctl' }, h('span', { class: 'ctl-label' }, `${kind}${objs.length > 1 ? ` (${objs.length})` : ''}`), step(-2), range, step(2), num, h('span', { class: 'muted small' }, 'px')),
+      h('span', { class: 'tool-hint' }, '[ / ] = narrower / wider'));
+  }
+
   onKeyDown(e) {
+    // [ / ] narrower / wider; with Shift the keys arrive as { / } and step 10px.
+    if (['[', ']', '{', '}'].includes(e.key) && !e.ctrlKey && !e.metaKey) {
+      const objs = this.widthTargets();
+      if (objs) {
+        const wider = e.key === ']' || e.key === '}';
+        this.setWidth(objs, objs[0].width + (wider ? 2 : -2) * (e.shiftKey ? 5 : 1));
+        this.editor.history.seal();
+        this.editor.emit('tool-options');
+        return true;
+      }
+    }
     if ((e.key === 'Delete' || e.key === 'Backspace') && this.activeVertex) {
       const t = this.vertexTarget();
       if (t && t.obj.id === this.activeVertex.id) {
