@@ -226,7 +226,7 @@ function bindKeyboard(editor, tools, actions) {
     }
     if (key === '+' || key === '=') { editor.camera.zoomAt({ x: editor.camera.viewWidth / 2, y: editor.camera.viewHeight / 2 }, 1.25); return; }
     if (key === '-' || key === '_') { editor.camera.zoomAt({ x: editor.camera.viewWidth / 2, y: editor.camera.viewHeight / 2 }, 0.8); return; }
-    if (key === 'Home') { editor.fitWorld(); return; }
+    if (key === 'Home') { if (e.shiftKey) editor.fitContent(); else editor.fitWorld(); return; }
     if (lower === 'f') { editor.frameSelection(); return; }
     if (key === 'G') { editor.setSetting('snapToGrid', !editor.settings.snapToGrid); return; }
     if (key === 'g') { editor.setSetting('showGrid', !editor.settings.showGrid); return; }
@@ -268,7 +268,7 @@ async function runPerfTest(editor, pm, ui) {
   const loadMs = performance.now() - t0;
   ui.toast('Measuring frame rate while panning and zooming…');
   const r = await measureFps(editor, 4000);
-  editor.fitWorld();
+  editor.fitContent();
   window.lastPerfResult = { ...r, loadMs };
   ui.modal({
     title: 'Performance test result', iconName: 'gauge',

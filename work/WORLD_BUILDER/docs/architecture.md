@@ -43,6 +43,7 @@
 ## 3. 좌표계와 카메라
 
 - `Camera { zoom, offsetX, offsetY }` — `worldToScreen`, `screenToWorld`, `zoomAt(screenPt, factor)`(커서 아래 월드 점 고정), `fitBounds`.
+- 최소 배율은 기본 2%이고, 맵이 그보다 커서 한 화면에 안 들어가면 맵 크기에 맞춰 자동으로 더 낮아집니다(`Camera.minZoom`). 줌 최대 800%.
 - PixiJS `world` 컨테이너에 `position = offset`, `scale = zoom` 만 적용합니다. 객체 데이터는 바뀌지 않습니다.
 - 바다 텍스처는 화면 공간 `TilingSprite`로 그리고 `tilePosition/tileScale` 을 카메라에 맞춰 무한 캔버스처럼 보이게 합니다.
 - 오버레이(선택 테두리, 핸들)는 월드 공간에서 그리되 선 두께·핸들 크기를 `1/zoom` 으로 보정해 화면에서 일정한 크기를 유지합니다.

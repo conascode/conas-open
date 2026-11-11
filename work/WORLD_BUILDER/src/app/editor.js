@@ -44,6 +44,9 @@ export class Editor extends Emitter {
     });
     this.doc.on('remove', ({ obj }) => { if (this.selection.has(obj.id)) this.selection.remove([obj.id]); });
     this.doc.on('change', () => { this.dirty = true; this.emit('dirty', true); });
+    const syncWorldSize = () => { if (this.doc.data) this.camera.setWorldSize(this.doc.world.width, this.doc.world.height); };
+    this.doc.on('reset', syncWorldSize);
+    this.doc.on('section', ({ section }) => { if (section === 'world') syncWorldSize(); });
     this.history.on('change', () => this.emit('history'));
   }
 
@@ -352,11 +355,19 @@ export class Editor extends Emitter {
     if (b) this.camera.fitBounds(b, 120);
   }
 
+  // Whole map: the world rectangle plus anything placed outside it.
   fitWorld() {
+    const w = this.doc.world;
+    let b = { minX: 0, minY: 0, maxX: w.width, maxY: w.height };
+    for (const o of this.doc.objects()) b = unionBounds(b, getShapeBounds(o));
+    this.camera.fitBounds(b, 40);
+  }
+
+  // Only the area that has objects (falls back to the whole map when empty).
+  fitContent() {
     let b = null;
     for (const o of this.doc.objects()) b = b ? unionBounds(b, getShapeBounds(o)) : getShapeBounds(o);
-    const w = this.doc.world;
-    this.camera.fitBounds(b || { minX: 0, minY: 0, maxX: w.width, maxY: w.height }, 60);
+    if (b) this.camera.fitBounds(b, 60); else this.fitWorld();
   }
 
   outlineOf(obj) { return outlineOf(obj); }
