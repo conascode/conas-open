@@ -2,6 +2,8 @@
 // screen = world * zoom + offset. Objects are never stored in screen space.
 import { clamp } from '../utils/geometry.js';
 
+// Default lower zoom limit. For maps too big to fit at this zoom, the limit drops
+// further so the whole map always fits on screen (see minZoom).
 export const MIN_ZOOM = 0.02;
 export const MAX_ZOOM = 8;
 
@@ -13,6 +15,19 @@ export class Camera {
     this.viewWidth = 1;
     this.viewHeight = 1;
     this.version = 0; // bumps on every change so the renderer can detect it
+    this.worldWidth = 12000;
+    this.worldHeight = 12000;
+  }
+
+  setWorldSize(w, h) {
+    this.worldWidth = w;
+    this.worldHeight = h;
+  }
+
+  // Smallest allowed zoom: MIN_ZOOM, or lower if needed to see the whole map with room to spare.
+  get minZoom() {
+    const fit = Math.min(Math.max(1, this.viewWidth - 120) / this.worldWidth, Math.max(1, this.viewHeight - 120) / this.worldHeight);
+    return Math.min(MIN_ZOOM, fit * 0.5);
   }
 
   setViewSize(w, h) {
@@ -38,7 +53,7 @@ export class Camera {
   // Zoom keeping the world point under `screenPt` fixed.
   zoomAt(screenPt, factor) {
     const before = this.screenToWorld(screenPt);
-    this.zoom = clamp(this.zoom * factor, MIN_ZOOM, MAX_ZOOM);
+    this.zoom = clamp(this.zoom * factor, this.minZoom, MAX_ZOOM);
     this.offsetX = screenPt.x - before.x * this.zoom;
     this.offsetY = screenPt.y - before.y * this.zoom;
     this.version++;
@@ -58,7 +73,7 @@ export class Camera {
   fitBounds(b, padding = 60) {
     const w = Math.max(1, b.maxX - b.minX);
     const h = Math.max(1, b.maxY - b.minY);
-    this.zoom = clamp(Math.min((this.viewWidth - padding * 2) / w, (this.viewHeight - padding * 2) / h), MIN_ZOOM, MAX_ZOOM);
+    this.zoom = clamp(Math.min((this.viewWidth - padding * 2) / w, (this.viewHeight - padding * 2) / h), this.minZoom, MAX_ZOOM);
     this.centerOn({ x: (b.minX + b.maxX) / 2, y: (b.minY + b.maxY) / 2 });
   }
 

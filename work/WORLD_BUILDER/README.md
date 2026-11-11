@@ -17,6 +17,12 @@
 https://conascode.github.io/conas-open/work/WORLD_BUILDER/
 ```
 
+Navigator(길찾기 · GPS 주행 시뮬레이션): 편집기 상단 **Navigator** 버튼, 또는
+
+```
+https://conascode.github.io/conas-open/work/WORLD_BUILDER/navigator.html
+```
+
 ### 2) 내 컴퓨터에서 실행
 ES 모듈은 `file://`로 열면 브라우저가 막기 때문에, 아무 정적 웹 서버로 폴더를 열어야 합니다.
 
@@ -49,15 +55,17 @@ node --test tests/*.test.js
 node tests/e2e/phase1.cjs
 ```
 
-`phase2.cjs`, `phase3.cjs`, `perf.cjs` 도 같은 방식입니다. 결과는 [docs/test-results.md](docs/test-results.md).
+`phase2.cjs`, `phase3.cjs`, `perf.cjs`, `navigator.cjs` 도 같은 방식입니다. 결과는 [docs/test-results.md](docs/test-results.md).
 
 ## 폴더 구조
 
 ```
 WORLD_BUILDER/
-├─ index.html              앱 진입점
+├─ index.html              편집기
+├─ navigator.html          길찾기 · GPS 주행 시뮬레이션
 ├─ src/
 │  ├─ app/        editor.js(중앙 컨트롤러) · main.js(부트스트랩) · perf.js(성능 테스트)
+│  ├─ nav/        road-graph(도로망·길찾기) · simulation(주행) · navigator(페이지)
 │  ├─ core/       document · commands · history · selection · camera · spatial-index
 │  ├─ renderer/   renderer(PixiJS) · views(객체별 그리기) · overlay · textures
 │  ├─ tools/      select · island · coastline · terrain · road · bridge · place · area · pan
@@ -67,10 +75,10 @@ WORLD_BUILDER/
 │  ├─ storage/    idb · asset-store · zip · project-manager
 │  └─ utils/      geometry · id · rle · dom · events · thumbnail
 ├─ assets/        terrain/ buildings/ roads/ bridges/ objects/  (샘플 SVG 에셋)
-├─ styles/        main.css · layout.css · panels.css · components.css
+├─ styles/        main.css · layout.css · panels.css · components.css · navigator.css
 ├─ samples/       serim-city.world.json (샘플 프로젝트)
 ├─ docs/          architecture.md · data-schema.md · user-guide.md · test-results.md · screenshot.jpg
-├─ tests/         geometry · project · serialization (.test.js) + e2e/ (Playwright)
+├─ tests/         geometry · project · serialization · nav (.test.js) + e2e/ (Playwright)
 ├─ scripts/       generate-assets.mjs · generate-sample.mjs
 └─ lib/           pixi.min.js · zod.js · jszip.min.js · lucide.min.js
 ```
@@ -87,6 +95,7 @@ WORLD_BUILDER/
 | PHASE 1 — Core Editor (UI, PixiJS 캔버스, 카메라, 선택/이동, Undo/Redo, JSON 저장) | 완료 |
 | PHASE 2 — World Construction (섬, 해안선, 지형, 도로, 다리, 건물) | 완료 |
 | PHASE 3 — Asset Management (에셋 등록/라이브러리, 레이어, Inspector, ZIP, 불러오기, 자동 저장/복구) | 완료 |
+| Navigator — 길찾기(차량/도보, 최단 시간/거리, 경유지), GPS 주행 시뮬레이션, GPS 기록 내보내기 | 완료 |
 | PHASE 4 — Investigation Expansion (인물, 이동 경로, 사건, 증거, 시간별 재생) | **미구현** — `routes` 배열과 Characters / Routes / Investigation 레이어만 예약되어 있습니다 |
 
 ## 라이선스 참고

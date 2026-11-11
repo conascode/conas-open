@@ -39,10 +39,12 @@
 | `panels/` | DOM UI. 문서/선택 이벤트에 반응 |
 | `storage/` | 파일 열기/저장, ZIP, IndexedDB 자동 저장, 에셋 Blob 저장소 |
 | `app/` | `Editor`(중앙 컨트롤러), 부트스트랩, 성능 테스트 |
+| `nav/` | Navigator: 도로망 그래프, 길찾기, 주행 시뮬레이션, 페이지 |
 
 ## 3. 좌표계와 카메라
 
 - `Camera { zoom, offsetX, offsetY }` — `worldToScreen`, `screenToWorld`, `zoomAt(screenPt, factor)`(커서 아래 월드 점 고정), `fitBounds`.
+- 최소 배율은 기본 2%이고, 맵이 그보다 커서 한 화면에 안 들어가면 맵 크기에 맞춰 자동으로 더 낮아집니다(`Camera.minZoom`). 줌 최대 800%.
 - PixiJS `world` 컨테이너에 `position = offset`, `scale = zoom` 만 적용합니다. 객체 데이터는 바뀌지 않습니다.
 - 바다 텍스처는 화면 공간 `TilingSprite`로 그리고 `tilePosition/tileScale` 을 카메라에 맞춰 무한 캔버스처럼 보이게 합니다.
 - 오버레이(선택 테두리, 핸들)는 월드 공간에서 그리되 선 두께·핸들 크기를 `1/zoom` 으로 보정해 화면에서 일정한 크기를 유지합니다.
@@ -132,7 +134,18 @@
 
 Help ▸ Performance Test 로 5,000개 객체 월드를 만들어 팬/줌 중 FPS를 측정할 수 있습니다. 결과는 [test-results.md](test-results.md).
 
-## 11. 확장 포인트 (PHASE 4)
+## 11. Navigator (`navigator.html`, `src/nav/`)
+
+| 모듈 | 역할 |
+|---|---|
+| `road-graph.js` | 도로·다리를 폴리라인으로 모아 그래프 생성: 교차 지점 삽입(공간 그리드로 선분 쌍 검사), 도로 끝 자동 연결, 다리 끝 ↔ 섬 도로 연결, 좌표가 같은 점 병합. `snapToNetwork`(가장 가까운 도로 위 점), `findRoute`(Dijkstra + 이진 힙, 출발/도착을 임시 노드로 간선에 삽입, 일방통행 반영, 시간/거리 기준), `routeSteps`(같은 도로 묶기 + 좌/우/직진 판정) |
+| `simulation.js` | 구간 목록 → 누적 거리·시간 트랙, `stateAt(t)` 로 위치·방향·속도·구간 계산, 포맷/CSV |
+| `navigator.js` | 페이지: 지도 불러오기(편집기 자동 저장본 / 파일 / 샘플), 편집기와 같은 `Renderer` 로 지도 표시, 마커 입력, 경로 오버레이, 재생 루프, 텔레메트리, 내보내기 |
+
+- 편집기와 같은 출처(origin)이므로 IndexedDB 자동 저장본과 에셋 이미지를 그대로 읽습니다. 편집기의 Navigator 버튼은 자동 저장을 먼저 쓴 뒤 새 탭을 엽니다.
+- 차량 모드: 보행자 도로·보도교·철도교 제외, 일방통행 준수. 도보 모드: 철도교 제외, 5 km/h.
+
+## 12. 확장 포인트 (PHASE 4)
 
 - 모든 객체는 ID로 참조되므로 인물·사건·증거 데이터는 `buildingId`, `islandId`, `areaId` 등으로 연결할 수 있습니다.
 - 건물에는 `investigatable`, `owner`, `address`, `description`, 로컬 좌표 `hitbox` 가 이미 있습니다.

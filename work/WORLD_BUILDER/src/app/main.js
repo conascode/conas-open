@@ -101,6 +101,13 @@ async function boot() {
     about: () => aboutDialog(ui),
     perfTest: () => runPerfTest(editor, pm, ui),
     settings: () => settingsDialog(editor, ui),
+    // The Navigator reads the editor's autosave, so write it first to hand over the current map.
+    openNavigator: async () => {
+      const win = window.open('', '_blank');
+      await pm.writeAutosave();
+      if (win) win.location.href = new URL('navigator.html?map=editor', APP_BASE).href;
+      else window.location.href = new URL('navigator.html?map=editor', APP_BASE).href;
+    },
   };
   buildMenus(editor, $('#menus'), actions);
   buildTopBar(editor, pm, actions);
@@ -176,6 +183,7 @@ function buildTopBar(editor, pm, actions) {
   undo.addEventListener('click', () => editor.undo());
   redo.addEventListener('click', () => editor.redo());
   $('#btn-save').addEventListener('click', actions.save);
+  $('#btn-navigator').addEventListener('click', actions.openNavigator);
   $('#btn-settings').addEventListener('click', actions.settings);
   const exportMenu = $('#export-menu');
   $('#btn-export').addEventListener('click', (e) => { e.stopPropagation(); exportMenu.classList.toggle('open'); });
@@ -226,7 +234,7 @@ function bindKeyboard(editor, tools, actions) {
     }
     if (key === '+' || key === '=') { editor.camera.zoomAt({ x: editor.camera.viewWidth / 2, y: editor.camera.viewHeight / 2 }, 1.25); return; }
     if (key === '-' || key === '_') { editor.camera.zoomAt({ x: editor.camera.viewWidth / 2, y: editor.camera.viewHeight / 2 }, 0.8); return; }
-    if (key === 'Home') { editor.fitWorld(); return; }
+    if (key === 'Home') { if (e.shiftKey) editor.fitContent(); else editor.fitWorld(); return; }
     if (lower === 'f') { editor.frameSelection(); return; }
     if (key === 'G') { editor.setSetting('snapToGrid', !editor.settings.snapToGrid); return; }
     if (key === 'g') { editor.setSetting('showGrid', !editor.settings.showGrid); return; }
@@ -268,7 +276,7 @@ async function runPerfTest(editor, pm, ui) {
   const loadMs = performance.now() - t0;
   ui.toast('Measuring frame rate while panning and zooming…');
   const r = await measureFps(editor, 4000);
-  editor.fitWorld();
+  editor.fitContent();
   window.lastPerfResult = { ...r, loadMs };
   ui.modal({
     title: 'Performance test result', iconName: 'gauge',

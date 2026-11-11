@@ -85,6 +85,25 @@ data.bridges.push(createBridge('BR_0003', {
   startPosition: coast(main, 3700, 4000), endPosition: coast(islet, 2850, 3200),
 }));
 
+// Approach roads so every bridge joins the island road network.
+const br = (id) => data.bridges.find((x) => x.id === id);
+const link = (road, idx, other, oidx) => road.connections.push({ pointId: road.points[idx].id, roadId: other.id, targetPointId: other.points[oidx].id });
+const shared = (other, oidx) => ({ ...other.points[oidx], id: undefined });
+const mk = (id, pts, opts) => createRoad(id, pts.map((p) => roadPoint(p.x, p.y)), opts);
+const app1 = mk('RD_0008', [shared(avenue, 4), br('BR_0001').startPosition], { roadType: 'Main Road', name: 'Haneul Bridge Approach', islandId: main.id });
+link(app1, 0, avenue, 4);
+const app2 = mk('RD_0009', [br('BR_0001').endPosition, shared(eastRd, 0)], { roadType: 'Local Road', name: 'Haneul Bridge Road', islandId: east.id });
+link(app2, 1, eastRd, 0);
+const app3 = mk('RD_0010', [shared(southSt, 2), br('BR_0002').startPosition], { roadType: 'Secondary Road', name: 'Port Bridge Approach', islandId: main.id });
+link(app3, 0, southSt, 2);
+const app4 = mk('RD_0011', [br('BR_0002').endPosition, { x: 5520, y: 7900 }, shared(portRd, 1)], { roadType: 'Secondary Road', curve: 'Smooth', name: 'Port Access Road', islandId: south.id });
+link(app4, 2, portRd, 1);
+const trail = mk('RD_0012', [br('BR_0003').startPosition, { x: 3560, y: 4500 }, shared(avenue, 0)], { roadType: 'Pedestrian Road', curve: 'Smooth', name: 'Gull Trail', islandId: main.id });
+link(trail, 2, avenue, 0);
+const lhPath = mk('RD_0013', [br('BR_0003').endPosition, { x: 2560, y: 2950 }, { x: 2390, y: 2760 }], { roadType: 'Pedestrian Road', curve: 'Smooth', name: 'Lighthouse Path', islandId: islet.id });
+const oneWay = mk('RD_0014', [{ x: 4600, y: 4950 }, { x: 4700, y: 4300 }, { x: 5200, y: 4200 }], { roadType: 'Local Road', direction: 'One-way', name: 'Hospital One-way', islandId: main.id });
+data.roads.push(app1, app2, app3, app4, trail, lhPath, oneWay);
+
 // Buildings and props.
 let b = 0; let o = 0;
 const bid = () => `BLD_${String(++b).padStart(4, '0')}`;

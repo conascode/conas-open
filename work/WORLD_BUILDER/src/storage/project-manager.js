@@ -54,7 +54,7 @@ export class ProjectManager {
     ed.dirty = dirty;
     ed.emit('dirty', dirty);
     ed.emit('project');
-    ed.fitWorld();
+    ed.fitContent();
     const missing = await this.findMissingAssets();
     const all = [...warnings];
     if (missing.length) all.push(...missing.map((a) => `Missing Asset: ${a.id} "${a.name}" (${a.path})`));
